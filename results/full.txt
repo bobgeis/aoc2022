@@ -1,0 +1,10 @@
+==== All Days at #93663c5 ====
+
+Day 0
+  Part 1: 1
+  Part 2: 2
+  Part 2.1: 3
+  Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
+  Time: 0.00030 s
+
+==== Total Time: 0.00047 s ====
