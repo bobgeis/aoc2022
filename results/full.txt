@@ -1,11 +1,16 @@
-==== All Days at #e17eeb1 ====
---  debug release --
+==== All Days at #32ad7fe ====
+-- debug release --
 
 Day 0
   Part 1: 1
   Part 2: 2
   Part 2.1: 3
   Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
-  Time: 0.00018 s
+  Time: 0.00026 s
 
-==== Total Time: 0.00032 s ====
+Day 1
+  Part 1: 68923
+  Part 2: 200044
+  Time: 0.0016 s
+
+==== Total Time: 0.0021 s ====

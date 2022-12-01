@@ -3,7 +3,8 @@ include ../lib/imps
 
 const
   days = [
-    0
+    0,
+    1,
   ] ## numbers of completed days
   dayModules = days.mapit( &"d{it:02}" )
 
