@@ -64,17 +64,16 @@ template liftToMap2padded*(procName, newProcName: untyped, X: static[
 template liftToMap3*(procName, newProcName: untyped, X: static[bool] = false) =
   ## Like liftToMap, this creates a new proc with the name `newProcName`, but the intention is to create a map function that takes THREE openarrays, instead of one, and the output is taken from calling the mapped proc with items from each array.  The last argument to this template is an eXport flag (default false), if set to true, then the proc must be defined at the top level and will be exported.
   ## Inspired by https://github.com/jlp765/seqmath/blob/master/src/seqmath/smath.nim#L55
-  # runnableExamples:
-  #   from math import floor
-  #   from strutils import parseInt
-  #   from bedrock import between
-  #   between[int].liftToMap3(btMap)
-  #   assert @[1, 2, 3].btMap(@[4, 6, 2], @[-3, 1, 1]) == @[true, true, false]
-  #   proc foo(x: string, y: int, z: float): int64 = (x.parseInt + y +
-  #       z.floor.int).int64
-  #   assert foo("3", 2, 3.0) == 8'i64
-  #   foo.liftToMap3(fooMap)
-  #   assert fooMap(@["3", "5"], @[2, 3], @[2.0, 10.0]) == @[7'i64, 18]
+  runnableExamples:
+    import std/[math,strutils]
+    import bedrock
+    between[int].liftToMap3(btMap)
+    assert @[1, 2, 3].btMap(@[4, 6, 2], @[-3, 1, 1]) == @[true, true, false]
+    proc foo(x: string, y: int, z: float): int64 = (x.parseInt + y +
+        z.floor.int).int64
+    assert foo("3", 2, 3.0) == 8'i64
+    foo.liftToMap3(fooMap)
+    assert fooMap(@["3", "5"], @[2, 3], @[2.0, 10.0]) == @[7'i64, 18]
   proc newProcName[T, U, V](x: openarray[T], y: openarray[U], z: openarray[V]): auto =
     var
       temp1: T
@@ -143,18 +142,18 @@ proc recursiveReplace(body, placeholder, target: NimNode): NimNode =
 macro DistributeSymbol*(standIn, targetList, body: untyped): untyped =
   ## For every item in `targetList` it will call body with `standIn` replaced with the item.  This can be used to quickly eliminate large amounts of boilerplate.  Many potential uses of this can be served by templates, but it's fun to play with macros.  TODO: better error handling.
   ## Adapted from: https://github.com/Kaynato/AdventOfCode/blob/9223e1b5c8675b1b6664d41b9dc984759c0aba17/graphlib/copymacro.nim
-  # runnableExamples:
-  #   DistributeSymbol(Op, [`+`, `-`, `*`]):
-  #     proc Op*(a, b: (int, int)): (int, int) =
-  #       (Op(a[0], b[0]), Op(a[1], b[1]))
+  runnableExamples:
+    DistributeSymbol(Op, [`+`, `-`, `*`]):
+      proc Op*(a, b: (int, int)): (int, int) =
+        (Op(a[0], b[0]), Op(a[1], b[1]))
 
-  #   let
-  #     a = (2, 3)
-  #     b = a * (2, -1)
+    let
+      a = (2, 3)
+      b = a * (2, -1)
 
-  #   assert a + b == (x: 6, y: 0)
-  #   assert a - b == (x: -2, y: 6)
-  #   assert a * b == (x: 8, y: -9)
+    assert a + b == (x: 6, y: 0)
+    assert a - b == (x: -2, y: 6)
+    assert a * b == (x: 8, y: -9)
   ##
   result = newNimNode(nnkStmtList)
   for target in targetList:
@@ -165,14 +164,6 @@ macro DistributeSymbol*(standIn, targetList, body: untyped): untyped =
 macro DistributeSymbols*(standIns, targetLists, body: untyped): untyped =
   ## Similar to DistributeSymbol, except the standIns and targetLists are both lists themselves.  Every list in targetLists, a new instance of the body will be made with every symbol in standIns replaced by the symbol in the target list with the same offset.  This can be used to quickly eliminate large amounts of boilerplate.  Many potential uses of this can be served by templates, but it's fun to play with macros.  TODO: better error handling.
   ## Adapted from: https://github.com/Kaynato/AdventOfCode/blob/9223e1b5c8675b1b6664d41b9dc984759c0aba17/graphlib/copymacro.nim
-  # runnableExamples:
-  #   DistributeSymbols([Name, Fn], [[origin, default], [lowest, low], [highest, high]]):
-  #     proc Name[N, A](): Vec[N, A] =
-  #       for i in 0..result.high:
-  #         result[i] = Fn(A)
-  #   assert origin[4,int]() == [0,0,0,0]
-  #   assert lowest[3,int]() = [int.low,int.low,int.low]
-  #   assert highest[2,float]() == [float.high,float.high]
   ##
   result = newNimNode(nnkStmtList)
   for targetList in targetLists:

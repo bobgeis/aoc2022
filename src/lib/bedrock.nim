@@ -16,13 +16,13 @@ proc spy*[T](t: T, msg = ""): T {.inline.} =
   return t
 
 # operators can't be passed in as procvar!
-proc toString*[T](t: T): string = $t
-proc lt*[T](a,b:T):bool = a < b
-proc gt*[T](a,b:T):bool = a > b
-proc le*[T](a,b:T):bool = a <= b
-proc ge*[T](a,b:T):bool = a >= b
-proc eq*[T](a,b:T):bool = a == b
-proc ne*[T](a,b:T):bool = a != b
+proc toString*[T](t: T): string = $t ## same as `$` but can be used as procvar.
+proc lt*[T](a,b:T):bool = a < b ## Same as `<` but can be used as procvar.
+proc gt*[T](a,b:T):bool = a > b ## Same as `>` but can be used as procvar.
+proc le*[T](a,b:T):bool = a <= b ## Same as `<=` but can be used as procvar.
+proc ge*[T](a,b:T):bool = a >= b ## Same as `>=` but can be used as procvar.
+proc eq*[T](a,b:T):bool = a == b ## Same as `==` but can be used as procvar.
+proc ne*[T](a,b:T):bool = a != b ## Same as `!=` but can be used as procvar.
 
 proc err*(msg = "Error!") =
   ## easy terse error
