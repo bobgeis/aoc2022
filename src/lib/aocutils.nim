@@ -52,15 +52,18 @@ var solutionResults: Table[int, Table[string,Table[string,string]]]
 proc checkResults(results: Table[string,string], day:int, path:string):Table[string,string] =
   ## Checks if a given result has an expected value for that day, path, and part. If the result doesn't match the expected value, then add the expected value to the errors table.
   let suffix = path.inputPathSuffix
-  var errors = initTable[string,string]()
-  if not solutionResults.contains(day): return errors
+  var checks = initTable[string,string]()
+  if not solutionResults.contains(day): return checks
   elif not solutionResults[day].contains(suffix):
-    return errors
+    return checks
   let expectedResults = solutionResults[day][suffix]
   for part,res in results.pairs:
-    if expectedResults.contains(part) and expectedResults[part] != res:
-      errors[part] = expectedResults[part]
-  return errors
+    if expectedResults.contains(part):
+      if expectedResults[part] != res:
+        checks[part] = &"FAIL: should be {expectedResults[part]}"
+      else:
+        checks[part] = "PASS"
+  return checks
 
 proc run*(day: int, isMain: static bool=false) =
     ## Runs given day solution on the corresponding input.
@@ -71,7 +74,7 @@ proc run*(day: int, isMain: static bool=false) =
         results = solutionProcs[day](path)
         finish = cpuTime()
       when not defined(skipRegChecks):
-        let errors = results.checkResults(day,path)
+        let checks = results.checkResults(day,path)
       var titleStr = &"Day {$day}"
       when isMain:
         titleStr &= &" at #{githash}"
@@ -81,8 +84,8 @@ proc run*(day: int, isMain: static bool=false) =
       for k in results.keys.toSeq.sorted:
           echo &"  Part {k}: {results[k]}"
           when not defined(skipRegChecks):
-            if errors.contains(k):
-              echo &"    REGRESSION: expected {errors[k]}"
+            if checks.contains(k):
+              echo &"    {checks[k]}"
       echo &"  Time: {finish-start:.2} s\n"
 
 template day*(day:int, solution:untyped):untyped =
