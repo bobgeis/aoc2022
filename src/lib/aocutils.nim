@@ -33,6 +33,11 @@ proc getInputPaths(day: int): seq[string] =
     elif arg == "i" and day.inputPath.fileExists:
       result.add day.inputPath
     elif (arg == "time"): continue
+    elif arg == "full":
+      result.add day.inputPath
+      for suff in ["t1","t2","t3","t4","o1","o2","o3","o4"]:
+        if day.inputPath(suff).fileExists:
+          result.add day.inputPath(suff)
     else:
       echo &"Could not find input file {arg} or {arg.inputPath} or {day.inputpath(arg)}"
   if result.len == 0 and day.inputPath.fileExists:

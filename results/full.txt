@@ -1,16 +1,29 @@
-==== All Days at #32ad7fe ====
+==== All Days at #3fa049b ====
 -- debug release --
 
-Day 0
+Day 0 for in/i00.txt
   Part 1: 1
   Part 2: 2
   Part 2.1: 3
   Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
-  Time: 0.00026 s
+  Time: 0.00027 s
 
-Day 1
+Day 0 for in/i00t1.txt
+  Part 1: 0
+  Part 2: 1
+  Part 2.1: 3
+    REGRESSION: expected 2.1
+  Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
+  Time: 0.00015 s
+
+Day 1 for in/i01.txt
   Part 1: 68923
   Part 2: 200044
-  Time: 0.0016 s
+  Time: 0.0015 s
 
-==== Total Time: 0.0021 s ====
+Day 1 for in/i01t1.txt
+  Part 1: 24000
+  Part 2: 45000
+  Time: 0.00013 s
+
+==== Total Time: 0.0025 s ====
