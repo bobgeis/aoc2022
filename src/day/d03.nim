@@ -31,7 +31,7 @@ day 3:
 
   part 2:
     var sum2 = 0
-    for i in countbetween(0,ints.high,3):
+    for i in countup(0,ints.high,3):
       let
         one = ints[i].toIntSet
         two = ints[i+1].toIntSet
