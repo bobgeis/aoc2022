@@ -5,7 +5,7 @@
 ## - algorithm.reverse & reversed : reverse a seq-like
 ## - math.floorMod : python-like modulus
 
-import std/[macros, memfiles, monotimes, sequtils, sets,
+import std/[intsets, macros, memfiles, monotimes, packedsets, sequtils, sets,
   strformat, strutils, sugar, tables, times]
 
 type
@@ -137,7 +137,11 @@ proc toSysSet*[T](s:openArray[T]):set[T] =
   for t in s:
     result.incl t
 
-proc peek*[T](s:set[T] or HashSet[T]):T =
+proc peek*[T](s:set[T] or HashSet[T] or IntSet):T =
+  ## get an arbitrary value in a set
+  for i in s.items: return i
+
+proc peek*(s:IntSet):int =
   ## get an arbitrary value in a set
   for i in s.items: return i
 

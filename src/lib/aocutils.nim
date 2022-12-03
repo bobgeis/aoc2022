@@ -107,20 +107,20 @@ template part*(p:static typed, t:type, solution:untyped):untyped =
   when p.toString == "1" or
       p.toString == "2" or
       not defined(skipExtraParts):
-    parts[p.toString] = proc ():string =
-      proc inner():t =
-        solution
-      return $inner()
+      parts[p.toString] = proc ():string =
+        proc inner():t =
+            solution
+        return $inner()
 
 template part*(p:static typed, solution:untyped):untyped =
   ## Defines a part solution function. Eg `part 1: input[0] * 5` The part name can be an int, float, or string. Eg `part "1comment": "This was easier than I thought!"`
   when p.toString == "1" or
       p.toString == "2" or
       not defined(skipExtraParts):
-    parts[p.toString] = proc ():string =
-      proc inner():auto =
-        solution
-      return $inner()
+      parts[p.toString] = proc ():string =
+        proc inner():auto =
+            solution
+        return $inner()
 
 template answer*(p:static typed, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
