@@ -132,7 +132,7 @@ proc tocset*(s:string):set[char] =
   ## turn a string into a char set
   for c in s: result.incl c
 
-proc toSysSet*[T](s:openArray[T]):set[T] =
+proc toBitSet*[T](s:openArray[T]):set[T] =
   ## Make a system set from an openArray
   for t in s:
     result.incl t

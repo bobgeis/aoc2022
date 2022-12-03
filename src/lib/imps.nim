@@ -3,8 +3,8 @@
 ## Use with include, eg: `include lib/imps`
 
 # std lib modules: https://nim-lang.org/docs/lib.html
-import std/[algorithm, deques, math, memfiles, options,
-  os, parsecsv, parseutils, re, sequtils, sets,
+import std/[algorithm, deques, intsets, math, memfiles, options,
+  os, packedsets, parsecsv, parseutils, re, sequtils, sets,
   strformat, strscans, strtabs, strutils, sugar,
   tables, times, unittest]
 
