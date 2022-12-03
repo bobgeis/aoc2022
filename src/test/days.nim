@@ -15,8 +15,8 @@ proc allDays*() =
   echo &"==== All Days at #{githash} ===="
   when defined(danger):
     echo "-- optimized release"
-  else:
-    echo "-- debug release"
+  when defined(debug):
+    echo "-- running debug code"
   when defined(skipExtraParts):
     echo "-- skipping extra parts"
   echo ""

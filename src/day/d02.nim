@@ -14,8 +14,8 @@ day 2:
     let
       a = tonum[line[0]]
       x = tonum[line[2]]
-    score1 += round(x, (x - a + 4) mod 3)
-    score2 += round((a + x + 2) mod 3,x)
+    score1 += round(x, (x - a + 1).floormod(3))
+    score2 += round((a + x - 1).floormod(3),x)
 
   part 1: score1
 

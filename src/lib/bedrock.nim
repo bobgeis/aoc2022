@@ -1,5 +1,9 @@
 ## bedrock: under the foundation
 ## This file is for miscellaneous utilities. It may import from the std libs or nimble libs, but from no local files. It should contain generally useful procs, things that you potentially might have wished were in the std lib.
+## Remember to look in the std lib before adding things here.
+## Some things already in the standard lib:
+## - algorithm.reverse & reversed : reverse a seq-like
+## - math.floorMod : python-like modulus
 
 import std/[macros, memfiles, monotimes, sequtils, sets,
   strformat, strutils, sugar, tables, times]
@@ -14,6 +18,27 @@ proc spy*[T](t: T, msg = ""): T {.inline.} =
   ## For when you want to echo something in the middle of a chain of proc calls.
   echo &"{msg}{$t}"
   return t
+
+template decho*(x:untyped):untyped =
+  ## Echo only in debug mode.
+  when defined(debug):
+    echo x
+
+template ddump*(x:untyped):untyped =
+  ## Dump only in debug mode.
+  when defined(debug):
+    dump x
+
+template ddump*(msg:string,x:untyped):untyped =
+  ## Dump with message, only in debug mode.
+  when defined(debug):
+    echo msg
+    dump x
+
+template withDebug*(x:untyped):untyped =
+  ## Run code only in debug mode.
+  when defined(debug):
+    x
 
 # operators can't be passed in as procvar!
 proc toString*[T](t: T): string = $t ## same as `$` but can be used as procvar.

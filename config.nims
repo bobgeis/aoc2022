@@ -118,7 +118,7 @@ task dr, "Run a day. eg: `nim dr 1` to run day 1 on default input only, `nim dr 
     path = args[0].findNimFile
     argsStr = args[1..args.high].join(" ")
     switchStr = switches.join(" ")
-  if path.len > 0: excho &"nim r {switchStr} {path} {argsStr}"
+  if path.len > 0: excho &"nim r {switchStr} -d:debug {path} {argsStr}"
 
 task drm, "Run multiple days. eg: `nim drm 1 2 libs`":
   let
@@ -126,7 +126,15 @@ task drm, "Run multiple days. eg: `nim drm 1 2 libs`":
     paths = args.mapit(it.findNimFile)
     switchStr = switches.join(" ")
   for path in paths:
-    excho &"nim r {switchStr} {path}"
+    excho &"nim r {switchStr} -d:debug {path}"
+
+task drl, "dr but run the last day":
+  let
+    (switches,args) = parseArgs()
+    path = "last".findNimFile
+    argsStr = args[0..args.high].join(" ")
+    switchStr = switches.join(" ")
+  if path.len > 0: excho &"nim r {switchStr} -d:debug {path} {argsStr}"
 
 task drf, "dr but with better performance. Same usage as `dr`.":
   let
