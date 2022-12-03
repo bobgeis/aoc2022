@@ -83,11 +83,14 @@ day {day}:
 
 proc createNewDay(day:int) =
     echo &"Creating initial files for day {day}."
-    exec &"echo '{day.initialFile}' > ./{nimDayDir}/d{day:02}.nim"
-    excho &"code './{nimDayDir}/d{day:02}.nim'"
+    let newNimFile = &"./{nimDayDir}/d{day:02}.nim"
+    if not newNimFile.fileExists:
+      exec &"echo '{day.initialFile}' > ./{nimDayDir}/d{day:02}.nim"
+    excho &"code {newNimFile}"
     excho &"code './{nimInDir}/i{day:02}.txt'"
     excho &"code './{nimInDir}/i{day:02}t1.txt'"
     excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}"
+    excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}/input"
 
 task clean, "Empty the out and doc dirs.":
   excho &"rm -rf {nimOutDir}"
