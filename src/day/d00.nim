@@ -28,7 +28,7 @@ day 0:
 
   # can have discussion in code
   part "Comment":
-    """d00 is a simple example. `nim dr 0 t1` should show a regression."""
+    """d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression."""
 
   # asserts are off with -d:danger
   # assert 2 == 3

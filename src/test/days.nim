@@ -7,6 +7,7 @@ const
     1,
     2,
     3,
+    4,
   ] ## numbers of completed days
   dayModules = days.mapit( &"d{it:02}" )
 

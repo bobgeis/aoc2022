@@ -1,25 +1,30 @@
-==== All Days at #95fa6b1 ====
+==== All Days at #21d3560 ====
 -- optimized release
 -- skipping extra parts
 
 Day 0
   Part 1: 1
   Part 2: 2
-  Time: 0.00011 s
+  Time: 0.00010 s
 
 Day 1
   Part 1: 68923
   Part 2: 200044
-  Time: 0.00027 s
+  Time: 0.00030 s
 
 Day 2
   Part 1: 12276
   Part 2: 9975
-  Time: 0.00025 s
+  Time: 0.00015 s
 
 Day 3
   Part 1: 7691
   Part 2: 2508
-  Time: 0.00042 s
+  Time: 0.00031 s
+
+Day 4
+  Part 1: 462
+  Part 2: 835
+  Time: 0.00016 s
 
 ==== Total Time: 0.0012 s ====
