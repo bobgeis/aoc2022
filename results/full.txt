@@ -1,4 +1,4 @@
-==== All Days at #21d3560 ====
+==== All Days at #dce32ac ====
 
 Day 0 for in/i00.txt
   Part 1: 1
@@ -6,7 +6,7 @@ Day 0 for in/i00.txt
   Part 2: 2
     PASS
   Part 2.1: 3
-  Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
+  Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
   Time: 0.00030 s
 
 Day 0 for in/i00t1.txt
@@ -16,8 +16,8 @@ Day 0 for in/i00t1.txt
     PASS
   Part 2.1: 3
     FAIL: should be 2.1
-  Part Comment: d00 is a simple example. `nim dr 0 t1` should show a regression.
-  Time: 0.00017 s
+  Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
+  Time: 0.00020 s
 
 Day 1 for in/i01.txt
   Part 1: 68923
@@ -31,48 +31,62 @@ Day 1 for in/i01t1.txt
     PASS
   Part 2: 45000
     PASS
-  Time: 0.00014 s
+  Time: 0.00016 s
 
 Day 2 for in/i02.txt
   Part 1: 12276
     PASS
   Part 2: 9975
     PASS
-  Time: 0.0013 s
+  Time: 0.0014 s
 
 Day 2 for in/i02t1.txt
   Part 1: 15
     PASS
   Part 2: 12
     PASS
-  Time: 0.00014 s
+  Time: 0.00015 s
 
 Day 3 for in/i03.txt
   Part 1: 7691
     PASS
   Part 2: 2508
     PASS
-  Time: 0.0018 s
+  Time: 0.0019 s
 
 Day 3 for in/i03t1.txt
   Part 1: 157
     PASS
   Part 2: 70
     PASS
-  Time: 0.00017 s
+  Time: 0.00018 s
 
 Day 4 for in/i04.txt
   Part 1: 462
     PASS
   Part 2: 835
     PASS
-  Time: 0.0012 s
+  Time: 0.0013 s
 
 Day 4 for in/i04t1.txt
   Part 1: 2
     PASS
   Part 2: 4
     PASS
-  Time: 0.00017 s
+  Time: 0.00015 s
 
-==== Total Time: 0.0083 s ====
+Day 5 for in/i05.txt
+  Part 1: SHMSDGZVC
+    PASS
+  Part 2: VRZGHDFBQ
+    PASS
+  Time: 0.0019 s
+
+Day 5 for in/i05t1.txt
+  Part 1: CMZ
+    PASS
+  Part 2: MCD
+    PASS
+  Time: 0.00011 s
+
+==== Total Time: 0.011 s ====
