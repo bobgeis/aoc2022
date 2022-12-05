@@ -10,11 +10,8 @@ day 5:
     stackCount = initStackStrs[^1][^1].parseint
 
   proc newStacks():seq[seq[char]] =
-    # make stacks
     for i in 0..<stackCount:
       result.add newSeq[char]()
-
-    # add crates
     for j in countdown(initStackStrs.len-2,0):
       let l = initStackStrs[j]
       for i in 0..<stackCount:
@@ -25,7 +22,6 @@ day 5:
   proc getAnswer(stacks:seq[seq[char]]):string =
     stacks.doit(result.add it[^1])
 
-  # parse moves
   var moves = newSeq[(int,int,int)]()
   for m in moveLines:
     let (success,count,start,dest) = m.scantuple("move $i from $i to $i")
@@ -34,9 +30,7 @@ day 5:
   part 1:
 
     var stacks = newStacks()
-    # do moves, brute force
-    for m in moves:
-      [count,start,dest] ..= m
+    for (count,start,dest) in moves:
       for i in 0 ..< count:
         stacks[dest].add stacks[start].pop
     stacks.getAnswer
@@ -47,9 +41,7 @@ day 5:
   part 2:
 
     var stacks2 = newStacks()
-    # do moves, brute force
-    for m in moves:
-      [count,start,dest] ..= m
+    for (count,start,dest) in moves:
       let st = stacks2[start]
       stacks2[dest].add st[st.len - count .. st.high]
       stacks2[start] = st[0 .. st.high - count]
