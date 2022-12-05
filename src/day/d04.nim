@@ -10,13 +10,12 @@ day 4:
   path.withLines:
     let (success,low1,high1,low2,high2) = line.scanTuple("$i-$i,$i-$i")
 
-    # get contained count for part 1
     if (low1 >= low2 and high1 <= high2) or
         (low1 <= low2 and high1 >= high2):
       inc contained
 
-    # get overlaps count for part 2
-    if low1 <= high2 and high1 >= low2: inc overlaps
+    if low1 <= high2 and high1 >= low2:
+      inc overlaps
 
   part 1:
     contained
