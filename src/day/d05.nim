@@ -22,28 +22,24 @@ day 5:
         if c != ' ':
           result[i].add c
 
-  proc getAnswer(stacks:seq[seq[char]]):string =
-    stacks.doit(result.add it[^1])
-
-  part 1:
-
+  proc domoves(rev: static bool=true):string =
     var stacks = newStacks()
     for (count,start,dest) in moves:
-      for i in 0 ..< count:
-        stacks[dest].add stacks[start].pop
-    stacks.getAnswer
+      when rev:
+        for _ in 0..<count:
+          stacks[dest].add stacks[start].pop
+      else:
+        let st = stacks[start]
+        stacks[dest].add st[st.len - count .. st.high]
+        stacks[start] = st[0 .. st.high - count]
+    stacks.doit(result.add it[^1])
+
+  part 1: domoves()
 
   answer 1: "SHMSDGZVC"
   answer 1, "t1": "CMZ"
 
-  part 2:
-
-    var stacks2 = newStacks()
-    for (count,start,dest) in moves:
-      let st = stacks2[start]
-      stacks2[dest].add st[st.len - count .. st.high]
-      stacks2[start] = st[0 .. st.high - count]
-    stacks2.getAnswer
+  part 2: domoves(rev=false)
 
   answer 2: "VRZGHDFBQ"
   answer 2, "t1": "MCD"
