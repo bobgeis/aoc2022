@@ -32,6 +32,8 @@ proc getInputPaths(day: int): seq[string] =
       result.add day.inputPath(arg)
     elif arg == "i" and day.inputPath.fileExists:
       result.add day.inputPath
+    elif arg == "t" and day.inputPath("t1").fileExists:
+      result.add day.inputPath("t1")
     elif (arg == "time"): continue
     elif arg == "full":
       result.add day.inputPath
