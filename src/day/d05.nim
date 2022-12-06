@@ -6,11 +6,14 @@ day 5:
   let # this makes a lot of extra allocations...
     input = path.readFile.split("\n\n")
     initStackStrs = input[0].splitLines
-    moveLines = input[1].splitLines
     stackCount = initStackStrs[^1][^1].parseint
+    moves = collect:
+      for m in input[1].splitLines:
+        let (_,count,start,dest) = m.scantuple("move $i from $i to $i")
+        (count,start - 1,dest - 1)
 
   proc newStacks():seq[seq[char]] =
-    for i in 0..<stackCount:
+    for _ in 0..<stackCount:
       result.add newSeq[char]()
     for j in countdown(initStackStrs.len-2,0):
       let l = initStackStrs[j]
@@ -21,11 +24,6 @@ day 5:
 
   proc getAnswer(stacks:seq[seq[char]]):string =
     stacks.doit(result.add it[^1])
-
-  var moves = newSeq[(int,int,int)]()
-  for m in moveLines:
-    let (success,count,start,dest) = m.scantuple("move $i from $i to $i")
-    moves.add (count,start - 1,dest - 1)
 
   part 1:
 
