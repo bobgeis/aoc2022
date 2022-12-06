@@ -1,4 +1,4 @@
-==== All Days at #7be4c77 ====
+==== All Days at #4da79a8 ====
 -- optimized release
 -- skipping extra parts
 
@@ -10,7 +10,7 @@ Day 0
 Day 1
   Part 1: 68923
   Part 2: 200044
-  Time: 0.00030 s
+  Time: 0.00029 s
 
 Day 2
   Part 1: 12276
@@ -25,11 +25,16 @@ Day 3
 Day 4
   Part 1: 462
   Part 2: 835
-  Time: 0.00016 s
+  Time: 0.00015 s
 
 Day 5
   Part 1: SHMSDGZVC
   Part 2: VRZGHDFBQ
   Time: 0.00025 s
 
-==== Total Time: 0.0015 s ====
+Day 6
+  Part 1: 1210
+  Part 2: 3476
+  Time: 0.00032 s
+
+==== Total Time: 0.0018 s ====
