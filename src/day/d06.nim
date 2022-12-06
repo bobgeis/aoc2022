@@ -6,10 +6,8 @@ day 6:
 
   proc walk(n:int):int =
     for i in 0..input.len-n:
-      let bs = input[i..i+n-1].tobitset
-      if bs.card == n:
+      if n == input[i..i+n-1].tobitset.card:
         return i + n
-    return -1
 
   part 1: walk(4)
 
