@@ -48,7 +48,7 @@ proc findNimFile(f:string):string =
     return allDaysFile
   if f == "lib" or f == "libs": # run lib tests
     return libTestFile
-  if f == "high" or f == "last": # get the highest day number
+  if f == "l" or f == "last" or f == "high": # get the highest day number
     var last = d00File
     var lastInt = last[9..10].parseInt
     for k in walkDir(nimDayDir):
