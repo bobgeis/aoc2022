@@ -6,28 +6,18 @@ day 7:
   # In practice, the input calls ls in a dir, then cds into each dir inside it in turn, recursively walking the whole tree and calling ls just once in each dir.
   var
     curr = newSeq[string]()
-    sizes = initCountTable[string]()
-
-  proc handleCommand(line:string) =
-    if line[2] != 'c': return
-    elif line == "$ cd ..":
-      let size = sizes[curr.join("/")]
-      discard curr.pop
-      sizes.inc curr.join("/"), size
-    elif line == "$ cd /": curr = @[]
-    else: curr.add line[5..^1]
-
-  proc handleFile(line:string) =
-    let (success,size,name) = line.scanTuple("$i $+")
-    sizes.inc curr.join("/"), size
+    sizes = initCountTable[seq[string]]()
+    size: int
+    name: string
 
   path.withLines:
-    let c = line[0]
-    if c == '$': line.handleCommand
-    elif c == 'd': continue
-    else: line.handleFile
-  for _ in 0..curr.high:
-    handleCommand "$ cd .."
+    if line == "$ cd /": discard
+    elif line == "$ cd ..": discard curr.pop
+    elif line.scanf("$$ cd $+",name): curr.add name
+    elif line.scanf("$i $+",size,name):
+      for i in 0..curr.len: # curr[0..<0] == @[]
+        sizes.inc(curr[0..<i],size)
+    else: discard
 
   var total = 0
   for size in sizes.values:
@@ -38,7 +28,7 @@ day 7:
   answer 1: 1_908_462
   answer 1, "t1": 95_437
 
-  let bound = sizes[""] - 40_000_000
+  let bound = sizes[@[]] - 40_000_000
   var smallest = int.high
   for size in sizes.values:
     if size <= smallest and size >= bound:
