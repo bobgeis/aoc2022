@@ -100,49 +100,36 @@ template day*(day:int, solution:untyped):untyped =
       for k,v in parts:
         result[k] = $v()
       solutionResults[day] = partResults
-
   if isMainModule:
     run day, isMain=true
 
-template part*(p:static typed, t:type, solution:untyped):untyped =
-  ## Defines a part solution function. Eg `part 1: input[0] * 5` The part name can be an int, float, or string. Eg `part "1comment": "This was easier than I thought!"`
-  when p.toString == "1" or
-      p.toString == "2" or
-      not defined(skipExtraParts):
-      parts[p.toString] = proc ():string =
-        proc inner():t =
-            solution
-        return $inner()
+proc partActive(p:static typed):bool =
+  (p.toString == "1" or
+    p.toString == "2" or
+    not defined(skipExtraParts)) and
+  not ((defined(skipPart1) and p.toString[0] == '1') or
+    (defined(skipPart2) and p.toString[0] == '2'))
 
 template part*(p:static typed, solution:untyped):untyped =
   ## Defines a part solution function. Eg `part 1: input[0] * 5` The part name can be an int, float, or string. Eg `part "1comment": "This was easier than I thought!"`
-  when p.toString == "1" or
-      p.toString == "2" or
-      not defined(skipExtraParts):
-      parts[p.toString] = proc ():string =
-        proc inner():auto =
-            solution
-        return $inner()
+  when partActive(p):
+    parts[p.toString] = proc ():string =
+      proc inner():auto =
+          solution
+      return $inner()
 
-template answer*(p:static typed, res:typed):untyped =
+template answer*(p:static typed, suffix:static string, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  when p.toString == "1" or
-      p.toString == "2" or
-      not defined(skipExtraParts):
-    if not partResults.contains(""):
-      partResults[""] = initTable[string,string]()
-    partResults[""][p.toString] = res.toString
-
-template answer*(p:static typed, suffix:string, res:typed):untyped =
-  ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  when p.toString == "1" or
-      p.toString == "2" or
-      not defined(skipExtraParts):
+  when partActive(p):
     if not partResults.contains(suffix):
       partResults[suffix] = initTable[string,string]()
     partResults[suffix][p.toString] = res.toString
 
-##
+template answer*(p:static typed, res:typed):untyped =
+  ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
+  answer(p,"",res)
+
+#
 
 proc tests* =
   block:
