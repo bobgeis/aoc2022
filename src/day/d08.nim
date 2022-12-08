@@ -34,7 +34,7 @@ day 8:
           visible.incl [x,y]
           h = input[x,y]
 
-    decho visible.drawSetSimple
+    decho visible.draw
     visible.card
 
   answer 1: 1854

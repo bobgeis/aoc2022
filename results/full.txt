@@ -1,4 +1,4 @@
-==== All Days at #cd5ed3e ====
+==== All Days at #3c9c746 ====
 
 Day 0 for in/i00.txt
   Part 1: 1
@@ -7,7 +7,7 @@ Day 0 for in/i00.txt
     PASS
   Part 2.1: 3
   Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
-  Time: 0.00033 s
+  Time: 0.00030 s
 
 Day 0 for in/i00t1.txt
   Part 1: 0
@@ -17,7 +17,7 @@ Day 0 for in/i00t1.txt
   Part 2.1: 3
     FAIL: should be 2.1
   Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
-  Time: 0.00025 s
+  Time: 0.00019 s
 
 Day 1 for in/i01.txt
   Part 1: 68923
@@ -31,14 +31,14 @@ Day 1 for in/i01t1.txt
     PASS
   Part 2: 45000
     PASS
-  Time: 0.00022 s
+  Time: 0.00015 s
 
 Day 2 for in/i02.txt
   Part 1: 12276
     PASS
   Part 2: 9975
     PASS
-  Time: 0.0015 s
+  Time: 0.0014 s
 
 Day 2 for in/i02t1.txt
   Part 1: 15
@@ -52,56 +52,56 @@ Day 3 for in/i03.txt
     PASS
   Part 2: 2508
     PASS
-  Time: 0.0021 s
+  Time: 0.0018 s
 
 Day 3 for in/i03t1.txt
   Part 1: 157
     PASS
   Part 2: 70
     PASS
-  Time: 0.00022 s
+  Time: 0.00017 s
 
 Day 4 for in/i04.txt
   Part 1: 462
     PASS
   Part 2: 835
     PASS
-  Time: 0.0016 s
+  Time: 0.0013 s
 
 Day 4 for in/i04t1.txt
   Part 1: 2
     PASS
   Part 2: 4
     PASS
-  Time: 0.00070 s
+  Time: 0.00014 s
 
 Day 5 for in/i05.txt
   Part 1: SHMSDGZVC
     PASS
   Part 2: VRZGHDFBQ
     PASS
-  Time: 0.0032 s
+  Time: 0.0021 s
 
 Day 5 for in/i05t1.txt
   Part 1: CMZ
     PASS
   Part 2: MCD
     PASS
-  Time: 0.00022 s
+  Time: 0.00017 s
 
 Day 6 for in/i06.txt
   Part 1: 1210
     PASS
   Part 2: 3476
     PASS
-  Time: 0.0061 s
+  Time: 0.0058 s
 
 Day 6 for in/i06t1.txt
   Part 1: 7
     PASS
   Part 2: 19
     PASS
-  Time: 0.00028 s
+  Time: 0.00013 s
 
 Day 7 for in/i07.txt
   Part 0: The input recursively walks the dirs,
@@ -111,7 +111,7 @@ Day 7 for in/i07.txt
     PASS
   Part 2: 3979145
     PASS
-  Time: 0.0032 s
+  Time: 0.0018 s
 
 Day 7 for in/i07t1.txt
   Part 0: The input recursively walks the dirs,
@@ -121,6 +121,20 @@ Day 7 for in/i07t1.txt
     PASS
   Part 2: 24933642
     PASS
-  Time: 0.00073 s
+  Time: 0.00017 s
 
-==== Total Time: 0.026 s ====
+Day 8 for in/i08.txt
+  Part 1: 1854
+    PASS
+  Part 2: 527340
+    PASS
+  Time: 0.019 s
+
+Day 8 for in/i08t1.txt
+  Part 1: 21
+    PASS
+  Part 2: 8
+    PASS
+  Time: 0.00017 s
+
+==== Total Time: 0.038 s ====

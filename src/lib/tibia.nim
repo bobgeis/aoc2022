@@ -298,7 +298,7 @@ iterator grid*(t: SomeSet4i or SomeCtab4i): Vec4i =
 # procs for drawing to console
 
 
-proc drawTab*[T](t: SomeTab2i[T]; p: proc(v: Vec2i): char): string =
+proc draw*[T](t: SomeTab2i[T]; p: proc(v: Vec2i): char): string =
   ## Turn a sparse collection into a string for echoing
   var yPrev = int.high
   for v in t.grid():
@@ -307,7 +307,7 @@ proc drawTab*[T](t: SomeTab2i[T]; p: proc(v: Vec2i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc drawTab*(t: SomeCtab2i; p: proc(v: Vec2i): char): string =
+proc draw*(t: SomeCtab2i; p: proc(v: Vec2i): char): string =
   ## Turn a sparse collection into a string for echoing
   var yPrev = int.high
   for v in t.grid():
@@ -316,7 +316,7 @@ proc drawTab*(t: SomeCtab2i; p: proc(v: Vec2i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc drawSet*(t: SomeSet2i; p: proc(v: Vec2i): char): string =
+proc draw*(t: SomeSet2i; p: proc(v: Vec2i): char): string =
   ## Turn a sparse collection into a string for echoing
   var yPrev = int.high
   for v in t.grid():
@@ -325,10 +325,10 @@ proc drawSet*(t: SomeSet2i; p: proc(v: Vec2i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc drawSetSimple*(t: SomeSet2i):string =
-  t.drawSet((v) => (if v in t: '#' else: '.'))
+proc draw*(t: SomeSet2i):string =
+  t.draw((v) => (if v in t: '#' else: '.'))
 
-proc drawTab*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
+proc draw*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
   var zPrev, yPrev = int.high
   for v in t.grid():
@@ -340,7 +340,7 @@ proc drawTab*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc drawTab*(t: SomeCtab3i; p: proc(v: Vec3i): char): string =
+proc draw*(t: SomeCtab3i; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
   var zPrev, yPrev = int.high
   for v in t.grid():
@@ -352,7 +352,7 @@ proc drawTab*(t: SomeCtab3i; p: proc(v: Vec3i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc drawSet*(t: SomeSet3i; p: proc(v: Vec3i): char): string =
+proc draw*(t: SomeSet3i; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
   var zPrev, yPrev = int.high
   for v in t.grid():
@@ -400,7 +400,7 @@ proc tests* =
     proc p(v:Vec2i):char =
       if v in s: '#'
       else: '.'
-    assert s.drawSet(p) == "\n#....\n.#...\n....#\n...#."
+    assert s.draw(p) == "\n#....\n.#...\n....#\n...#."
 
   echo "√ tibia passed"
 
