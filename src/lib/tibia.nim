@@ -3,7 +3,7 @@
 ##
 
 # std lib modules https://nim-lang.org/docs/lib.html
-import std/[sets, strformat, tables]
+import std/[sets, strformat, sugar, tables]
 
 import bedrock, shenanigans, vecna
 
@@ -324,6 +324,9 @@ proc drawSet*(t: SomeSet2i; p: proc(v: Vec2i): char): string =
       yPrev = v.y
       result.add '\n'
     result.add p(v)
+
+proc drawSetSimple*(t: SomeSet2i):string =
+  t.drawSet((v) => (if v in t: '#' else: '.'))
 
 proc drawTab*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
