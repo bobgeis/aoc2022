@@ -1,16 +1,16 @@
-==== All Days at #3c9c746 ====
+==== All Days at #f6a224d ====
 -- optimized release
 -- skipping extra parts
 
 Day 0
   Part 1: 1
   Part 2: 2
-  Time: 0.00011 s
+  Time: 0.00010 s
 
 Day 1
   Part 1: 68923
   Part 2: 200044
-  Time: 0.00029 s
+  Time: 0.00033 s
 
 Day 2
   Part 1: 12276
@@ -25,7 +25,7 @@ Day 3
 Day 4
   Part 1: 462
   Part 2: 835
-  Time: 0.00015 s
+  Time: 0.00016 s
 
 Day 5
   Part 1: SHMSDGZVC
@@ -35,7 +35,7 @@ Day 5
 Day 6
   Part 1: 1210
   Part 2: 3476
-  Time: 0.00032 s
+  Time: 0.00033 s
 
 Day 7
   Part 1: 1908462
@@ -45,6 +45,6 @@ Day 7
 Day 8
   Part 1: 1854
   Part 2: 527340
-  Time: 0.0015 s
+  Time: 0.0013 s
 
-==== Total Time: 0.0037 s ====
+==== Total Time: 0.0035 s ====
