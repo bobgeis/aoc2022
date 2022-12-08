@@ -193,14 +193,13 @@ proc initTab2f*[T](): Tab2f[T] = initTable[Vec2f,T]()
 proc initTab3f*[T](): Tab3f[T] = initTable[Vec3f,T]()
 proc initTab4f*[T](): Tab4f[T] = initTable[Vec4f,T]()
 
+proc initSet2i*(): Set2i = initHashSet[Vec2i]()
+proc initSet3i*(): Set3i = initHashSet[Vec3i]()
+proc initSet4i*(): Set4i = initHashSet[Vec4i]()
 
-proc initSet2i*[T](): Set2i = initHashSet[Vec2i]()
-proc initSet3i*[T](): Set3i = initHashSet[Vec3i]()
-proc initSet4i*[T](): Set4i = initHashSet[Vec4i]()
-
-proc initSet2f*[T](): Set2f = initHashSet[Vec2f]()
-proc initSet3f*[T](): Set3f = initHashSet[Vec3f]()
-proc initSet4f*[T](): Set4f = initHashSet[Vec4f]()
+proc initSet2f*(): Set2f = initHashSet[Vec2f]()
+proc initSet3f*(): Set3f = initHashSet[Vec3f]()
+proc initSet4f*(): Set4f = initHashSet[Vec4f]()
 
 proc initSeq2i*[T](): Seq2i[T] = @[]
 proc initSeq3i*[T](): Seq3i[T] = @[]
