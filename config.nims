@@ -131,14 +131,6 @@ task drm, "Run multiple days. eg: `nim drm 1 2 libs`":
   for path in paths:
     excho &"nim r {switchStr} -d:debug {path}"
 
-task drl, "dr but run the last day":
-  let
-    (switches,args) = parseArgs()
-    path = "last".findNimFile
-    argsStr = args[0..args.high].join(" ")
-    switchStr = switches.join(" ")
-  if path.len > 0: excho &"nim r {switchStr} -d:debug {path} {argsStr}"
-
 task drf, "dr but with better performance. Same usage as `dr`.":
   let
     (switches,args) = parseArgs()
@@ -165,7 +157,7 @@ task dts, "dt but skip extra parts. Same usage as `dr`.":
   path.compile(&"{switchStr} -d:fast -d:skipExtraParts -d:skipRegChecks")
   excho &"time {compiledFile} {argStr}"
 
-task de, "Execute the last compiled day. Args will be passed to the program.":
+task de, "Execute the last compiled program. Args will be passed to the program.":
   let
     (switches,args) = parseArgs()
     argStr = args[0..args.high].join(" ")
