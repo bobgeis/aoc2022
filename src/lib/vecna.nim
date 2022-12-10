@@ -166,6 +166,12 @@ proc mdist*[N, A](a, b: Vec[N, A]): A =
   for i in 0..a.high:
     result += (b[i] - a[i]).abs
 
+proc dmdist*[N,A](a,b: Vec[N,A]):A =
+  ## Manhattan distance counting diagonals as adjacent.
+  result = A.low
+  for i in 0..a.high:
+    result = max(result,(b[i] - a[i]).abs)
+
 proc mag*[A](a: Vec[2, A]): A {.inline.} =
   ## Find the magnitude of a vector.
   ## Note this uses hypot which is only defined for float32 and float64.
