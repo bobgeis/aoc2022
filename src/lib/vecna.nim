@@ -322,6 +322,32 @@ proc getAdj7*(v:Vec3i):seq[Vec3i] = v.getAdj(dirs3d7)
 proc getAdj26*(v:Vec3i):seq[Vec3i] = v.getAdj(dirs3d26)
 proc getAdj27*(v:Vec3i):seq[Vec3i] = v.getAdj(dirs3d27)
 
+proc toDir*(c:char):Vec2i =
+  case c:
+  of 'N': [0,1]
+  of 'S': [0,-1]
+  of 'E': [1,0]
+  of 'W': [-1,0]
+  of 'U': [0,1]
+  of 'D': [0,-1]
+  of 'R': [1,0]
+  of 'L': [-1,0]
+  else: raise
+
+proc toDir*(s:string):Vec2i =
+  if s.len == 1: s[0].toDir
+  else:
+    case s:
+    of "NE": [1,1]
+    of "SE": [1,-1]
+    of "NW": [-1,1]
+    of "SW": [-1,-1]
+    of "UR": [1,1]
+    of "DR": [1,-1]
+    of "UL": [-1,1]
+    of "DL": [-1,-1]
+    else: raise
+
 
 #
 
