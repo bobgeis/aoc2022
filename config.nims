@@ -35,6 +35,12 @@ if defined(check):
   --hints: on
   --warnings: on
 
+if defined(sp1):
+  --d:skipPart1
+
+if defined(sp2):
+  --d:skipPart2
+
 proc excho(cmd:string) =
   echo cmd
   exec cmd
