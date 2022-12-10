@@ -166,6 +166,12 @@ proc mdist*[N, A](a, b: Vec[N, A]): A =
   for i in 0..a.high:
     result += (b[i] - a[i]).abs
 
+proc dmdist*[N,A](a: Vec[N,A]):A =
+  ## Manhattan distance counting diagonals as adjacent to origin.
+  result = A.low
+  for i in 0..a.high:
+    result = max(result, a[i].abs)
+
 proc dmdist*[N,A](a,b: Vec[N,A]):A =
   ## Manhattan distance counting diagonals as adjacent.
   result = A.low
