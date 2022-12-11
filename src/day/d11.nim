@@ -2,18 +2,12 @@
 include ../lib/imps
 
 day 11:
-  let input = path.readFile.split("\n\n")
-
   type
     Opk = enum oAd, oMu, oSq
     Monkey = object
-      id: int
-      items: seq[int]
+      stuff: seq[int]
       op: Opk
-      opo: int
-      divtest: int
-      iftrue,iffalse: int
-      count: int
+      opo, divtest, iftrue, iffalse, count: int
 
   proc doop(m:Monkey,w:int):int =
     case m.op:
@@ -22,56 +16,38 @@ day 11:
       of oSq: w * w
 
   proc parseMonkey(ss:seq[string]):Monkey =
-    result.items = ss[1].parseInts
+    result.stuff = ss[1].parseInts
     if ss[2].scanf("  Operation: new = old + $i",result.opo):
       result.op = oAd
     elif ss[2].scanf("  Operation: new = old * $i",result.opo):
       result.op = oMu
-    elif ss[2].scanf("  Operation: new = old * old"):
-      result.op = oSq
+    else: result.op = oSq
     doAssert ss[3].scanf("  Test: divisible by $i",result.divtest)
     doAssert ss[4].scanf("    If true: throw to monkey $i",result.iftrue)
     doAssert ss[5].scanf("    If false: throw to monkey $i",result.iffalse)
 
-  let monkeys = input.mapit(it.splitlines.parseMonkey)
-  var ms = monkeys
+  let monkeys = path.readFile.split("\n\n").mapit(it.splitlines.parseMonkey)
 
-  proc act(m:var Monkey) =
-    m.count += m.items.len
-    for i in m.items:
-      let w = m.doop(i) div 3
-      if w mod m.divtest == 0:
-        ms[m.iftrue].items.add w
-      else:
-        ms[m.iffalse].items.add w
-    m.items = @[]
+  proc business(ms: seq[Monkey],rs:int, wrap: static bool):int =
+    var ms = ms
+    when wrap:
+      let wmax = ms.foldl(a * b.divtest,1)
+    for _ in 1..rs:
+      for m in ms.mitems:
+        m.count += m.stuff.len
+        for i in m.stuff:
+          var w = m.doop(i)
+          when wrap: w = w mod wmax
+          else: w = w div 3
+          let target = if w mod m.divtest == 0: m.iftrue else: m.iffalse
+          ms[target].stuff.add w
+        m.stuff.setlen 0
+    ms.mapit(it.count).sorted[^2..^1].foldl(a * b)
 
-  for _ in 1..20:
-    for i in 0..ms.high:
-      ms[i].act
-
-
-  part 1:  ms.mapit(it.count).sorted[^2..^1].foldl(a * b)
+  part 1: monkeys.business(20,wrap=false)
   answer 1: 110264
   answer 1, "t1": 10605
 
-  var ms2 = monkeys
-  let wmax = monkeys.foldl( a * b.divtest,1)
-
-  proc act2(m:var Monkey) =
-    m.count += m.items.len
-    for i in m.items:
-      let w = m.doop(i) mod wmax
-      if w mod m.divtest == 0:
-        ms2[m.iftrue].items.add w
-      else:
-        ms2[m.iffalse].items.add w
-    m.items = @[]
-
-  for _ in 1..10_000:
-    for i in 0..ms2.high:
-      ms2[i].act2
-
-  part 2: ms2.mapit(it.count).sorted[^2..^1].foldl(a * b)
+  part 2: monkeys.business(10_000,wrap=true)
   answer 2: 23_612_457_316
   answer 2, "t1": 2_713_310_158
