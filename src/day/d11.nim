@@ -9,12 +9,6 @@ day 11:
       op: Opk
       opo, divtest, iftrue, iffalse, count: int
 
-  proc doop(m:Monkey,w:int):int =
-    case m.op:
-      of oAd: m.opo + w
-      of oMu: m.opo * w
-      of oSq: w * w
-
   proc parseMonkey(ss:seq[string]):Monkey =
     result.stuff = ss[1].parseInts
     if ss[2].scanf("  Operation: new = old + $i",result.opo):
@@ -35,8 +29,11 @@ day 11:
     for _ in 1..rs:
       for m in ms.mitems:
         m.count += m.stuff.len
-        for i in m.stuff:
-          var w = m.doop(i)
+        for v in m.stuff:
+          var w = case m.op:
+            of oAd: m.opo + v
+            of oMu: m.opo * v
+            of oSq: v * v
           when wrap: w = w mod wmax
           else: w = w div 3
           let target = if w mod m.divtest == 0: m.iftrue else: m.iffalse
