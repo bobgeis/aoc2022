@@ -54,3 +54,24 @@ day 11:
   part 1:  ms.mapit(it.count).sorted[^2..^1].foldl(a * b)
   answer 1: 110264
   answer 1, "t1": 10605
+
+  var ms2 = monkeys
+  let wmax = monkeys.foldl( a * b.divtest,1)
+
+  proc act2(m:var Monkey) =
+    m.count += m.items.len
+    for i in m.items:
+      let w = m.doop(i) mod wmax
+      if w mod m.divtest == 0:
+        ms2[m.iftrue].items.add w
+      else:
+        ms2[m.iffalse].items.add w
+    m.items = @[]
+
+  for _ in 1..10_000:
+    for i in 0..ms2.high:
+      ms2[i].act2
+
+  part 2: ms2.mapit(it.count).sorted[^2..^1].foldl(a * b)
+  answer 2: 23_612_457_316
+  answer 2, "t1": 2_713_310_158
