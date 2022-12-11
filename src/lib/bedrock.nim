@@ -5,7 +5,7 @@
 ## - algorithm.reverse & reversed : reverse a seq-like
 ## - math.floorMod : python-like modulus
 
-import std/[intsets, macros, memfiles, monotimes, packedsets, sequtils, sets,
+import std/[intsets, macros, memfiles, monotimes, packedsets, re, sequtils, sets,
   strformat, strutils, sugar, tables, times]
 
 type
@@ -13,6 +13,8 @@ type
   SomeTable*[U, V] = Table[U, V] or TableRef[U, V] or
     OrderedTable[U, V] or OrderedTableRef[U, V]
   SomeCountTable*[T] = CountTable[T] or CountTableRef[T]
+
+proc echon*() = echo "" ## Echo an empty string.
 
 proc spy*[T](t: T, msg = ""): T {.inline.} =
   ## For when you want to echo something in the middle of a chain of proc calls.
@@ -56,6 +58,9 @@ proc err*(msg = "Error!") =
 proc toSeqChar*(s: string): seq[char] {.inline.} = cast[seq[char]](s)
 
 proc parseInt*(c: char): int = parseInt($c)
+
+proc parseInts*(s:string): seq[int] =
+  s.findAll(re"-?\d+").mapit(parseInt(it))
 
 proc getlines*(path: string): seq[string] =
   ## Get the lines of a file by path
