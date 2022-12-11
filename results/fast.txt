@@ -1,4 +1,4 @@
-==== All Days at #1e20823 ====
+==== All Days at #845f773 ====
 -- optimized release
 -- skipping extra parts
 
@@ -25,22 +25,22 @@ Day 3
 Day 4
   Part 1: 462
   Part 2: 835
-  Time: 0.00021 s
+  Time: 0.00023 s
 
 Day 5
   Part 1: SHMSDGZVC
   Part 2: VRZGHDFBQ
-  Time: 0.00031 s
+  Time: 0.00039 s
 
 Day 6
   Part 1: 1210
   Part 2: 3476
-  Time: 0.00032 s
+  Time: 0.00081 s
 
 Day 7
   Part 1: 1908462
   Part 2: 3979145
-  Time: 0.00033 s
+  Time: 0.00054 s
 
 Day 8
   Part 1: 1854
@@ -50,16 +50,16 @@ Day 8
 Day 9
   Part 1: 6243
   Part 2: 2630
-  Time: 0.0017 s
+  Time: 0.0019 s
 
 Day 10
   Part 1: 12980
   Part 2: BRJLFULP
-  Time: 0.00010 s
+  Time: 7.9e-05 s
 
 Day 11
   Part 1: 110264
   Part 2: 23612457316
-  Time: 0.024 s
+  Time: 0.022 s
 
 ==== Total Time: 0.030 s ====
