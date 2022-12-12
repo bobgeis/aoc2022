@@ -8,6 +8,9 @@
 import std/[intsets, macros, memfiles, monotimes, packedsets, re, sequtils, sets,
   strformat, strutils, sugar, tables, times]
 
+proc alwaysTrue*[T](t:T):bool = true
+proc alwaysFalse*[T](t:T):bool = false
+
 type
   SomeSeq*[T] = seq[T] or openarray[T] or string or cstring
   SomeTable*[U, V] = Table[U, V] or TableRef[U, V] or
