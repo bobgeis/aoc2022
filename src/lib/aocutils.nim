@@ -9,7 +9,7 @@ const
   inputDir* = "in"
   githash* = staticexec "git rev-parse --short HEAD"
 
-proc formatTime*(t1,t2:float):string = &"{t2-t1:2} s"
+proc formatTime*(dt:float):string = &"{dt:2} s"
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
 
@@ -49,44 +49,32 @@ proc getInputPaths(day: int): seq[string] =
   if result.len == 0:
     echo &"Could not find input file for {day}!"
 
-
-var solutionProcs: Table[int, proc (x:string):Table[string,string]]
-var solutionResults: Table[int, Table[string,Table[string,string]]]
-var dayProcs: Table[int, proc (x:string)]
-
-proc checkResults(results: Table[string,string], day:int, path:string):Table[string,string] =
-  ## Checks if a given result has an expected value for that day, path, and part. If the result doesn't match the expected value, then add the expected value to the errors table.
-  let suffix = path.inputPathSuffix
-  var checks = initTable[string,string]()
-  if not solutionResults.contains(day): return checks
-  elif not solutionResults[day].contains(suffix):
-    return checks
-  let expectedResults = solutionResults[day][suffix]
-  for part,res in results.pairs:
-    if expectedResults.contains(part):
-      if expectedResults[part] != res:
-        checks[part] = &"FAIL: should be {expectedResults[part]}"
-      else:
-        checks[part] = "PASS"
-  return checks
+var dayProcs: Table[int, proc (x:string):(Table[string,string],Table[string,float])]
 
 proc run*(day: int, isMain: static bool=false) =
   for path in day.getInputPaths:
-    dayProcs[day](path)
+    let (ans,tims) = dayProcs[day](path)
+    when defined(onelineDay):
+      let ds = "day"
+      echo &"Day {day:>2} in {tims[ds]:>8.6f}s: pt 1 is {ans[$1]} in {tims[$1]:1.1e}s, pt 2 is {ans[$2]} in {tims[$2]:1.1e}s"
 
 template day*(day: static int, body: untyped):untyped =
   block:
-    dayProcs[day] = proc (path {.inject.}:string) =
+    dayProcs[day] = proc (path {.inject.}:string):(Table[string,string],Table[string,float]) =
       var dayAnswers {.inject.} = initTable[string,string]()
-      var dayTimes {.inject.} = initTable[string,Duration]()
+      var dayTimes {.inject.} = initTable[string,float]()
       var dayPathSuffix {.inject.} = path.inputPathSuffix
-      echo "Day ",day," for ",path
+      when not defined(silentDay):
+        echo "Day ",day," for ",path
       let t1 = cputime()
       body
       let t2 = cputime()
-      let ts = formatTime(t1,t2)
-      echo "Time: ",ts
-      echon()
+      let dt = t2 - t1
+      dayTimes["day"] = dt
+      when not defined(silentDay):
+        echo "Time: ",formatTime(dt)
+        echon()
+      (dayAnswers,dayTimes)
   if isMainModule: run day, isMain=true
 
 proc partActive(p:static typed):bool =
@@ -104,14 +92,17 @@ template part*(p:static typed, body:untyped):untyped =
         t1 = cputime()
         a = body
         t2 = cputime()
+        dt = t2 - t1
       dayAnswers[ps] = a.tostring
-      echo "  Part ",ps,": ",a
-      echo "    Time: ",formatTime(t1,t2)
+      dayTimes[ps] = dt
+      when not defined(silentDay):
+        echo "  Part ",ps,": ",a
+        echo "    Time: ",formatTime(dt)
     else: discard
 
 template answer*(p:static typed, suffix:static string, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  when partActive(p) and not defined(skipTests):
+  when partActive(p) and not defined(skipTests) and not defined(silentDay):
     if suffix == dayPathSuffix:
       if dayAnswers[p.tostring] == res.tostring: echo "    Test: PASS"
       else: echo "    Test: FAIL expected ",res.tostring

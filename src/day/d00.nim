@@ -37,6 +37,5 @@ day 0:
 
     d00 is a simple example.
     It's timing represents a lower bound for a day.
-    `nim dr 0 t1` should show a regression.
-    """
+    `nim dr 0 t1` should show a regression."""
 

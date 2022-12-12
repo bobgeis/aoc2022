@@ -47,6 +47,9 @@ if defined(skx):
 if defined(skt):
   --d:skipTests
 
+if defined(onelineDay):
+  --d:silentDay
+
 proc excho(cmd:string) =
   echo cmd
   exec cmd
@@ -178,14 +181,14 @@ task de, "Execute the last compiled program. Args will be passed to the program.
     echo &"No compiled file: {compiledFile}"
 
 task drw, "Run days.nim and write to a file. This will include all parts and comments.":
-  excho &"nim r {allDaysFile} full > {resultsFull}"
+  excho &"nim r -d:fast {allDaysFile} full > {resultsFull}"
   excho &"cat {resultsFull}"
 
 task dtw, "Compile days.nim for speed, without extra parts, and then execute writing to file.":
   var runs = 5
   for i in 2..paramCount():
     runs = paramStr(i).parseInt
-  allDaysFile.compile("-d:fast -d:skipExtraParts -d:skipTests")
+  allDaysFile.compile("-d:fast -d:skipExtraParts -d:skipTests -d:onelineDay")
   for i in 1..runs:
     excho &"{compiledFile} > {resultsFast}"
   excho &"cat {resultsFast}"
