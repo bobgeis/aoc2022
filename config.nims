@@ -35,11 +35,17 @@ if defined(check):
   --hints: on
   --warnings: on
 
-if defined(sp1):
+if defined(sk1):
   --d:skipPart1
 
-if defined(sp2):
+if defined(sk2):
   --d:skipPart2
+
+if defined(skx):
+  --d:skipExtraParts
+
+if defined(skt):
+  --d:skipTests
 
 proc excho(cmd:string) =
   echo cmd
@@ -160,7 +166,7 @@ task dts, "dt but skip extra parts. Same usage as `dr`.":
     path = args[0].findNimFile
     argStr = args[1..args.high].join(" ")
     switchStr = switches.join(" ")
-  path.compile(&"{switchStr} -d:fast -d:skipExtraParts -d:skipRegChecks")
+  path.compile(&"{switchStr} -d:fast -d:skipExtraParts -d:skipTests")
   excho &"time {compiledFile} {argStr}"
 
 task de, "Execute the last compiled program. Args will be passed to the program.":
@@ -175,11 +181,11 @@ task drw, "Run days.nim and write to a file. This will include all parts and com
   excho &"nim r {allDaysFile} full > {resultsFull}"
   excho &"cat {resultsFull}"
 
-task dtw, "Compile days.nim for speed, without extra parts, and then execute a few times, writing the last run to file":
+task dtw, "Compile days.nim for speed, without extra parts, and then execute writing to file.":
   var runs = 5
   for i in 2..paramCount():
     runs = paramStr(i).parseInt
-  allDaysFile.compile("-d:fast -d:skipExtraParts -d:skipRegChecks")
+  allDaysFile.compile("-d:fast -d:skipExtraParts -d:skipTests")
   for i in 1..runs:
     excho &"{compiledFile} > {resultsFast}"
   excho &"cat {resultsFast}"

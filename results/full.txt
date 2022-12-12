@@ -1,186 +1,255 @@
-==== All Days at #845f773 ====
+==== All Days at #767b1a0 ====
 
 Day 0 for in/i00.txt
+  Part 1.1: 1.1
+    Time: 1e-06 s
+    Test: PASS
   Part 1: 1
-    PASS
+    Time: 9.6e-05 s
+    Test: PASS
   Part 2: 2
-    PASS
+    Time:  0 s
+    Test: PASS
   Part 2.1: 3
-  Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
-  Time: 0.00065 s
+    Time: 1e-06 s
+  Part Comment: 
+    d00 is a simple example.
+    It's timing represents a lower bound for a day.
+    `nim dr 0 t1` should show a regression.
+    
+    Time: 2e-06 s
+Time: 0.000356 s
 
 Day 0 for in/i00t1.txt
+  Part 1.1: 1.1
+    Time:  0 s
   Part 1: 0
-    PASS
+    Time: 3.2e-05 s
+    Test: PASS
   Part 2: 1
-    PASS
+    Time:  0 s
+    Test: PASS
   Part 2.1: 3
-    FAIL: should be 2.1
-  Part Comment: d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression.
-  Time: 0.00042 s
+    Time: 1e-06 s
+    Test: FAIL expected 2.1
+  Part Comment: 
+    d00 is a simple example.
+    It's timing represents a lower bound for a day.
+    `nim dr 0 t1` should show a regression.
+    
+    Time: 1e-06 s
+Time: 0.000195 s
 
 Day 1 for in/i01.txt
   Part 1: 68923
-    PASS
+    Time: 3e-06 s
+    Test: PASS
   Part 2: 200044
-    PASS
-  Time: 0.0030 s
+    Time: 1e-06 s
+    Test: PASS
+Time: 0.001417 s
 
 Day 1 for in/i01t1.txt
   Part 1: 24000
-    PASS
+    Time: 1e-06 s
+    Test: PASS
   Part 2: 45000
-    PASS
-  Time: 0.00039 s
+    Time: 2e-06 s
+    Test: PASS
+Time: 0.000158 s
 
 Day 2 for in/i02.txt
   Part 1: 12276
-    PASS
+    Time: 2e-06 s
+    Test: PASS
   Part 2: 9975
-    PASS
-  Time: 0.0021 s
+    Time: 1e-06 s
+    Test: PASS
+Time: 0.001315 s
 
 Day 2 for in/i02t1.txt
   Part 1: 15
-    PASS
+    Time: 2e-06 s
+    Test: PASS
   Part 2: 12
-    PASS
-  Time: 0.00022 s
+    Time: 1e-06 s
+    Test: PASS
+Time: 0.000176 s
 
 Day 3 for in/i03.txt
   Part 1: 7691
-    PASS
+    Time: 0.000731 s
+    Test: PASS
   Part 2: 2508
-    PASS
-  Time: 0.0035 s
+    Time: 0.000231 s
+    Test: PASS
+Time: 0.002032 s
 
 Day 3 for in/i03t1.txt
   Part 1: 157
-    PASS
+    Time: 1.3e-05 s
+    Test: PASS
   Part 2: 70
-    PASS
-  Time: 0.00023 s
+    Time: 5e-06 s
+    Test: PASS
+Time: 0.000234 s
 
 Day 4 for in/i04.txt
   Part 1: 462
-    PASS
+    Time: 1e-06 s
+    Test: PASS
   Part 2: 835
-    PASS
-  Time: 0.0020 s
+    Time:  0 s
+    Test: PASS
+Time: 0.001299 s
 
 Day 4 for in/i04t1.txt
   Part 1: 2
-    PASS
+    Time: 2e-06 s
+    Test: PASS
   Part 2: 4
-    PASS
-  Time: 0.00022 s
+    Time: 1e-06 s
+    Test: PASS
+Time: 0.000167 s
 
 Day 5 for in/i05.txt
   Part 1: SHMSDGZVC
-    PASS
+    Time: 0.000128 s
+    Test: PASS
   Part 2: VRZGHDFBQ
-    PASS
-  Time: 0.0039 s
+    Time: 0.000645 s
+    Test: PASS
+Time: 0.002208 s
 
 Day 5 for in/i05t1.txt
   Part 1: CMZ
-    PASS
+    Time: 1e-05 s
+    Test: PASS
   Part 2: MCD
-    PASS
-  Time: 0.00026 s
+    Time: 1.1e-05 s
+    Test: PASS
+Time: 0.000208 s
 
 Day 6 for in/i06.txt
   Part 1: 1210
-    PASS
+    Time: 0.002552 s
+    Test: PASS
   Part 2: 3476
-    PASS
-  Time: 0.0086 s
+    Time: 0.004919 s
+    Test: PASS
+Time: 0.007749 s
 
 Day 6 for in/i06t1.txt
   Part 1: 7
-    PASS
+    Time: 7e-06 s
+    Test: PASS
   Part 2: 19
-    PASS
-  Time: 0.00026 s
+    Time: 1.4e-05 s
+    Test: PASS
+Time: 0.000215 s
 
 Day 7 for in/i07.txt
   Part 0: The input recursively walks the dirs,
     calling `ls` exactly once in each.
     It could have been much worse!
+    Time: 1e-06 s
   Part 1: 1908462
-    PASS
+    Time: 2.4e-05 s
+    Test: PASS
   Part 2: 3979145
-    PASS
-  Time: 0.0034 s
+    Time: 2.1e-05 s
+    Test: PASS
+Time: 0.002468 s
 
 Day 7 for in/i07t1.txt
   Part 0: The input recursively walks the dirs,
     calling `ls` exactly once in each.
     It could have been much worse!
+    Time:  0 s
   Part 1: 95437
-    PASS
+    Time: 8e-06 s
+    Test: PASS
   Part 2: 24933642
-    PASS
-  Time: 0.00068 s
+    Time: 5e-06 s
+    Test: PASS
+Time: 0.00028 s
 
 Day 8 for in/i08.txt
   Part 1: 1854
-    PASS
+    Time: 0.007262 s
+    Test: PASS
   Part 2: 527340
-    PASS
-  Time: 0.032 s
+    Time: 0.014004 s
+    Test: PASS
+Time: 0.035621 s
 
 Day 8 for in/i08t1.txt
   Part 1: 21
-    PASS
+    Time: 5.6e-05 s
+    Test: PASS
   Part 2: 8
-    PASS
-  Time: 0.00025 s
+    Time: 1e-05 s
+    Test: PASS
+Time: 0.000278 s
 
 Day 9 for in/i09.txt
   Part 1: 6243
-    PASS
+    Time: 0.008142 s
+    Test: PASS
   Part 2: 2630
-    PASS
-  Time: 0.022 s
+    Time: 0.010037 s
+    Test: PASS
+Time: 0.021587 s
 
 Day 9 for in/i09t1.txt
   Part 1: 13
-    PASS
+    Time: 2.3e-05 s
+    Test: PASS
   Part 2: 1
-  Time: 0.00020 s
+    Time: 1.3e-05 s
+Time: 0.000232 s
 
 Day 9 for in/i09t2.txt
   Part 1: 88
+    Time: 9.5e-05 s
   Part 2: 36
-    PASS
-  Time: 0.00035 s
+    Time: 0.000126 s
+    Test: PASS
+Time: 0.000414 s
 
 Day 10 for in/i10.txt
   Part 1: 12980
-    PASS
+    Time: 9e-06 s
+    Test: PASS
   Part 2: BRJLFULP
-    PASS
-  Time: 0.00024 s
+    Time: 3.5e-05 s
+    Test: PASS
+Time: 0.000546 s
 
 Day 10 for in/i10t1.txt
   Part 1: 13140
-    PASS
+    Time: 2.2e-05 s
+    Test: PASS
   Part 2: BRJLFULP
-  Time: 0.00025 s
+    Time: 3.9e-05 s
+Time: 0.000381 s
 
 Day 11 for in/i11.txt
   Part 1: 110264
-    PASS
+    Time: 0.000109 s
+    Test: PASS
   Part 2: 23612457316
-    PASS
-  Time: 0.063 s
+    Time: 0.046282 s
+    Test: PASS
+Time: 0.047676 s
 
 Day 11 for in/i11t1.txt
   Part 1: 10605
-    PASS
+    Time: 2.8e-05 s
+    Test: PASS
   Part 2: 2713310158
-    PASS
-  Time: 0.011 s
+    Time: 0.008075 s
+    Test: PASS
+Time: 0.008513 s
 
-==== Total Time: 0.16 s ====
+==== Total Time: 0.14 s ====

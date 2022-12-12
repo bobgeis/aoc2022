@@ -1,65 +1,89 @@
-==== All Days at #845f773 ====
+==== All Days at #767b1a0 ====
 -- optimized release
 -- skipping extra parts
 
-Day 0
+Day 0 for in/i00.txt
   Part 1: 1
+    Time: 2e-06 s
   Part 2: 2
-  Time: 0.00010 s
+    Time: 1e-06 s
+Time: 0.000128 s
 
-Day 1
+Day 1 for in/i01.txt
   Part 1: 68923
+    Time:  0 s
   Part 2: 200044
-  Time: 0.00029 s
+    Time: 1e-06 s
+Time: 0.000304 s
 
-Day 2
+Day 2 for in/i02.txt
   Part 1: 12276
+    Time: 1e-06 s
   Part 2: 9975
-  Time: 0.00015 s
+    Time:  0 s
+Time: 0.000182 s
 
-Day 3
+Day 3 for in/i03.txt
   Part 1: 7691
+    Time: 8.8e-05 s
   Part 2: 2508
-  Time: 0.00029 s
+    Time: 3e-05 s
+Time: 0.000307 s
 
-Day 4
+Day 4 for in/i04.txt
   Part 1: 462
+    Time:  0 s
   Part 2: 835
-  Time: 0.00023 s
+    Time: 1e-06 s
+Time: 0.000186 s
 
-Day 5
+Day 5 for in/i05.txt
   Part 1: SHMSDGZVC
+    Time: 1.7e-05 s
   Part 2: VRZGHDFBQ
-  Time: 0.00039 s
+    Time: 9e-05 s
+Time: 0.000273 s
 
-Day 6
+Day 6 for in/i06.txt
   Part 1: 1210
+    Time: 0.000107 s
   Part 2: 3476
-  Time: 0.00081 s
+    Time: 0.000239 s
+Time: 0.000406 s
 
-Day 7
+Day 7 for in/i07.txt
   Part 1: 1908462
+    Time: 6e-06 s
   Part 2: 3979145
-  Time: 0.00054 s
+    Time: 5e-06 s
+Time: 0.000361 s
 
-Day 8
+Day 8 for in/i08.txt
   Part 1: 1854
+    Time: 0.000861 s
   Part 2: 527340
-  Time: 0.0017 s
+    Time: 0.000678 s
+Time: 0.003492 s
 
-Day 9
+Day 9 for in/i09.txt
   Part 1: 6243
+    Time: 0.001021 s
   Part 2: 2630
-  Time: 0.0019 s
+    Time: 0.000511 s
+Time: 0.002009 s
 
-Day 10
+Day 10 for in/i10.txt
   Part 1: 12980
+    Time: 1e-06 s
   Part 2: BRJLFULP
-  Time: 7.9e-05 s
+    Time: 5e-06 s
+Time: 9.5e-05 s
 
-Day 11
+Day 11 for in/i11.txt
   Part 1: 110264
+    Time: 3.1e-05 s
   Part 2: 23612457316
-  Time: 0.022 s
+    Time: 0.020173 s
+Time: 0.020516 s
 
-==== Total Time: 0.030 s ====
+==== Total Time: 0.029 s ====

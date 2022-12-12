@@ -12,6 +12,8 @@ day 0:
 
   # can declare a part and its answer
   part 1:
+    part 1.1: 1.1 # nesting is possible
+    answer 1.1: 1.1
     one
   answer 1: 1 # record correct answers to catch regressions
   answer 1, "t1": 0
@@ -26,9 +28,15 @@ day 0:
     3
   answer 2.1, "t1": 2.1 # if it's wrong, there will be a message, test with: `nim dr 0 t1`
 
+  # # asserts are off with -d:danger
+  # assert 2 == 3
+
   # can have discussion in code
   part "Comment":
-    """d00 is a simple example. It's timing represents a lower bound for a day. `nim dr 0 t1` should show a regression."""
+    """
 
-  # asserts are off with -d:danger
-  # assert 2 == 3
+    d00 is a simple example.
+    It's timing represents a lower bound for a day.
+    `nim dr 0 t1` should show a regression.
+    """
+

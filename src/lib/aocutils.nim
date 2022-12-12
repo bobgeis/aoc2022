@@ -1,13 +1,15 @@
 ## This file contains procs and templates useful for this advent of code repo.
 ## I had a macro that turned parts into a function that could be called, (see https://github.com/bobgeis/aoc2021/blob/master/lib/aocutils.nim), but I liked MichaelMarsalek's approach more (see https://github.com/MichalMarsalek/Advent-of-code/blob/master/2021/Nim/aoc_logic.nim )
 
-import std/[algorithm, monotimes, os, sequtils, strformat, strutils, tables, times]
+import std/[algorithm, monotimes, os, sequtils, strformat, strutils, sugar, tables, times]
 
 import bedrock
 
 const
   inputDir* = "in"
   githash* = staticexec "git rev-parse --short HEAD"
+
+proc formatTime*(t1,t2:float):string = &"{t2-t1:2} s"
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
 
@@ -50,6 +52,7 @@ proc getInputPaths(day: int): seq[string] =
 
 var solutionProcs: Table[int, proc (x:string):Table[string,string]]
 var solutionResults: Table[int, Table[string,Table[string,string]]]
+var dayProcs: Table[int, proc (x:string)]
 
 proc checkResults(results: Table[string,string], day:int, path:string):Table[string,string] =
   ## Checks if a given result has an expected value for that day, path, and part. If the result doesn't match the expected value, then add the expected value to the errors table.
@@ -68,40 +71,23 @@ proc checkResults(results: Table[string,string], day:int, path:string):Table[str
   return checks
 
 proc run*(day: int, isMain: static bool=false) =
-    ## Runs given day solution on the corresponding input.
-    let paths = day.getInputPaths
-    for path in paths:
-      let
-        start = cpuTime()
-        results = solutionProcs[day](path)
-        finish = cpuTime()
-      when not defined(skipRegChecks):
-        let checks = results.checkResults(day,path)
-      var titleStr = &"Day {$day}"
-      when isMain:
-        titleStr &= &" at #{githash}"
-      if paths.len > 1 or path.inputPathSuffix != "":
-        titleStr &= &" for {path}"
-      echo titleStr
-      for k in results.keys.toSeq.sorted:
-          echo &"  Part {k}: {results[k]}"
-          when not defined(skipRegChecks):
-            if checks.contains(k):
-              echo &"    {checks[k]}"
-      echo &"  Time: {finish-start:.2} s\n"
+  for path in day.getInputPaths:
+    dayProcs[day](path)
 
-template day*(day:int, solution:untyped):untyped =
-  ## Defines a solution function. If isMainModule, also runs it.
+template day*(day: static int, body: untyped):untyped =
   block:
-    solutionProcs[day] = proc (path {.inject.}: string):Table[string,string] =
-      var parts {.inject.}: OrderedTable[string, proc ():string]
-      var partResults {.inject.} = initTable[string,Table[string,string]]()
-      solution
-      for k,v in parts:
-        result[k] = $v()
-      solutionResults[day] = partResults
-  if isMainModule:
-    run day, isMain=true
+    dayProcs[day] = proc (path {.inject.}:string) =
+      var dayAnswers {.inject.} = initTable[string,string]()
+      var dayTimes {.inject.} = initTable[string,Duration]()
+      var dayPathSuffix {.inject.} = path.inputPathSuffix
+      echo "Day ",day," for ",path
+      let t1 = cputime()
+      body
+      let t2 = cputime()
+      let ts = formatTime(t1,t2)
+      echo "Time: ",ts
+      echon()
+  if isMainModule: run day, isMain=true
 
 proc partActive(p:static typed):bool =
   (p.toString == "1" or
@@ -110,20 +96,25 @@ proc partActive(p:static typed):bool =
   not ((defined(skipPart1) and p.toString[0] == '1') or
     (defined(skipPart2) and p.toString[0] == '2'))
 
-template part*(p:static typed, solution:untyped):untyped =
-  ## Defines a part solution function. Eg `part 1: input[0] * 5` The part name can be an int, float, or string. Eg `part "1comment": "This was easier than I thought!"`
-  when partActive(p):
-    parts[p.toString] = proc ():string =
-      proc inner():auto =
-          solution
-      return $inner()
+template part*(p:static typed, body:untyped):untyped =
+  block:
+    when partActive(p):
+      const ps = p.tostring
+      let
+        t1 = cputime()
+        a = body
+        t2 = cputime()
+      dayAnswers[ps] = a.tostring
+      echo "  Part ",ps,": ",a
+      echo "    Time: ",formatTime(t1,t2)
+    else: discard
 
 template answer*(p:static typed, suffix:static string, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  when partActive(p):
-    if not partResults.contains(suffix):
-      partResults[suffix] = initTable[string,string]()
-    partResults[suffix][p.toString] = res.toString
+  when partActive(p) and not defined(skipTests):
+    if suffix == dayPathSuffix:
+      if dayAnswers[p.tostring] == res.tostring: echo "    Test: PASS"
+      else: echo "    Test: FAIL expected ",res.tostring
 
 template answer*(p:static typed, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
