@@ -8,6 +8,7 @@
 - [Advent of Code 2022](https://adventofcode.com/2022)
 - [Awesome Advent of Code](https://github.com/Bogdanp/awesome-advent-of-code#nim)
 - [aoc subreddit](https://old.reddit.com/r/adventofcode/)
+- [Advent of Nim](https://forum.nim-lang.org/t/9678)
 
 ## Nim References
 
