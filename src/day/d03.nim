@@ -16,6 +16,8 @@ day 3:
     ints = input.mapit(it.toSeqChar.map(priority))
 
   part 1:
+    answer 7691
+    answerT 157
     var sum = 0
     for line in ints:
       let
@@ -24,10 +26,10 @@ day 3:
         set2 = line[half..line.high].tobitset
       sum += (set1 * set2).peek
     sum
-  answer 1: 7691
-  answer 1, "t1": 157
 
   part 2:
+    answerT 70
+    answer 2508
     var sum2 = 0
     for i in countup(0,ints.high,3):
       let
@@ -36,5 +38,3 @@ day 3:
         three = ints[i+2].tobitset
       sum2 += (one * two * three).peek
     sum2
-  answer 2: 2508
-  answer 2, "t1": 70

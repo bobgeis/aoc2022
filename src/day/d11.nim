@@ -41,10 +41,12 @@ day 11:
         m.stuff.setlen 0
     ms.mapit(it.count).sorted[^2..^1].foldl(a * b)
 
-  part 1: monkeys.business(20,wrap=false)
-  answer 1: 110264
-  answer 1, "t1": 10605
+  part 1:
+    answerT 10605
+    answer 110264
+    monkeys.business(20,wrap=false)
 
-  part 2: monkeys.business(10_000,wrap=true)
-  answer 2: 23_612_457_316
-  answer 2, "t1": 2_713_310_158
+  part 2:
+    answerT 2_713_310_158
+    answer 23_612_457_316
+    monkeys.business(10_000,wrap=true)

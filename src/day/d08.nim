@@ -9,6 +9,8 @@ day 8:
     corner = [width,height]
 
   part 1:
+    answerT 21
+    answer 1854
     var visible = initSet2i()
 
     proc walk(start,dir:Vec2i) =
@@ -30,10 +32,10 @@ day 8:
 
     decho visible.draw
     visible.card
-  answer 1: 1854
-  answer 1, "t1": 21
 
   part 2:
+    answer 527340
+    answerT 8
     var best = 1
     for y in 1..<height:
       for x in 1..<width:
@@ -54,5 +56,3 @@ day 8:
         if curr > best:
           best = curr
     best
-  answer 2: 527340
-  answer 2, "t1": 8

@@ -18,13 +18,12 @@ day 4:
       inc overlaps
 
   part 1:
+    answerT 2
+    answer 462
     contained
 
-  answer 1: 462
-  answer 1, "t1": 2
 
   part 2:
+    answerT 4
+    answer 835
     overlaps
-
-  answer 2: 835
-  answer 2, "t1": 4

@@ -13,11 +13,13 @@ day 1:
     else:
       elf += line.parseInt
   elves.add elf
-  part 1: elves.max
-  answer 1, "t1": 24000
-  answer 1: 68923
+  part 1:
+    answerT 24000
+    answer 68923
+    elves.max
 
   elves.sort
-  part 2: elves[^3..^1].sum
-  answer 2, "t1": 45000
-  answer 2: 200044
+  part 2:
+    answerT 45000
+    answer 200044
+    elves[^3..^1].sum

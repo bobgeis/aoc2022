@@ -17,12 +17,13 @@ day 2:
     score1 += round(x, (x - a + 1).floormod(3))
     score2 += round((a + x - 1).floormod(3),x)
 
-  part 1: score1
+  part 1:
+    answerT 15
+    answer 12276
+    score1
 
-  answer 1, "t1": 15
-  answer 1: 12276
 
-  part 2: score2
-
-  answer 2, "t1": 12
-  answer 2: 9975
+  part 2:
+    answer 12
+    answer 9975
+    score2

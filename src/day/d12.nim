@@ -3,36 +3,39 @@ include ../lib/imps
 
 day 12:
 
-  let input = path.lines.toseq
-  var
-    start: Vec2i
-    finish: Vec2i
-    map = initTab2i[int]()
+  prep:
+    let input = path.lines.toseq
+    var
+      start: Vec2i
+      finish: Vec2i
+      map = initTab2i[int]()
 
-  for y,l in input:
-    for x,c in l:
-      case c:
-        of 'S':
-          map[x,y] = 0
-          start = [x,y]
-        of 'E':
-          map[x,y] = 25
-          finish = [x,y]
-        else: map[x,y] = c.ord - 'a'.ord
+    for y,l in input:
+      for x,c in l:
+        case c:
+          of 'S':
+            map[x,y] = 0
+            start = [x,y]
+          of 'E':
+            map[x,y] = 25
+            finish = [x,y]
+          else: map[x,y] = c.ord - 'a'.ord
 
-  proc adjs(v:Vec2i):seq[Vec2i] =
-    let h = map[v]
-    for u in v.getAdj4:
-      if u in map and map[u] >= h - 1: result.add u
+    proc adjs(v:Vec2i):seq[Vec2i] =
+      let h = map[v]
+      for u in v.getAdj4:
+        if u in map and map[u] >= h - 1: result.add u
 
   part 1:
+    answerT 31
+    answer 534
     proc fin(paths:Table[Vec2i,(int,Vec2i)], v:Vec2i):bool =
       v == start
     bfs(finish,adjs,fin)[start][0]
-  answer 1: 534
-  answer 1, "t1": 31
 
   part 2:
+    answerT 29
+    answer 525
     var dist:int
     proc fin(paths:Table[Vec2i,(int,Vec2i)],v:Vec2i):bool =
       if map[v] == 0:
@@ -41,8 +44,6 @@ day 12:
       else: return false
     discard bfs(finish,adjs,fin)
     dist
-  answer 2: 525
-  answer 2, "t1": 29
 
   discussion """
     A chance to use graphwalk.bfs!

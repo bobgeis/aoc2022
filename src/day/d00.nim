@@ -12,21 +12,23 @@ day 0:
 
   # can declare a part and its answer
   part 1:
-    part 1.1: 1.1 # nesting is possible
-    answer 1.1: 1.1
+    answerT 0 # record correct answers to catch regressions
+    answer 1
+    part 1.1:
+      answer 1.1
+      1.1 # nesting is possible
     one
-  answer 1: 1 # record correct answers to catch regressions
-  answer 1, "t1": 0
+
 
   part 2:
+    answerT 1 # but test files can have answers too
+    answer 2 # the default input is assumed
     two
-  answer 2: 2 # the default input is assumed
-  answer 2, "t1": 1 # but test files can have answers too
 
   # can have parts other than 1 or 2
   part 2.1:
+    answerT 2.1 # if it's wrong, there will be a message, test with: `nim dr 0 t1`
     3
-  answer 2.1, "t1": 2.1 # if it's wrong, there will be a message, test with: `nim dr 0 t1`
 
   # # asserts are off with -d:danger
   # assert 2 == 3

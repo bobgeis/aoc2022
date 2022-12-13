@@ -24,12 +24,13 @@ day 9:
             visited.incl rope[i]
     visited.card
 
-  part 1: domoves(2)
+  part 1:
+    answerT 13
+    answer 6243
+    domoves(2)
 
-  answer 1: 6243
-  answer 1, "t1": 13
 
-  part 2: domoves(10)
-
-  answer 2: 2630
-  answer 2, "t2": 36
+  part 2:
+    answerT 36
+    answer 2630
+    domoves(10)

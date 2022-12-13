@@ -34,12 +34,13 @@ day 5:
         stacks[start] = st[0 .. st.high - count]
     stacks.doit(result.add it[^1])
 
-  part 1: domoves()
+  part 1:
+    answerT "CMZ"
+    answer "SHMSDGZVC"
+    domoves()
 
-  answer 1: "SHMSDGZVC"
-  answer 1, "t1": "CMZ"
 
-  part 2: domoves(rev=false)
-
-  answer 2: "VRZGHDFBQ"
-  answer 2, "t1": "MCD"
+  part 2:
+    answerT "MCD"
+    answer "VRZGHDFBQ"
+    domoves(rev=false)

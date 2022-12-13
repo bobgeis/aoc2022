@@ -26,12 +26,14 @@ day 7:
     elif line.scanf("$i $+",size,name): sizes.inc curr,size
   while curr != "": popdir()
 
-  part 1: sizes.values.toseq.foldl(if b < 100_000: a + b else: a,0)
-  answer 1: 1_908_462
-  answer 1, "t1": 95_437
+  part 1:
+    answerT 95_437
+    answer 1_908_462
+    sizes.values.toseq.foldl(if b < 100_000: a + b else: a,0)
 
   let bound = sizes[""] - 40_000_000
 
-  part 2: sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)
-  answer 2: 3_979_145
-  answer 2, "t1": 24_933_642
+  part 2:
+    answer 3_979_145
+    answerT 24_933_642
+    sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)

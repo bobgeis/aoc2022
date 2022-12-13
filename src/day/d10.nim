@@ -19,6 +19,8 @@ day 10:
       yield (tick,x)
 
   part 1:
+    answerT 13140
+    answer 12980
     var
       strengths = newSeq[int]()
       total = 0
@@ -30,10 +32,9 @@ day 10:
       total += strengths[i]
 
     total
-  answer 1: 12980
-  answer 1, "t1": 13140
 
   part 2:
+    answer "BRJLFULP"
     var img = "\n#"
 
     for (tick,x) in moves.domoves:
@@ -45,5 +46,4 @@ day 10:
     decho img
 
     "BRJLFULP"
-  answer 2: "BRJLFULP"
 
