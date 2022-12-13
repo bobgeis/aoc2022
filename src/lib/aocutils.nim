@@ -73,7 +73,7 @@ proc onelineDayStr(day:int, aocResults:AocResults):string =
     prep = "prep"
   {answers: ans, times: tims, outcomes:outs} ..= aocResults
   let preptime = tims.getOrDefault("prep",0.0.formatTime)
-  &"Day {day:>2}: {tims[ds]}  prep: {preptime}  pt 1: {tims[$1]} {outs.getOutSym($1)}  pt 2: {tims[$2]} {outs.getOutSym($2)}"
+  &"d{day:>02}: {tims[ds]}  pr: {preptime}  p1: {tims[$1]} {outs.getOutSym($1)}  p2: {tims[$2]} {outs.getOutSym($2)}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:

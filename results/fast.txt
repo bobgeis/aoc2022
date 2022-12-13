@@ -1,19 +1,19 @@
-==== All Days at #4693350 ====
+==== All Days at #098808e ====
 -- optimized release
 -- skipping extra parts
 
-Day  0:  0.10ms  prep:  0.07ms  pt 1:  0.00ms ✅  pt 2:  0.00ms ✅
-Day  1:  0.38ms  prep:  0.00ms  pt 1:  0.00ms ✅  pt 2:  0.00ms ✅
-Day  2:  0.22ms  prep:  0.00ms  pt 1:  0.00ms ✅  pt 2:  0.00ms ✅
-Day  3:  0.30ms  prep:  0.00ms  pt 1:  0.08ms ✅  pt 2:  0.03ms ✅
-Day  4:  0.15ms  prep:  0.00ms  pt 1:  0.00ms ✅  pt 2:  0.00ms ✅
-Day  5:  0.25ms  prep:  0.00ms  pt 1:  0.02ms ✅  pt 2:  0.09ms ✅
-Day  6:  0.32ms  prep:  0.00ms  pt 1:  0.06ms ✅  pt 2:  0.24ms ✅
-Day  7:  0.29ms  prep:  0.00ms  pt 1:  0.01ms ✅  pt 2:  0.00ms ✅
-Day  8:  1.99ms  prep:  0.00ms  pt 1:  0.35ms ✅  pt 2:  0.49ms ✅
-Day  9:  1.84ms  prep:  0.00ms  pt 1:  0.97ms ✅  pt 2:  0.50ms ✅
-Day 10:  0.13ms  prep:  0.00ms  pt 1:  0.01ms ✅  pt 2:  0.01ms ✅
-Day 11: 24.42ms  prep:  0.00ms  pt 1:  0.03ms ✅  pt 2: 24.11ms ✅
-Day 12:  8.95ms  prep:  0.95ms  pt 1:  4.97ms ✅  pt 2:  3.00ms ✅
-Day 13:  1.95ms  prep:  1.38ms  pt 1:  0.03ms ✅  pt 2:  0.53ms ✅
-==== Total Time: 0.042 s ====
+d00:  0.09ms  pr:  0.06ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d01:  0.31ms  pr:  0.00ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d02:  0.15ms  pr:  0.00ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d03:  0.29ms  pr:  0.00ms  p1:  0.09ms ✅  p2:  0.03ms ✅
+d04:  0.15ms  pr:  0.00ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d05:  0.25ms  pr:  0.00ms  p1:  0.02ms ✅  p2:  0.09ms ✅
+d06:  0.31ms  pr:  0.00ms  p1:  0.05ms ✅  p2:  0.23ms ✅
+d07:  0.29ms  pr:  0.00ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d08:  1.98ms  pr:  0.00ms  p1:  0.35ms ✅  p2:  0.49ms ✅
+d09:  1.88ms  pr:  0.00ms  p1:  0.98ms ✅  p2:  0.51ms ✅
+d10:  0.09ms  pr:  0.00ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d11: 25.38ms  pr:  0.00ms  p1:  0.03ms ✅  p2: 25.05ms ✅
+d12:  9.81ms  pr:  1.18ms  p1:  4.78ms ✅  p2:  3.80ms ✅
+d13:  2.16ms  pr:  1.56ms  p1:  0.04ms ✅  p2:  0.54ms ✅
+==== Total Time: 0.044 s ====
