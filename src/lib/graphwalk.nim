@@ -9,19 +9,15 @@ proc bfs*[T](
     fin:(Table[T,(int,T)],T) -> bool = alwaysFalse):
     Table[T,(int,T)] =
   ## breadth-first-search: give a start node, a callback to get a list of adjacent nodes, and an optional early end callback. Returns a paths table that maps every reachable node to its distance from the start node and the node it was reached from.
-  var
-    seen = initHashSet[T]()
-    q = initDeque[(int,T)]()
+  var q = initDeque[(int,T)]()
   result[start] = (0,start)
   q.addLast((0,start))
   while q.len > 0:
     let (cost,n) = q.popFirst
-    if n in seen: continue
-    elif result.fin(n): return
-    else: seen.incl n
     for m in n.adjs:
-      if m in seen: continue
+      if m in result: continue
       result[m] = (cost + 1, n)
+      if result.fin(m): return
       q.addLast((cost + 1, m))
   return result
 
