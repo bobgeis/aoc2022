@@ -111,6 +111,10 @@ template answer*(p:static typed, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
   answer(p,"",res)
 
+proc discussion*(body:string) =
+  when not defined(silentDay) and not defined(skipExtraParts):
+    echo &"  Discussion:\n{body}"
+
 #
 
 proc tests* =
