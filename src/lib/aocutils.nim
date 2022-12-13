@@ -103,7 +103,7 @@ template part*(p:static typed, body:untyped):untyped =
 template answer*(p:static typed, suffix:static string, res:typed):untyped =
   ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
   when partActive(p) and not defined(skipTests) and not defined(silentDay):
-    if suffix == dayPathSuffix:
+    if suffix == dayPathSuffix and p.tostring in dayAnswers:
       if dayAnswers[p.tostring] == res.tostring: echo "    Test: PASS"
       else: echo "    Test: FAIL expected ",res.tostring
 

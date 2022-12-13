@@ -6,23 +6,24 @@ import bedrock, shenanigans
 proc bfs*[T](
     start:T,
     adjs:(T) -> seq[T],
-    fin:(Table[T,(int,T)],T) -> bool = alwaysFalse) =
+    fin:(Table[T,(int,T)],T) -> bool = alwaysFalse):
+    Table[T,(int,T)] =
   ## breadth-first-search: give a start node, a callback to get a list of adjacent nodes, and an optional early end callback. Returns a paths table that maps every reachable node to its distance from the start node and the node it was reached from.
   var
-    marked = initHashSet[T]()
+    seen = initHashSet[T]()
     q = initDeque[(int,T)]()
-    paths = initTable[T,(int,T)]()
-  paths[start] = (0,start)
+  result[start] = (0,start)
   q.addLast((0,start))
   while q.len > 0:
     let (cost,n) = q.popFirst
-    if paths.fin(n): return
-    else: marked.incl n
+    if n in seen: continue
+    elif result.fin(n): return
+    else: seen.incl n
     for m in n.adjs:
-      if m in marked: continue
-      paths[m] = (cost + 1, n)
+      if m in seen: continue
+      result[m] = (cost + 1, n)
       q.addLast((cost + 1, m))
-  return paths
+  return result
 
 proc walkPath*[A:SomeNumber;T](paths:Table[T,(A,T)],stop:T):seq[T] =
   ## Give a paths table (like from `bfs`) and a stop node, get the full path from the paths table's start node to the stop node, if it has been found.
