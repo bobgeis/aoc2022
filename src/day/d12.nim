@@ -44,11 +44,12 @@ day 12:
   answer 2: 525
   answer 2, "t1": 29
 
-  part 0: """
+  discussion """
     A chance to use graphwalk.bfs!
+
     There was a bug with my initial implementation that
     made part 1 take way too long.
 
-    There's still room for improvement, but it works
+    There's still lots of room for improvement, but it works
     decently for now.
   """
