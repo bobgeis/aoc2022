@@ -11,13 +11,14 @@ day 12:
 
   for y,l in input:
     for x,c in l:
-      if c == 'S':
-        map[x,y] = 0
-        start = [x,y]
-      elif c == 'E':
-        map[x,y] = 25
-        finish = [x,y]
-      else: map[x,y] = c.ord - 'a'.ord
+      case c:
+        of 'S':
+          map[x,y] = 0
+          start = [x,y]
+        of 'E':
+          map[x,y] = 25
+          finish = [x,y]
+        else: map[x,y] = c.ord - 'a'.ord
 
   proc adjs(v:Vec2i):seq[Vec2i] =
     let h = map[v]
