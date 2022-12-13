@@ -12,7 +12,7 @@ day 13:
     let
       input = path.readFile
       jsonPairs = input.split("\n\n").mapit(it.tojson)
-      jsonAll = jsonPairs.flatten
+
 
     proc compare(left,right:JsonNode):int =
       if left.kind == JInt and right.kind == JInt:
@@ -42,16 +42,29 @@ day 13:
 
   part 2:
     answerT 140
-
-    ddump jsonall
-
-    2
+    answer 22425
+    let
+      pack1 = %*[[2]]
+      pack2 = %*[[6]]
+    var jsonAll = jsonPairs.flatten
+    jsonall.add pack1
+    jsonall.add pack2
+    jsonall.sort(compare)
+    (jsonall.find(pack1) + 1) * (jsonall.find(pack2) + 1)
 
   discussion """
-    First thoughts: Can we walk the pairs of strings
-    comparing them char by char?
+    First thought: Can we walk the pairs of strings comparing
+    them char by char?
 
-    Second thought: Can we use pegs here?
+    Second thought: Can we somehow use pegs here?
 
     Third thought: This is all valid json, let's parse it!
-  """
+
+    I hadn't used the std/json library before, so that took some
+    experimentation. Once finished, it worked great and part 2
+    was very quick to code.
+
+    It may be possible to improve performance by using a faster
+    json library. Several exist (eg search the nim forum).
+
+    """
