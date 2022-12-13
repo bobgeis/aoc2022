@@ -3,17 +3,18 @@ include ../lib/imps
 
 day 3:
 
-  func priority(a:char):int8 =
-    let o = a.ord.int8
-    if o >= 'a'.ord:
-      o - 'a'.ord.int8 + 1
-    else:
-      o - 'A'.ord.int8 + 27
-  assert ['a','p','z','A','L','Z'].map(priority) == @[1'i8, 16, 26, 27, 38, 52]
+  prep:
+    func priority(a:char):int8 =
+      let o = a.ord.int8
+      if o >= 'a'.ord:
+        o - 'a'.ord.int8 + 1
+      else:
+        o - 'A'.ord.int8 + 27
+    assert ['a','p','z','A','L','Z'].map(priority) == @[1'i8, 16, 26, 27, 38, 52]
 
-  let
-    input = path.readFile.splitlines
-    ints = input.mapit(it.toSeqChar.map(priority))
+    let
+      input = path.readFile.splitlines
+      ints = input.mapit(it.toSeqChar.map(priority))
 
   part 1:
     answer 7691

@@ -119,7 +119,7 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     dt = aocResults.times[ps]
     ans = aocResults.answers[ps]
     outSym = aocResults.outcomes.getOutSym(ps)
-  result = &"  Pt {ps}: {dt} {outSym} {ans}"
+  result = &"  Pt{ps:>2}: {dt} {outSym} {ans}"
   if outSym in failStr:
     result &= &" -> {aocResults.expected[ps]}"
 

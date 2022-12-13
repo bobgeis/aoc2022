@@ -2,11 +2,13 @@
 include ../lib/imps
 
 day 8:
-  let # extra allocations here...
-    input = path.readFile.splitlines.toSeq2iChar.mapit(it.map(parseint))
-    width = input[0].high
-    height = input.high
-    corner = [width,height]
+
+  prep:
+    let # extra allocations here...
+      input = path.readFile.splitlines.toSeq2iChar.mapit(it.map(parseint))
+      width = input[0].high
+      height = input.high
+      corner = [width,height]
 
   part 1:
     answerT 21

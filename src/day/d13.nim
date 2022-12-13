@@ -1,10 +1,8 @@
 ## https://adventofcode.com/2022/day/13
 include ../lib/imps
-
 import std/[json]
 
 day 13:
-
   prep:
     proc tojson(ss:string):seq[JsonNode] =
       for s in ss.splitlines: result.add parsejson(s)
@@ -12,7 +10,6 @@ day 13:
     let
       input = path.readFile
       jsonPairs = input.split("\n\n").mapit(it.tojson)
-
 
     proc compare(left,right:JsonNode):int =
       if left.kind == JInt and right.kind == JInt:
@@ -31,11 +28,8 @@ day 13:
     answerT 13
     answer 5557
     var total = 0
-    for i,piece in jsonPairs:
-      let
-        left = piece[0]
-        right = piece[1]
-        c = compare(left,right)
+    for i,pair in jsonPairs:
+      let c = compare(pair[0],pair[1])
       if c != 1:
         total += 1 + i
     total

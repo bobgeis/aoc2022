@@ -2,21 +2,21 @@
 include ../lib/imps
 
 day 10:
+  prep:
+    var moves = newSeq[int]()
 
-  var moves = newSeq[int]()
+    path.withlines:
+      moves.add 0
+      if line[0] == 'a': moves.add line[5..^1].parseint
 
-  path.withlines:
-    moves.add 0
-    if line[0] == 'a': moves.add line[5..^1].parseint
-
-  iterator domoves(moves:seq[int]):(int,int) =
-    var
-      x = 1
-      tick = 1
-    for n in moves:
-      x += n
-      inc tick
-      yield (tick,x)
+    iterator domoves(moves:seq[int]):(int,int) =
+      var
+        x = 1
+        tick = 1
+      for n in moves:
+        x += n
+        inc tick
+        yield (tick,x)
 
   part 1:
     answerT 13140

@@ -2,12 +2,14 @@
 include ../lib/imps
 
 day 6:
-  let input = path.readFile
 
-  proc walk(n:int):int =
-    for i in 0..input.len-n:
-      if n == input[i..i+n-1].tobitset.card:
-        return i + n
+  prep:
+    let input = path.readFile
+
+    proc walk(n:int):int =
+      for i in 0..input.len-n:
+        if n == input[i..i+n-1].tobitset.card:
+          return i + n
 
   part 1:
     answerT 7

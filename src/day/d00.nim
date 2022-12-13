@@ -23,12 +23,11 @@ day 0:
     answer 2 # the default input is assumed
     two
 
-  # can have parts other than 1 or 2
-  part 4:
-    answerT "right" # if it's wrong, there will be a message
+  part "4a":
+    answerT "right" # violated tests will show expected answer
     answer "right"
-    part 3:
-      3
+    part 3: # can be nested
+      3 # untested answers will get a question mark
     "wrong"
 
   # # asserts are off with -d:danger
