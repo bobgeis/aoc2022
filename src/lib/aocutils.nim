@@ -3,15 +3,29 @@
 
 import std/[algorithm, monotimes, os, sequtils, strformat, strutils, sugar, tables, times]
 
-import bedrock
+import bedrock, shenanigans
+
+type
+  AocResults = object
+    answers: Table[string,string]
+    expected: Table[string,string]
+    outcomes: Table[string,bool]
+    times: Table[string,string]
 
 const
   inputDir* = "in"
   githash* = staticexec "git rev-parse --short HEAD"
   passStr* = "✅"
   failStr* = "❌"
+  quesStr* = "❓"
 
-proc getDt*(t1:float):string = &"{(cpuTime()-t1)*1000:>6.2f}ms"
+proc getOutSym(outcomes: Table[string,bool],ps:string):string =
+  if ps notin outcomes: quesStr
+  elif outcomes[ps]: passStr
+  else: failStr
+
+proc formatTime(t:float):string =  &"{t:>5.2f}ms"
+proc getDt*(t1:float):string = formatTime((cpuTime()-t1)*1000)
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
 
@@ -51,42 +65,49 @@ proc getInputPaths(day: int): seq[string] =
   if result.len == 0:
     echo &"Could not find input file for {day}!"
 
-var aocDayProcs: Table[int, proc (x:string):(Table[string,string],Table[string,string])]
+var aocDayProcs: Table[int, proc (x:string):AocResults]
+
+proc onelineDayStr(day:int, aocResults:AocResults):string =
+  const
+    ds = "day"
+    prep = "prep"
+  {answers: ans, times: tims, outcomes:outs} ..= aocResults
+  let preptime = tims.getOrDefault("prep",0.0.formatTime)
+  # var extraTime = 0.0
+  # for key in tims.keys:
+  #   if key notin ["day","prep","1","2"]: extraTime += tims[key][0..^2].parsefloat
+  &"Day {day:>2}: prep: {preptime}  pt 1: {outs.getOutSym($1)} {tims[$1]}  pt 2: {outs.getOutSym($2)} {tims[$2]}  total: {tims[ds]}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:
-    let (ans,tims) = aocDayProcs[day](path)
+    let aocResults = aocDayProcs[day](path)
     when defined(onelineDay):
-      const ds = "day"
-      echo &"Day {day:>2} in {tims[ds]}: pt 1 is {ans[$1]} in {tims[$1]}, pt 2 is {ans[$2]} in {tims[$2]}"
+      echo day.onelineDayStr(aocResults)
 
 template day*(day: static int, body: untyped):untyped =
   block:
-    aocDayProcs[day] = proc (path {.inject.}:string):(Table[string,string],Table[string,string]) =
+    aocDayProcs[day] = proc (path {.inject.}:string):AocResults =
       var
         aocPathSuffix {.inject.} = path.inputPathSuffix
-        aocAnswers {.inject.} = initTable[string,string]()
-        aocExpectedAnswers {.inject.} = initTable[string,string]()
-        aocOutcomes {.inject.} = initTable[string,bool]()
-        aocTimes {.inject.} = initTable[string,string]()
-      when not defined(silentDay):
+        aocResults {.inject.} = AocResults()
+      when not defined(silentParts):
         echo "Day ",day," for ",path
       let t1 = cputime()
       body
       let dt = t1.getDt
-      aocTimes["day"] = dt
-      when not defined(silentDay):
+      aocResults.times["day"] = dt
+      when not defined(silentParts):
         echo "Time: ",dt
         echon()
-      (aocAnswers,aocTimes)
+      aocResults
   if isMainModule: run day
 
 template prep*(body:untyped):untyped =
   let t1 = cpuTime()
   body
   let dt = t1.getDt
-  aocTimes["prep"] = dt
-  when not defined(silentDay):
+  aocResults.times["prep"] = dt
+  when not defined(silentParts):
     echo "  Prep: ",dt
 
 proc partActive(p:static typed):bool =
@@ -96,49 +117,52 @@ proc partActive(p:static typed):bool =
   not ((defined(skipPart1) and p.toString[0] == '1') or
     (defined(skipPart2) and p.toString[0] == '2'))
 
+proc partResultStr*(ps: static string,aocResults:AocResults): string =
+  let
+    dt = aocResults.times[ps]
+    ans = aocResults.answers[ps]
+  result = &"  Pt {ps}: {dt} {ans} "
+  if ps in aocResults.outcomes:
+    let
+      outcome = if aocResults.outcomes[ps]: passStr
+        else: &"{failStr} -> {aocResults.expected[ps]}"
+    result &= outcome
+  else: result &= quesStr
+
 template part*(p:static typed, body:untyped):untyped =
   block:
     when partActive(p):
-      const aocCurrentPartString {.inject.} = p.tostring
+      const
+        ps = p.tostring
+        aocCurrentPartString {.inject.} = ps
       let
         t1 = cputime()
         a = body
         dt = t1.getDt
-      aocAnswers[aocCurrentPartString] = a.tostring
-      aocTimes[aocCurrentPartString] = dt
-      if aocCurrentPartString in aocExpectedAnswers:
-        aocOutcomes[aocCurrentPartString] = a.tostring == aocExpectedAnswers[aocCurrentPartString]
-      when not defined(silentDay):
-        echo "  Part ",aocCurrentPartString,": ",a
-        echo "    Time: ",dt
-        if aocCurrentPartString in aocOutcomes:
-          let outcome = if aocOutcomes[aocCurrentPartString]: passStr else: failStr
-          echo "    Test: ",outcome
+        ans = a.tostring
+      aocResults.answers[ps] = ans
+      aocResults.times[ps] = dt
+      if ps in aocResults.expected:
+        let outcome = ans == aocResults.expected[ps]
+        aocResults.outcomes[ps] = outcome
+      when not defined(silentParts):
+        echo ps.partResultStr(aocResults)
     else: discard
 
 template answer*(suffix:static string, res:typed):untyped =
+  ## Provide an input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
   when not defined(skipTests):
     if suffix == aocPathSuffix:
-      aocExpectedAnswers[aocCurrentPartString] = res.tostring
+      aocResults.expected[aocCurrentPartString] = res.tostring
 
-template answer*(res:typed):untyped = answer "", res
-template answerT*(res:typed):untyped = answer "t1",res
-template answerT2*(res:typed):untyped = answer "t2",res
-template answerO*(res:typed):untyped = answer "o1",res
-
-template answer*(p:static typed, suffix:static string, res:typed):untyped =
-  ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  when partActive(p) and not defined(skipTests) and not defined(silentDay):
-    if suffix == aocPathSuffix and p.tostring in aocAnswers:
-      if aocAnswers[p.tostring] == res.tostring: echo "    Test: PASS"
-      else: echo "    Test: FAIL expected ",res.tostring
-
-template answer*(p:static typed, res:typed):untyped =
-  ## Provide a part name, and optional input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
-  answer(p,"",res)
+template answer*(res:typed):untyped = answer "", res ## Like 2 arg answer but default input
+template answerT*(res:typed):untyped = answer "t1",res ## Like 2 arg answer but test input
+template answerT2*(res:typed):untyped = answer "t2",res ## Like 2 arg answer but second test input
+template answerO*(res:typed):untyped = answer "o1",res ## Like 2 arg answer but others' input
 
 proc discussion*(body:string) =
-  when not defined(silentDay) and not defined(skipExtraParts):
+  ## Notes or discussion about the day to echo to output.
+  when not defined(silentParts) and not defined(skipExtraParts) and not defined(skipDiscussion):
     echo &"  Discussion:\n{body}"
 
 #

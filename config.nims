@@ -47,8 +47,8 @@ if defined(skx):
 if defined(skt):
   --d:skipTests
 
-if defined(onelineDay):
-  --d:silentDay
+if defined(skd):
+  --d:skipDiscussion
 
 proc excho(cmd:string) =
   echo cmd
@@ -188,7 +188,7 @@ task dtw, "Compile days.nim for speed, without extra parts, and then execute wri
   var runs = 5
   for i in 2..paramCount():
     runs = paramStr(i).parseInt
-  allDaysFile.compile("-d:fast -d:skipExtraParts -d:skipTests -d:onelineDay")
+  allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts")
   for i in 1..runs:
     excho &"{compiledFile} > {resultsFast}"
   excho &"cat {resultsFast}"

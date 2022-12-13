@@ -4,11 +4,12 @@ include ../lib/imps
 
 day 0:
 
-  # path is injected
-  let
-    input = path.readFile
-    one = input[0]
-    two = input[2]
+  prep: # time the loading and preparation
+    # path is injected
+    let
+      input = path.readFile
+      one = input[0]
+      two = input[2]
 
   # can declare a part and its answer
   part 1:
