@@ -162,7 +162,7 @@ template answerO*(res:typed):untyped = answer "o1",res ## Like 2 arg answer but 
 
 proc discussion*(body:string) =
   ## Notes or discussion about the day to echo to output.
-  when not defined(silentParts) and not defined(skipExtraParts) and not defined(skipDiscussion):
+  when defined(includeDiscussion):
     echo &"  Discussion:\n{body}"
 
 #
