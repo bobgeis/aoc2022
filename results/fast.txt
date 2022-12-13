@@ -1,17 +1,18 @@
-==== All Days at #38d1aac ====
+==== All Days at #24133ee ====
 -- optimized release
 -- skipping extra parts
 
-Day  0 in 0.000075s: pt 1 is 1 in 1.0e-06s, pt 2 is 2 in 0.0e+00s
-Day  1 in 0.000315s: pt 1 is 68923 in 1.0e-06s, pt 2 is 200044 in 1.0e-06s
-Day  2 in 0.000148s: pt 1 is 12276 in 2.0e-06s, pt 2 is 9975 in 1.0e-06s
-Day  3 in 0.000297s: pt 1 is 7691 in 8.8e-05s, pt 2 is 2508 in 4.4e-05s
-Day  4 in 0.000276s: pt 1 is 462 in 1.0e-06s, pt 2 is 835 in 0.0e+00s
-Day  5 in 0.000390s: pt 1 is SHMSDGZVC in 2.4e-05s, pt 2 is VRZGHDFBQ in 1.5e-04s
-Day  6 in 0.000725s: pt 1 is 1210 in 2.0e-04s, pt 2 is 3476 in 4.1e-04s
-Day  7 in 0.000548s: pt 1 is 1908462 in 7.0e-06s, pt 2 is 3979145 in 6.0e-06s
-Day  8 in 0.003309s: pt 1 is 1854 in 4.4e-04s, pt 2 is 527340 in 5.9e-04s
-Day  9 in 0.002020s: pt 1 is 6243 in 1.0e-03s, pt 2 is 2630 in 5.0e-04s
-Day 10 in 0.000078s: pt 1 is 12980 in 2.0e-06s, pt 2 is BRJLFULP in 4.0e-06s
-Day 11 in 0.022731s: pt 1 is 110264 in 2.9e-05s, pt 2 is 23612457316 in 2.2e-02s
-==== Total Time: 0.032 s ====
+Day  0 in 0.000089s: pt 1 is 1 in 2.0e-06s, pt 2 is 2 in 0.0e+00s
+Day  1 in 0.000363s: pt 1 is 68923 in 1.0e-06s, pt 2 is 200044 in 5.0e-06s
+Day  2 in 0.000182s: pt 1 is 12276 in 0.0e+00s, pt 2 is 9975 in 0.0e+00s
+Day  3 in 0.000289s: pt 1 is 7691 in 9.0e-05s, pt 2 is 2508 in 2.9e-05s
+Day  4 in 0.000159s: pt 1 is 462 in 1.0e-06s, pt 2 is 835 in 1.0e-06s
+Day  5 in 0.000248s: pt 1 is SHMSDGZVC in 1.8e-05s, pt 2 is VRZGHDFBQ in 8.8e-05s
+Day  6 in 0.000367s: pt 1 is 1210 in 1.1e-04s, pt 2 is 3476 in 2.3e-04s
+Day  7 in 0.000315s: pt 1 is 1908462 in 6.0e-06s, pt 2 is 3979145 in 6.0e-06s
+Day  8 in 0.002160s: pt 1 is 1854 in 4.2e-04s, pt 2 is 527340 in 4.6e-04s
+Day  9 in 0.002342s: pt 1 is 6243 in 1.3e-03s, pt 2 is 2630 in 6.0e-04s
+Day 10 in 0.000087s: pt 1 is 12980 in 1.0e-06s, pt 2 is BRJLFULP in 5.0e-06s
+Day 11 in 0.020644s: pt 1 is 110264 in 3.2e-05s, pt 2 is 23612457316 in 2.0e-02s
+Day 12 in 0.008956s: pt 1 is 534 in 3.9e-03s, pt 2 is 525 in 3.9e-03s
+==== Total Time: 0.037 s ====
