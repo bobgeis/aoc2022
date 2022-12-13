@@ -9,7 +9,11 @@ import std/[intsets, macros, memfiles, monotimes, packedsets, re, sequtils, sets
   strformat, strutils, sugar, tables, times]
 
 proc alwaysTrue*[T](t:T):bool = true
+proc alwaysTrue*[T,U](t:T,u:U):bool = true
+proc alwaysTrue*[T,U,V](t:T,u:U,v:V):bool = true
 proc alwaysFalse*[T](t:T):bool = false
+proc alwaysFalse*[T,U](t:T,u:U):bool = false
+proc alwaysFalse*[T,U,V](t:T,u:U,v:V):bool = false
 
 type
   SomeSeq*[T] = seq[T] or openarray[T] or string or cstring
