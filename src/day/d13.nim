@@ -6,19 +6,46 @@ import std/[json]
 day 13:
 
   prep:
-    let input = path.readFile.split("\n\n").mapit(it.splitlines)
+    proc tojson(ss:string):seq[JsonNode] =
+      for s in ss.splitlines: result.add parsejson(s)
 
-    # echo input
+    let
+      input = path.readFile
+      jsonPairs = input.split("\n\n").mapit(it.tojson)
+      jsonAll = jsonPairs.flatten
 
-    for piece in input:
+    proc compare(left,right:JsonNode):int =
+      if left.kind == JInt and right.kind == JInt:
+        return cmp(left.num,right.num)
       let
-        left = parsejson(piece[0])
-        right = parsejson(piece[1])
-      dump (left , right)
+        left = if left.kind == JArray: left else: %[left]
+        right = if right.kind == JArray: right else: %[right]
+      if left.len == 0: return cmp(left.len, right.len)
+      for i in 0..<left.len:
+        if i + 1 > right.len: return 1
+        let c = compare(left[i],right[i])
+        if c != 0: return c
+      return 0
 
   part 1:
     answerT 13
-    1
+    answer 5557
+    var total = 0
+    for i,piece in jsonPairs:
+      let
+        left = piece[0]
+        right = piece[1]
+        c = compare(left,right)
+      if c != 1:
+        total += 1 + i
+    total
+
+  part 2:
+    answerT 140
+
+    ddump jsonall
+
+    2
 
   discussion """
     First thoughts: Can we walk the pairs of strings
