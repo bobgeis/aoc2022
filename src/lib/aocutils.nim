@@ -73,10 +73,7 @@ proc onelineDayStr(day:int, aocResults:AocResults):string =
     prep = "prep"
   {answers: ans, times: tims, outcomes:outs} ..= aocResults
   let preptime = tims.getOrDefault("prep",0.0.formatTime)
-  # var extraTime = 0.0
-  # for key in tims.keys:
-  #   if key notin ["day","prep","1","2"]: extraTime += tims[key][0..^2].parsefloat
-  &"Day {day:>2}: prep: {preptime}  pt 1: {outs.getOutSym($1)} {tims[$1]}  pt 2: {outs.getOutSym($2)} {tims[$2]}  total: {tims[ds]}"
+  &"Day {day:>2}: {tims[ds]}  prep: {preptime}  pt 1: {tims[$1]} {outs.getOutSym($1)}  pt 2: {tims[$2]} {outs.getOutSym($2)}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:
@@ -97,7 +94,7 @@ template day*(day: static int, body: untyped):untyped =
       let dt = t1.getDt
       aocResults.times["day"] = dt
       when not defined(silentParts):
-        echo "Time: ",dt
+        echo "  Time: ",dt
         echon()
       aocResults
   if isMainModule: run day
@@ -121,13 +118,10 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
   let
     dt = aocResults.times[ps]
     ans = aocResults.answers[ps]
-  result = &"  Pt {ps}: {dt} {ans} "
-  if ps in aocResults.outcomes:
-    let
-      outcome = if aocResults.outcomes[ps]: passStr
-        else: &"{failStr} -> {aocResults.expected[ps]}"
-    result &= outcome
-  else: result &= quesStr
+    outSym = aocResults.outcomes.getOutSym(ps)
+  result = &"  Pt {ps}: {dt} {outSym} {ans}"
+  if outSym in failStr:
+    result &= &" -> {aocResults.expected[ps]}"
 
 template part*(p:static typed, body:untyped):untyped =
   block:

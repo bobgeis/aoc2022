@@ -178,7 +178,7 @@ task de, "Execute the last compiled program. Args will be passed to the program.
     echo &"No compiled file: {compiledFile}"
 
 task drw, "Run days.nim and write to a file. This will include all parts and comments.":
-  excho &"nim r -d:fast -d:includeDiscussion {allDaysFile} full > {resultsFull}"
+  excho &"nim r -d:fast -d:includeDiscussion {allDaysFile} > {resultsFull}"
   excho &"cat {resultsFull}"
 
 task dtw, "Compile days.nim for speed, without extra parts, and then execute writing to file.":
