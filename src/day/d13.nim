@@ -53,18 +53,16 @@ day 13:
     (jsonall.find(pack1) + 1) * (jsonall.find(pack2) + 1)
 
   discussion """
-    First thought: Can we walk the pairs of strings comparing
-    them char by char?
+    First thought: Can we walk the pairs of strings comparing them
+    char by char?
 
     Second thought: Can we somehow use pegs here?
 
-    Third thought: This is all valid json, let's parse it!
+    Third thought: This is all valid json, let's just parse it!
 
     I hadn't used the std/json library before, so that took some
-    experimentation. Once finished, it worked great and part 2
-    was very quick to code.
+    experimentation. Once finished, it worked great and part 2 was
+    very quick to code.
 
-    It may be possible to improve performance by using a faster
-    json library. Several exist (eg search the nim forum).
-
-    """
+    It may be possible to improve performance by using a faster json
+    library. Several exist (eg search the nim forum)."""

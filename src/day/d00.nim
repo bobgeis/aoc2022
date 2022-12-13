@@ -37,6 +37,5 @@ day 0:
   # can have discussion in code
   discussion """
     d00 is a simple example.
-    It's time represents a lower bound for a day.
-    """
+    It's time represents a lower bound for a day."""
 

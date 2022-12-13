@@ -3,10 +3,6 @@ include ../lib/imps
 
 day 7:
 
-  part 0: """The input recursively walks the dirs,
-    calling `ls` exactly once in each.
-    It could have been much worse!"""
-
   var
     curr = ""
     sizes = initCountTable[string]()
@@ -37,3 +33,7 @@ day 7:
     answer 3_979_145
     answerT 24_933_642
     sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)
+
+  discussion """
+    The input recursively walks the dirs, calling `ls` exactly once
+    in each. It could have been much worse!"""
