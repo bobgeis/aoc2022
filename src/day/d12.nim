@@ -43,3 +43,12 @@ day 12:
     dist
   answer 2: 525
   answer 2, "t1": 29
+
+  part 0: """
+    A chance to use graphwalk.bfs!
+    There was a bug with my initial implementation that
+    made part 1 take way too long.
+
+    There's still room for improvement, but it works
+    decently for now.
+  """
