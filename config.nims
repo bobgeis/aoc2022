@@ -161,7 +161,7 @@ task dt, "Compile(opt:speed) and time a day. Same usage as `dr`.":
     argStr = args[1..args.high].join(" ")
     switchStr = switches.join(" ")
   path.compile(&"{switchStr} -d:fast")
-  excho &"time {compiledFile} {argStr}"
+  excho &"{compiledFile} {argStr}"
 
 task dts, "dt but skip extra parts. Same usage as `dr`.":
   let
@@ -170,7 +170,7 @@ task dts, "dt but skip extra parts. Same usage as `dr`.":
     argStr = args[1..args.high].join(" ")
     switchStr = switches.join(" ")
   path.compile(&"{switchStr} -d:fast -d:skipExtraParts -d:skipTests")
-  excho &"time {compiledFile} {argStr}"
+  excho &"{compiledFile} {argStr}"
 
 task de, "Execute the last compiled program. Args will be passed to the program.":
   let
