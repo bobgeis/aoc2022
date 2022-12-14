@@ -17,9 +17,7 @@ const
   libImpsFile = &"{nimLibDir}/imps.nim"
   allDaysFile = &"{nimTestDir}/days.nim"
   libTestFile = &"{nimTestDir}/libs.nim"
-  resultsFull = &"{resultsDir}/full.txt"
-  resultsFast = &"{resultsDir}/fast.txt"
-  resultsMd = &"results.md"
+  resultsTxt = &"results.txt"
 
 switch("out", &"{compiledFile}")
 --hints: off
@@ -183,7 +181,7 @@ task ddw, "Run days.nim twice, once for oneline days, once for discussion, and w
   var runs = 3
   for i in 1..runs:
     excho &"{compiledFile} &>/dev/null"
-  excho &"{compiledFile} > {resultsMd}"
+  excho &"{compiledFile} > {resultsTxt}"
   excho &"nim clean"
-  excho &"nim r -d:fast -d:includeNotes {allDaysFile} >> {resultsMd}"
+  excho &"nim r -d:fast -d:includeNotes {allDaysFile} >> {resultsTxt}"
 
