@@ -1,5 +1,5 @@
 ## This file contains procs and templates useful for this advent of code repo.
-## I had a macro that turned parts into a function that could be called, (see https://github.com/bobgeis/aoc2021/blob/master/lib/aocutils.nim), but I liked MichaelMarsalek's approach more (see https://github.com/MichalMarsalek/Advent-of-code/blob/master/2021/Nim/aoc_logic.nim )
+## I had a macro that turned parts into a function that could be called, (see https://github.com/bobgeis/aoc2021/blob/master/lib/aocutils.nim), but I liked MichaelMarsalek's approach more (see https://github.com/MichalMarsalek/Advent-of-code/blob/master/2021/Nim/aoc_logic.nim ). It has evolved a bit since then.
 
 import std/[algorithm, monotimes, os, sequtils, strformat, strutils, sugar, tables, times]
 
@@ -10,22 +10,22 @@ type
     answers: Table[string,string]
     expected: Table[string,string]
     outcomes: Table[string,bool]
-    times: Table[string,string]
+    times: Table[string,float]
 
 const
   inputDir* = "in"
   githash* = staticexec "git rev-parse --short HEAD"
-  passStr* = "✅"
-  failStr* = "❌"
-  quesStr* = "❓"
+  passSym* = "✅"
+  failSym* = "❌"
+  quesSym* = "❓"
 
 proc getOutSym(outcomes: Table[string,bool],ps:string):string =
-  if ps notin outcomes: quesStr
-  elif outcomes[ps]: passStr
-  else: failStr
+  if ps notin outcomes: quesSym
+  elif outcomes[ps]: passSym
+  else: failSym
 
-proc formatTime(t:float):string =  &"{t:>5.2f}ms"
-proc getDt*(t1:float):string = formatTime((cpuTime()-t1)*1000)
+proc formatTime*(t:float):string = &"{t:>6.2f}ms"
+proc getDt*(t1:float):float = (cpuTime()-t1)*1000
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
 
@@ -72,8 +72,8 @@ proc onelineDayStr(day:int, aocResults:AocResults):string =
     ds = "day"
     prep = "prep"
   {answers: ans, times: tims, outcomes:outs} ..= aocResults
-  let preptime = tims.getOrDefault("prep",0.0.formatTime)
-  &"d{day:>02}: {tims[ds]}  pr: {preptime}  p1: {tims[$1]} {outs.getOutSym($1)}  p2: {tims[$2]} {outs.getOutSym($2)}"
+  let preptime = tims.getOrDefault("prep",0.0).formatTime
+  &"d{day:>02}:{tims[ds].formattime}  pr:{preptime}  p1:{tims[$1].formattime} {outs.getOutSym($1)}  p2:{tims[$2].formattime} {outs.getOutSym($2)}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:
@@ -94,7 +94,7 @@ template day*(day: static int, body: untyped):untyped =
       let dt = t1.getDt
       aocResults.times["day"] = dt
       when not defined(silentParts):
-        echo "  Time: ",dt
+        echo "  Time:",dt.formatTime
         echon()
       aocResults
   if isMainModule: run day
@@ -105,7 +105,7 @@ template prep*(body:untyped):untyped =
   let dt = t1.getDt
   aocResults.times["prep"] = dt
   when not defined(silentParts):
-    echo "  Prep: ",dt
+    echo "  Prep:",dt.formatTime
 
 proc partActive(p:static typed):bool =
   (p.toString == "1" or
@@ -119,8 +119,8 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     dt = aocResults.times[ps]
     ans = aocResults.answers[ps]
     outSym = aocResults.outcomes.getOutSym(ps)
-  result = &"  Pt{ps:>2}: {dt} {outSym} {ans}"
-  if outSym in failStr:
+  result = &"  Pt{ps:>2}:{dt.formattime} {outSym} {ans}"
+  if outSym in failSym:
     result &= &" -> {aocResults.expected[ps]}"
 
 template part*(p:static typed, body:untyped):untyped =

@@ -34,8 +34,8 @@ proc allDays*() =
   let start = cpuTime()
   for i in days:
     run i
-  let finish = cpuTime()
-  echo &"==== Total Time: {finish-start:.2} s ===="
+  let dt = start.getDt
+  echo &"==== Total Time: {dt.formattime} ===="
 
 when isMainModule:
   allDays()
