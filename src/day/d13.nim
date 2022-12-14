@@ -57,24 +57,18 @@ day 13:
     (jsonall.find(pack1) + 1) * (jsonall.find(pack2) + 1)
 
   note """
-    First thought: Can we walk the pairs of strings comparing them
-    char by char?
+First thought: Can we walk the pairs of strings comparing themchar by char?
 
-    Second thought: Can we somehow use pegs here?
+Second thought: Can we somehow use pegs here?
 
-    Third thought: This is all valid json, let's just parse it!
+Third thought: This is all valid json, let's just parse it!
 
-    I hadn't used the std/json library before, so that took some
-    experimentation. Once finished, it worked great and part 2 was
-    very quick to code.
+I hadn't used the std/json library before, so that took some experimentation. Once finished, it worked great and part 2 was very quick to code.
 
-    For part 2 I first used the built-in sort and was well pleased
-    with it, but it can be much faster. You don't actually have to
-    sort the seq of JsonNodes, you just need to know how many nodes
-    would be to the left of the two dividers _if_ they were sorted.
-    You can do this just by looping through the array once.
+For part 2 I first used the built-in sort and was well pleased with it, but it can be much faster. You don't actually have to sort the seq of JsonNodes, you just need to know how many nodes would be to the left of the two dividers _if_ they were sorted.
+You can do this just by looping through the array once.
 
-    I've preserved my sorting solution as part "2a".
+I've preserved my sorting solution as part "2a".
 
-    It may be possible to improve parsing performance by using a
-    faster json library. Several exist (eg search the nim forum)."""
+It may be possible to improve parsing performance by using a faster json library. Several exist (eg search the nim forum).
+"""

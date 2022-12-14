@@ -46,14 +46,11 @@ day 12:
     dist
 
   note """
-    A chance to use graphwalk.bfs!
+A chance to use graphwalk.bfs!
 
-    There was a bug with my initial implementation that made part 1
-    take way too long.
+There was a bug with my initial implementation that made part 1 take way too long.
 
-    My first part 1 solution did bfs from start to finish, but part 2
-    is easier to do via bfs from the finish towards any 'a', so
-    I reversed part 1 to allow them to share code.
+My first part 1 solution did bfs from start to finish, but part 2 is easier to do via bfs from the finish towards any 'a', so I reversed part 1 to allow them to share code.
 
-    There's still lots of room for improvement, but it works decently
-    for now."""
+There's still lots of room for improvement, but it works decently for now.
+"""

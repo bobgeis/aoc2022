@@ -21,8 +21,6 @@ type
     OrderedTable[U, V] or OrderedTableRef[U, V]
   SomeCountTable*[T] = CountTable[T] or CountTableRef[T]
 
-proc echon*() = echo "" ## Echo an empty string.
-
 proc spy*[T](t: T, msg = ""): T {.inline.} =
   ## For when you want to echo something in the middle of a chain of proc calls.
   echo &"{msg}{$t}"

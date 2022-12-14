@@ -48,4 +48,5 @@ day 10:
     "BRJLFULP"
 
   note """
-  Aha! A day where the output is an image that you have to look at."""
+Aha! A day where the output is an image that you have to look at.
+"""

@@ -35,13 +35,16 @@ proc allDays*() =
   when defined(includeNotes):
     echo "- including notes"
   echo ""
+  when defined(outputMarkdown) and defined(onelineDay):
+    echoDayMdTableHeader()
   let start = cpuTime()
   for i in days:
     run i
   let dt = start.getDt
-  echo "---"
-  echo &"Total Time: {dt.formattime}"
-  echo "---"
+  when defined(outputMarkdown) and defined(onelineDay):
+    echo &"|Tot|{dt.formattime}|"
+  else:
+    echo &"Total Time: {dt.formattime}"
   echo()
 
 when isMainModule:

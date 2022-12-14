@@ -33,6 +33,6 @@ day 0:
 
   # can have note in code
   note """
-    d00 is a trivial example. It's time represents a noisy lower bound
-    for a day."""
+d00 is a trivial example. It's time represents a noisy lower bound for a day.
+"""
 

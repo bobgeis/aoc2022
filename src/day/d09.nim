@@ -36,5 +36,5 @@ day 9:
     domoves(10)
 
   note """
-  My first implementation had a bug where it didn't correctly account
-  for intermediate knots being pulled diagonally."""
+My first implementation had a bug where it didn't correctly account for intermediate knots being pulled diagonally.
+"""

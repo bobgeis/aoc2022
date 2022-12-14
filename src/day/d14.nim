@@ -79,6 +79,5 @@ day 14:
     count
 
   note """
-    Naive 'simulate each sand grain as it falls' works decently. Lots
-    of room for improvement of course... First implementation had
-    little code re-use."""
+Naive 'simulate each sand grain as it falls' works decently. Lots of room for improvement of course... First implementation had little code re-use.
+"""

@@ -36,5 +36,5 @@ day 7:
     sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)
 
   note """
-    The input recursively walks the dirs, calling `ls` exactly once
-    in each. It could have been much worse!"""
+The input recursively walks the dirs, calling `ls` exactly once in each. It could have been much worse!
+"""

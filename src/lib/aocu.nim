@@ -25,7 +25,7 @@ proc getOutSym(outcomes: Table[string,bool],ps:string):string =
   elif outcomes[ps]: passSym
   else: failSym
 
-proc formatTime*(t:float):string = &"{t:>7.2f}ms"
+proc formatTime*(t:float):string = &"{t:>9.2f}"
 proc getDt*(t1:float):float = (cpuTime()-t1)*1000
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
@@ -74,7 +74,10 @@ proc onelineDayStr(day:int, aocResults:AocResults):string =
     prep = "prep"
   {answers: ans, times: tims, outcomes:outs} ..= aocResults
   let preptime = tims.getOrDefault("prep",0.0).formatTime
-  &"d{day:>02}:{tims[ds].formattime}   pr:{preptime}   p1:{tims[$1].formattime} {outs.getOutSym($1)}   p2:{tims[$2].formattime} {outs.getOutSym($2)}"
+  when defined(outputMarkdown):
+    &"|d{day:>02}|{tims[ds].formattime}|{preptime}|{tims[$1].formattime}| {outs.getOutSym($1)} |{tims[$2].formattime}| {outs.getOutSym($2)} |"
+  else:
+    &"d{day:>02}:{tims[ds].formattime}   pr:{preptime}   p1:{tims[$1].formattime} {outs.getOutSym($1)}   p2:{tims[$2].formattime} {outs.getOutSym($2)}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:
@@ -84,7 +87,15 @@ proc run*(day: int) =
 
 proc echoNotes*(aocResults:AocResults) =
   for id,note in aocResults.notes.pairs:
-    echo &"  Note {id}\n{note}"
+    echo &"\n{id} {note}"
+
+proc echoDayMdTableHeader*() =
+  echo "|Day|Total(ms)| Prep(ms)|  Pt1(ms)| ?  |  Pt2(ms)| ?  |"
+  echo "|---|--------:|--------:|--------:|:--:|--------:|:--:|"
+
+proc echoPartMdTableHeader*() =
+  echo "| Part  |Time(ms) | ?  |   Answer   |  Expected  |"
+  echo "|:-----:|--------:|:--:|------------|------------|"
 
 template day*(day: static int, body: untyped):untyped =
   block:
@@ -94,14 +105,20 @@ template day*(day: static int, body: untyped):untyped =
         aocResults {.inject.} = AocResults()
       when not defined(silentParts):
         echo "### Day ",day," for ",path
+        when defined(outputMarkdown):
+          echoPartMdTableHeader()
       let t1 = cputime()
       body
       let dt = t1.getDt
       aocResults.times["day"] = dt
       when not defined(silentParts):
-        echo "  Time:",dt.formatTime
+        when defined(outputMarkdown):
+          echo "| Time  |",dt.formatTime,"|"
+        else:
+          echo "  Total:",dt.formatTime,"ms"
         aocResults.echoNotes
-        echon()
+        echo "---"
+        echo()
       aocResults
   if isMainModule: run day
 
@@ -111,7 +128,9 @@ template prep*(body:untyped):untyped =
   let dt = t1.getDt
   aocResults.times["prep"] = dt
   when not defined(silentParts):
-    echo "  Prep:",dt.formatTime
+    when defined(outputMarkdown):
+      echo "| Prep  |",dt.formatTime,"|"
+    else: echo "  Prep: ",dt.formatTime,"ms"
 
 proc partActive(p:static typed):bool =
   (p.toString == "1" or
@@ -125,9 +144,14 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     dt = aocResults.times[ps]
     ans = aocResults.answers[ps]
     outSym = aocResults.outcomes.getOutSym(ps)
-  result = &"  Pt{ps:>2}:{dt.formattime} {outSym} {ans}"
-  if outSym in failSym:
-    result &= &" -> {aocResults.expected[ps]}"
+    expected = aocResults.expected.getOrDefault(ps,"")
+  when defined(outputMarkdown):
+    result = &"|{ps:^7}|{dt.formattime}|{outSym:^3}|{ans:^12}|{expected:^12}|"
+  else:
+    if outSym == passSym:
+      result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans}"
+    else:
+      result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans} -> {expected}"
 
 template part*(p:static typed, body:untyped):untyped =
   block:

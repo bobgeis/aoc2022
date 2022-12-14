@@ -17,7 +17,7 @@ const
   libImpsFile = &"{nimLibDir}/imps.nim"
   allDaysFile = &"{nimTestDir}/days.nim"
   libTestFile = &"{nimTestDir}/libs.nim"
-  resultsTxt = &"results.txt"
+  resultsMd = &"results.md"
 
 switch("out", &"{compiledFile}")
 --hints: off
@@ -176,12 +176,11 @@ task de, "Execute the last compiled program. Args will be passed to the program.
   else:
     echo &"No compiled file: {compiledFile}"
 
-task ddw, "Run days.nim twice, once for oneline days, once for discussion, and write output to a file.":
-  allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts")
+task ddm,"Run days.nim twice, once for oneline days, once for discussion, and write output to a file.":
+  allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts -d:outputMarkdown")
   var runs = 3
   for i in 1..runs:
     excho &"{compiledFile} &>/dev/null"
-  excho &"{compiledFile} > {resultsTxt}"
+  excho &"{compiledFile} > {resultsMd}"
   excho &"nim clean"
-  excho &"nim r -d:fast -d:includeNotes {allDaysFile} >> {resultsTxt}"
-
+  excho &"nim r -d:fast -d:includeNotes -d:outputMarkdown {allDaysFile} >> {resultsMd}"

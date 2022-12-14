@@ -53,15 +53,9 @@ day 11:
     monkeys.business(10_000,wrap=true)
 
   note """
-    My first implementation used scanTuple for parsing and it quickly
-    became cumbersome. Scanf is actually much cleaner when you have
-    multiple potential strings to match and it works well with
-    doAssert.
+My first implementation used scanTuple for parsing and it quickly became cumbersome. Scanf is actually much cleaner when you have multiple potential strings to match and it works well with doAssert.
 
-    I used a trick from earlier years where you multiply all the
-    period of all the loops together to get the period of a much
-    larger loop. This larger period is big, but it still fits into
-    an int, so we don't worry about overflow.
+I used a trick from earlier years where you multiply all the period of all the loops together to get the period of a much larger loop. This larger period is big, but it still fits into an int, so we don't worry about overflow.
 
-    Also remember that args known at compile time can be defined
-    as `static` to save a little bit of work at run-time."""
+Also remember that args known at compile time can be defined as `static` to save a little bit of work at run-time.
+"""
