@@ -12,5 +12,5 @@ import std/[algorithm, deques, intsets, math, memfiles, options,
 import pkg/[itertools, memo, stint]
 
 # local utils: src/lib
-import aocutils, bedrock, graphwalk, shenanigans, tibia, vecna
+import aocu, bedrock, graphwalk, shenanigans, tibia, vecna
 
