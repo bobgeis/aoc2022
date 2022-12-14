@@ -245,21 +245,21 @@ proc getMinMax*[N](hs: SomeSet[Vec[N, int]]): (Vec[N, int], Vec[N, int]) =
 # Walking sparse collections
 
 
-iterator grid*[T](t: SomeTab2i[T]): Vec2i =
+iterator grid2*[T](t: SomeTab2i[T]): Vec2i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for y in mins.y..maxs.y:
     for x in mins.x..maxs.x:
       yield [x, y]
 
-iterator grid*(t: SomeSet2i or SomeCtab2i): Vec2i =
+iterator grid2*(t: SomeSet2i or SomeCtab2i): Vec2i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for y in mins.y..maxs.y:
     for x in mins.x..maxs.x:
       yield [x, y]
 
-iterator grid*[T](t: SomeTab3i[T]): Vec3i =
+iterator grid3*[T](t: SomeTab3i[T]): Vec3i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for z in mins.z..maxs.z:
@@ -267,7 +267,7 @@ iterator grid*[T](t: SomeTab3i[T]): Vec3i =
       for x in mins.x..maxs.x:
         yield [x, y, z]
 
-iterator grid*(t: SomeSet3i or SomeCtab3i): Vec3i =
+iterator grid3*(t: SomeSet3i or SomeCtab3i): Vec3i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for z in mins.z..maxs.z:
@@ -275,7 +275,7 @@ iterator grid*(t: SomeSet3i or SomeCtab3i): Vec3i =
       for x in mins.x..maxs.x:
         yield [x, y, z]
 
-iterator grid*[T](t: SomeTab4i[T]): Vec4i =
+iterator grid4*[T](t: SomeTab4i[T]): Vec4i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for w in mins.w..maxs.w:
@@ -284,7 +284,7 @@ iterator grid*[T](t: SomeTab4i[T]): Vec4i =
         for x in mins.x..maxs.x:
           yield [x, y, z, w]
 
-iterator grid*(t: SomeSet4i or SomeCtab4i): Vec4i =
+iterator grid4*(t: SomeSet4i or SomeCtab4i): Vec4i =
   ## Walk a grid created from the keys of a sparse collection.
   let (mins, maxs) = t.getMinMax
   for w in mins.w..maxs.w:
@@ -300,37 +300,31 @@ iterator grid*(t: SomeSet4i or SomeCtab4i): Vec4i =
 proc draw*[T](t: SomeTab2i[T]; p: proc(v: Vec2i): char): string =
   ## Turn a sparse collection into a string for echoing
   var yPrev = int.high
-  for v in t.grid():
+  for v in t.grid2():
     if v.y != yPrev:
       yPrev = v.y
       result.add '\n'
     result.add p(v)
 
-proc draw*(t: SomeCtab2i; p: proc(v: Vec2i): char): string =
+proc draw*[T](t: SomeTab2i[T]):string =
+  t.draw((v) => (if v in t: '#' else: '.'))
+
+proc draw*(t: SomeCtab2i or SomeSet2i; p: proc(v: Vec2i): char): string =
   ## Turn a sparse collection into a string for echoing
   var yPrev = int.high
-  for v in t.grid():
+  for v in t.grid2():
     if v.y != yPrev:
       yPrev = v.y
       result.add '\n'
     result.add p(v)
 
-proc draw*(t: SomeSet2i; p: proc(v: Vec2i): char): string =
-  ## Turn a sparse collection into a string for echoing
-  var yPrev = int.high
-  for v in t.grid():
-    if v.y != yPrev:
-      yPrev = v.y
-      result.add '\n'
-    result.add p(v)
-
-proc draw*(t: SomeSet2i):string =
+proc draw*(t: SomeCtab2i or SomeSet2i):string =
   t.draw((v) => (if v in t: '#' else: '.'))
 
 proc draw*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
   var zPrev, yPrev = int.high
-  for v in t.grid():
+  for v in t.grid3():
     if v.z != zPrev:
       zPrev = v.z
       result.add &"\n\nz={v.z}"
@@ -339,22 +333,10 @@ proc draw*[T](t: SomeTab3i[T]; p: proc(v: Vec3i): char): string =
       result.add '\n'
     result.add p(v)
 
-proc draw*(t: SomeCtab3i; p: proc(v: Vec3i): char): string =
+proc draw*(t: SomeCtab3i or SomeSet3i; p: proc(v: Vec3i): char): string =
   ## Turn a sparse collection into a string for echoing
   var zPrev, yPrev = int.high
-  for v in t.grid():
-    if v.z != zPrev:
-      zPrev = v.z
-      result.add &"\n\nz={v.z}"
-    if v.y != yPrev:
-      yPrev = v.y
-      result.add '\n'
-    result.add p(v)
-
-proc draw*(t: SomeSet3i; p: proc(v: Vec3i): char): string =
-  ## Turn a sparse collection into a string for echoing
-  var zPrev, yPrev = int.high
-  for v in t.grid():
+  for v in t.grid3():
     if v.z != zPrev:
       zPrev = v.z
       result.add &"\n\nz={v.z}"
