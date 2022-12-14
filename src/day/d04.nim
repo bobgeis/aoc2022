@@ -19,12 +19,12 @@ day 4:
         inc overlaps
 
   part 1:
-    answerT 2
-    answer 462
+    expectT 2
+    expect 462
     contained
 
 
   part 2:
-    answerT 4
-    answer 835
+    expectT 4
+    expect 835
     overlaps

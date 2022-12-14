@@ -25,8 +25,8 @@ day 13:
       return 0
 
   part 1:
-    answerT 13
-    answer 5557
+    expectT 13
+    expect 5557
     var total = 0
     for i,pair in jsonPairs:
       let c = compare(pair[0],pair[1])
@@ -35,8 +35,8 @@ day 13:
     total
 
   part 2:
-    answerT 140
-    answer 22425
+    expectT 140
+    expect 22425
     let
       pack1 = %*[[2]]
       pack2 = %*[[6]]

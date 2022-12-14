@@ -143,16 +143,16 @@ template part*(p:static typed, body:untyped):untyped =
         echo ps.partResultStr(aocResults)
     else: discard
 
-template answer*(suffix:static string, res:typed):untyped =
+template expect*(suffix:static string, res:typed):untyped =
   ## Provide an input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
   when not defined(skipTests):
     if suffix == aocPathSuffix:
       aocResults.expected[aocCurrentPartString] = res.tostring
 
-template answer*(res:typed):untyped = answer "", res ## Like 2 arg answer but default input
-template answerT*(res:typed):untyped = answer "t1",res ## Like 2 arg answer but test input
-template answerT2*(res:typed):untyped = answer "t2",res ## Like 2 arg answer but second test input
-template answerO*(res:typed):untyped = answer "o1",res ## Like 2 arg answer but others' input
+template expect*(res:typed):untyped = expect "", res ## Like 2 arg expect but default input
+template expectT*(res:typed):untyped = expect "t1",res ## Like 2 arg expect but test input
+template expectT2*(res:typed):untyped = expect "t2",res ## Like 2 arg expect but second test input
+template expectO*(res:typed):untyped = expect "o1",res ## Like 2 arg expect but others' input
 
 proc discussion*(body:string) =
   ## Notes or discussion about the day to echo to output.

@@ -12,12 +12,12 @@ day 6:
           return i + n
 
   part 1:
-    answerT 7
-    answer 1210
+    expectT 7
+    expect 1210
     walk(4)
 
 
   part 2:
-    answerT 19
-    answer 3476
+    expectT 19
+    expect 3476
     walk(14)

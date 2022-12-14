@@ -36,12 +36,12 @@ day 5:
       stacks.doit(result.add it[^1])
 
   part 1:
-    answerT "CMZ"
-    answer "SHMSDGZVC"
+    expectT "CMZ"
+    expect "SHMSDGZVC"
     domoves()
 
 
   part 2:
-    answerT "MCD"
-    answer "VRZGHDFBQ"
+    expectT "MCD"
+    expect "VRZGHDFBQ"
     domoves(rev=false)

@@ -11,8 +11,8 @@ day 8:
       corner = [width,height]
 
   part 1:
-    answerT 21
-    answer 1854
+    expectT 21
+    expect 1854
     var visible = initSet2i()
 
     proc walk(start,dir:Vec2i) =
@@ -36,8 +36,8 @@ day 8:
     visible.card
 
   part 2:
-    answer 527340
-    answerT 8
+    expect 527340
+    expectT 8
     var best = 1
     for y in 1..<height:
       for x in 1..<width:

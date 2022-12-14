@@ -20,12 +20,12 @@ day 2:
       score2 += round((a + x - 1).floormod(3),x)
 
   part 1:
-    answerT 15
-    answer 12276
+    expectT 15
+    expect 12276
     score1
 
 
   part 2:
-    answer 12
-    answer 9975
+    expect 12
+    expect 9975
     score2

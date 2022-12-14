@@ -17,12 +17,12 @@ day 1:
     elves.add elf
 
   part 1:
-    answerT 24000
-    answer 68923
+    expectT 24000
+    expect 68923
     elves.max
 
   elves.sort
   part 2:
-    answerT 45000
-    answer 200044
+    expectT 45000
+    expect 200044
     elves[^3..^1].sum
