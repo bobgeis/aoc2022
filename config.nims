@@ -19,6 +19,7 @@ const
   libTestFile = &"{nimTestDir}/libs.nim"
   resultsFull = &"{resultsDir}/full.txt"
   resultsFast = &"{resultsDir}/fast.txt"
+  resultsMd = &"results.md"
 
 switch("out", &"{compiledFile}")
 --hints: off
@@ -177,15 +178,12 @@ task de, "Execute the last compiled program. Args will be passed to the program.
   else:
     echo &"No compiled file: {compiledFile}"
 
-task drw, "Run days.nim and write to a file. This will include all parts and comments.":
-  excho &"nim r -d:fast -d:includeDiscussion {allDaysFile} > {resultsFull}"
-  excho &"cat {resultsFull}"
-
-task dtw, "Compile days.nim for speed, without extra parts, and then execute writing to file.":
-  var runs = 5
-  for i in 2..paramCount():
-    runs = paramStr(i).parseInt
+task ddw, "Run days.nim twice, once for oneline days, once for discussion, and write output to a file.":
   allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts")
+  var runs = 3
   for i in 1..runs:
-    excho &"{compiledFile} > {resultsFast}"
-  excho &"cat {resultsFast}"
+    excho &"{compiledFile} &>/dev/null"
+  excho &"{compiledFile} > {resultsMd}"
+  excho &"nim clean"
+  excho &"nim r -d:fast -d:includeNotes {allDaysFile} >> {resultsMd}"
+

@@ -50,6 +50,7 @@ template withDebug*(x:untyped):untyped =
     x
 
 # operators can't be passed in as procvar!
+proc toString*(t:string):string = t ## same as `$` but can be used as procvar.
 proc toString*[T](t: T): string = $t ## same as `$` but can be used as procvar.
 proc lt*[T](a,b:T):bool = a < b ## Same as `<` but can be used as procvar.
 proc gt*[T](a,b:T):bool = a > b ## Same as `>` but can be used as procvar.

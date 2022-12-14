@@ -10,6 +10,7 @@ type
     answers: Table[string,string]
     expected: Table[string,string]
     outcomes: Table[string,bool]
+    notes: Table[string,string]
     times: Table[string,float]
 
 const
@@ -24,7 +25,7 @@ proc getOutSym(outcomes: Table[string,bool],ps:string):string =
   elif outcomes[ps]: passSym
   else: failSym
 
-proc formatTime*(t:float):string = &"{t:>6.2f}ms"
+proc formatTime*(t:float):string = &"{t:>7.2f}ms"
 proc getDt*(t1:float):float = (cpuTime()-t1)*1000
 
 proc inputPath*(day: int | string, suffix:string=""): string = &"{inputDir}/i{day:02}{suffix}.txt"
@@ -73,13 +74,17 @@ proc onelineDayStr(day:int, aocResults:AocResults):string =
     prep = "prep"
   {answers: ans, times: tims, outcomes:outs} ..= aocResults
   let preptime = tims.getOrDefault("prep",0.0).formatTime
-  &"d{day:>02}:{tims[ds].formattime}  pr:{preptime}  p1:{tims[$1].formattime} {outs.getOutSym($1)}  p2:{tims[$2].formattime} {outs.getOutSym($2)}"
+  &"d{day:>02}:{tims[ds].formattime}   pr:{preptime}   p1:{tims[$1].formattime} {outs.getOutSym($1)}   p2:{tims[$2].formattime} {outs.getOutSym($2)}"
 
 proc run*(day: int) =
   for path in day.getInputPaths:
     let aocResults = aocDayProcs[day](path)
     when defined(onelineDay):
       echo day.onelineDayStr(aocResults)
+
+proc echoNotes*(aocResults:AocResults) =
+  for id,note in aocResults.notes.pairs:
+    echo &"  Note {id}\n{note}"
 
 template day*(day: static int, body: untyped):untyped =
   block:
@@ -88,13 +93,14 @@ template day*(day: static int, body: untyped):untyped =
         aocPathSuffix {.inject.} = path.inputPathSuffix
         aocResults {.inject.} = AocResults()
       when not defined(silentParts):
-        echo "Day ",day," for ",path
+        echo "### Day ",day," for ",path
       let t1 = cputime()
       body
       let dt = t1.getDt
       aocResults.times["day"] = dt
       when not defined(silentParts):
         echo "  Time:",dt.formatTime
+        aocResults.echoNotes
         echon()
       aocResults
   if isMainModule: run day
@@ -154,10 +160,15 @@ template expectT*(res:typed):untyped = expect "t1",res ## Like 2 arg expect but 
 template expectT2*(res:typed):untyped = expect "t2",res ## Like 2 arg expect but second test input
 template expectO*(res:typed):untyped = expect "o1",res ## Like 2 arg expect but others' input
 
-proc discussion*(body:string) =
-  ## Notes or discussion about the day to echo to output.
-  when defined(includeDiscussion):
-    echo &"  Discussion:\n{body}"
+template note*(id: static typed, body:string) =
+  ## Notes about the day to echo to output.
+  when defined(includeNotes):
+    aocResults.notes[id.tostring] = body
+
+template note*(body:string) =
+  ## Notes about the day to echo to output.
+  when defined(includeNotes):
+    note("",body)
 
 #
 

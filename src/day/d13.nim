@@ -56,7 +56,7 @@ day 13:
     jsonall.sort(compare)
     (jsonall.find(pack1) + 1) * (jsonall.find(pack2) + 1)
 
-  discussion """
+  note """
     First thought: Can we walk the pairs of strings comparing them
     char by char?
 

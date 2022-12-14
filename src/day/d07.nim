@@ -35,6 +35,6 @@ day 7:
     expectT 24_933_642
     sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)
 
-  discussion """
+  note """
     The input recursively walks the dirs, calling `ls` exactly once
     in each. It could have been much worse!"""

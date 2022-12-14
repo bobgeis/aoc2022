@@ -17,25 +17,32 @@ const
     11,
     12,
     13,
+    14,
   ] ## numbers of completed days
   dayModules = days.mapit( &"d{it:02}" )
 
 importModules(dayModules,"../day/")
 
 proc allDays*() =
-  echo &"==== All Days at #{githash} ===="
+  echo()
+  echo &"## All Days at #{githash}"
   when defined(danger):
-    echo "-- optimized release"
+    echo "- optimized release"
   when defined(debug):
-    echo "-- running debug code"
+    echo "- running debug code"
   when defined(skipExtraParts):
-    echo "-- skipping extra parts"
+    echo "- skipping extra parts"
+  when defined(includeNotes):
+    echo "- including notes"
   echo ""
   let start = cpuTime()
   for i in days:
     run i
   let dt = start.getDt
-  echo &"==== Total Time: {dt.formattime} ===="
+  echo "---"
+  echo &"Total Time: {dt.formattime}"
+  echo "---"
+  echo()
 
 when isMainModule:
   allDays()

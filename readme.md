@@ -30,9 +30,9 @@ I'm using vscode with [nim](https://marketplace.visualstudio.com/items?itemName=
 
 For nimble packages, the `stint` package is vital for dealing with very large ints. `memo` and `itertools` are sometimes very helpful and convenient.
 
-I have a `lib` dir of helper code assembled from previous years. `aocutils` has handy utils for working in the repo. `bedrock` has misc utilities. `shenanigans` is for experimenting with macros.`tiba` and `vecna` are for working with 2D & 3D points (which happens a _lot_ in advent of code).
+I have a `lib` dir of helper code assembled from previous years. `aocu` has utils for working in the repo. `bedrock` has misc utilities. `graphwalk` is for graph traversal algorithms. `imps` is a file to include to import a lot of common libraries into a file. `shenanigans` is for experimenting with macros.`tibia` and `vecna` are for working with 2D & 3D points/vectors (which happens a _lot_ in advent of code); `vecna` is for the vectors themselves and `tibia` is for using them as keys in datastructures.
 
 There are scripts in the `config.nims` file that exist to streamline common tasks. For example `nim di 1` to init a new day, and `nim dr last` to run the highest day. Use `nim help` to list the tasks.
 
-In the results folder there should be results output for days that are finished. `fast.txt` should have results with good times, while `full.txt` will have any extra parts.
+The results with timings and some notes are in `results.md`.
 

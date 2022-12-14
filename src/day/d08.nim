@@ -59,7 +59,7 @@ day 8:
           best = curr
     best
 
-  discussion """
+  note """
     In retrospect, part 1 and part 2 could probably have each used
     the same kind of `ray` function. But instead I did part 1 by
     walking across the whole forest from each direction and then part

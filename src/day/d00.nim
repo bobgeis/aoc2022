@@ -31,8 +31,8 @@ day 0:
   # # asserts are off with -d:danger
   # assert 2 == 3
 
-  # can have discussion in code
-  discussion """
-    d00 is a trival example. It's time represents a noisy lower bound
+  # can have note in code
+  note """
+    d00 is a trivial example. It's time represents a noisy lower bound
     for a day."""
 

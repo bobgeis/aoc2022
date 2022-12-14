@@ -45,7 +45,7 @@ day 12:
     discard bfs(finish,adjs,fin)
     dist
 
-  discussion """
+  note """
     A chance to use graphwalk.bfs!
 
     There was a bug with my initial implementation that made part 1

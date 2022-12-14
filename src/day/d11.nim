@@ -52,7 +52,7 @@ day 11:
     expect 23_612_457_316
     monkeys.business(10_000,wrap=true)
 
-  discussion """
+  note """
     My first implementation used scanTuple for parsing and it quickly
     became cumbersome. Scanf is actually much cleaner when you have
     multiple potential strings to match and it works well with

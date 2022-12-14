@@ -78,7 +78,7 @@ day 14:
           break
     count
 
-  discussion """
+  note """
     Naive 'simulate each sand grain as it falls' works decently. Lots
     of room for improvement of course... First implementation had
     little code re-use."""
