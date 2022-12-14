@@ -53,6 +53,16 @@ day 14:
     expectT 93
     expect 26625
     let ymax = ymax + 2
+    proc adjs(v:Vec2i):seq[Vec2i] =
+      for u in [[1,1],[-1,1],[0,1]]:
+        let w = u + v
+        if w.y != ymax and w notin map: result.add w
+    initsand.dfs(adjs).len
+
+  part 2.1:
+    expectT 93
+    expect 26625
+    let ymax = ymax + 2
     var
       map = map
       count = 0
@@ -79,5 +89,7 @@ day 14:
     count
 
   note """
-Naive 'simulate each sand grain as it falls' works decently. Lots of room for improvement of course... First implementation had little code re-use.
+Naive 'simulate each sand grain as it falls' works decently. Part 2 took 90-120ms, so slowest by a long shot, but doable. Lots of room for improvement of course... First implementation had little code re-use and the parsing was messy.
+
+Second implementation of part 2 used depth-first-search and improved run time from ~100 -> ~10 ms. Pretty decent.
 """

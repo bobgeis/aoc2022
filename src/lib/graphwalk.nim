@@ -23,6 +23,24 @@ proc bfs*[T](
       q.addLast((cost + 1, m))
   return result
 
+proc dfs*[T](
+    start:T,
+    adjs:(T) -> seq[T],
+    fin:(Paths[T],T) -> bool = alwaysFalse):
+    Paths[T] =
+  ## depth-first-search: Given a start node, a callback to get a list of adjacent nodes, and an optional early end callback. Returns a paths table that maps every reachable node to its distance from the start node and the node it was reached from.
+  var q = initDeque[(int,T)]()
+  result[start] = (0,start)
+  q.addLast((0,start))
+  while q.len > 0:
+    let (cost,n) = q.popLast
+    for m in n.adjs:
+      if m in result: continue
+      result[m] = (cost + 1, n)
+      if result.fin(m): return
+      q.addLast((cost + 1, m))
+  return result
+
 proc walkPath*[A:SomeNumber;T](paths:Table[T,(A,T)],stop:T):seq[T] =
   ## Given a paths table (like from `bfs`) and a stop node, get the full path from the paths table's start node to the stop node, if it has been found.
   if stop notin paths: return @[]
