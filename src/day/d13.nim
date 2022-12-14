@@ -38,6 +38,18 @@ day 13:
     let
       pack1 = %*[[2]]
       pack2 = %*[[6]]
+    var off1,off2 = 1
+    for i,pack in jsonPairs.flatten:
+      if compare(pack,pack1) < 1: inc off1
+      if compare(pack,pack2) < 1: inc off2
+    off1 * (off2 + 1)
+
+  part "2a":
+    expectT 140
+    expect 22425
+    let
+      pack1 = %*[[2]]
+      pack2 = %*[[6]]
     var jsonAll = jsonPairs.flatten
     jsonall.add pack1
     jsonall.add pack2
@@ -56,5 +68,13 @@ day 13:
     experimentation. Once finished, it worked great and part 2 was
     very quick to code.
 
-    It may be possible to improve performance by using a faster json
-    library. Several exist (eg search the nim forum)."""
+    For part 2 I first used the built-in sort and was well pleased
+    with it, but it can be much faster. You don't actually have to
+    sort the seq of JsonNodes, you just need to know how many nodes
+    would be to the left of the two dividers _if_ they were sorted.
+    You can do this just by looping through the array once.
+
+    I've preserved my sorting solution as part "2a".
+
+    It may be possible to improve parsing performance by using a
+    faster json library. Several exist (eg search the nim forum)."""
