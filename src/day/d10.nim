@@ -47,3 +47,5 @@ day 10:
 
     "BRJLFULP"
 
+  discussion """
+  Aha! A day where the output is an image that you have to look at."""

@@ -34,3 +34,7 @@ day 9:
     expectT 36
     expect 2630
     domoves(10)
+
+  discussion """
+  My first implementation had a bug where it didn't correctly account
+  for intermediate knots being pulled diagonally."""

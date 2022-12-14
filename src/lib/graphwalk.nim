@@ -3,7 +3,7 @@ import std/[algorithm, deques, heapqueue, math, sets, sugar, tables]
 
 import bedrock, shenanigans
 
-type Paths[T] = Table[T,(int,T)]
+type Paths*[T] = Table[T,(int,T)]
 
 proc bfs*[T](
     start:T,
