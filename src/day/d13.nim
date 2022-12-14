@@ -17,12 +17,10 @@ day 13:
       let
         left = if left.kind == JArray: left else: %[left]
         right = if right.kind == JArray: right else: %[right]
-      if left.len == 0: return cmp(left.len, right.len)
-      for i in 0..<left.len:
-        if i + 1 > right.len: return 1
+      for i in 0..<min(left.len,right.len):
         let c = compare(left[i],right[i])
         if c != 0: return c
-      return 0
+      return cmp(left.len,right.len)
 
   part 1:
     expectT 13
