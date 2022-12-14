@@ -1,19 +1,19 @@
-==== All Days at #26e6265 ====
+==== All Days at #77dab11 ====
 -- optimized release
 -- skipping extra parts
 
-d00:  0.10ms  pr:  0.09ms  p1:  0.01ms ✅  p2:  0.00ms ✅
-d01:  0.32ms  pr:  0.29ms  p1:  0.00ms ✅  p2:  0.00ms ✅
-d02:  0.17ms  pr:  0.16ms  p1:  0.00ms ✅  p2:  0.00ms ✅
-d03:  0.29ms  pr:  0.17ms  p1:  0.09ms ✅  p2:  0.03ms ✅
-d04:  0.27ms  pr:  0.26ms  p1:  0.00ms ✅  p2:  0.00ms ✅
-d05:  0.28ms  pr:  0.17ms  p1:  0.02ms ✅  p2:  0.09ms ✅
-d06:  0.32ms  pr:  0.03ms  p1:  0.05ms ✅  p2:  0.23ms ✅
-d07:  0.29ms  pr:  0.28ms  p1:  0.01ms ✅  p2:  0.01ms ✅
-d08:  2.10ms  pr:  1.20ms  p1:  0.36ms ✅  p2:  0.53ms ✅
-d09:  1.78ms  pr:  0.34ms  p1:  0.94ms ✅  p2:  0.49ms ✅
-d10:  0.06ms  pr:  0.05ms  p1:  0.00ms ✅  p2:  0.00ms ✅
-d11: 20.79ms  pr:  0.27ms  p1:  0.03ms ✅  p2: 20.49ms ✅
-d12: 10.38ms  pr:  0.90ms  p1:  3.79ms ✅  p2:  5.68ms ✅
-d13:  3.49ms  pr:  2.43ms  p1:  0.08ms ✅  p2:  0.96ms ✅
-==== Total Time:  41.58ms ====
+d00:  0.15ms  pr:  0.12ms  p1:  0.01ms ✅  p2:  0.00ms ✅
+d01:  0.38ms  pr:  0.34ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d02:  0.23ms  pr:  0.22ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d03:  0.39ms  pr:  0.19ms  p1:  0.15ms ✅  p2:  0.04ms ✅
+d04:  0.20ms  pr:  0.19ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d05:  0.30ms  pr:  0.19ms  p1:  0.02ms ✅  p2:  0.09ms ✅
+d06:  0.40ms  pr:  0.07ms  p1:  0.10ms ✅  p2:  0.23ms ✅
+d07:  0.31ms  pr:  0.29ms  p1:  0.00ms ✅  p2:  0.00ms ✅
+d08:  2.05ms  pr:  1.19ms  p1:  0.35ms ✅  p2:  0.50ms ✅
+d09:  1.83ms  pr:  0.32ms  p1:  0.99ms ✅  p2:  0.51ms ✅
+d10:  0.06ms  pr:  0.04ms  p1:  0.00ms ✅  p2:  0.01ms ✅
+d11: 20.47ms  pr:  0.27ms  p1:  0.03ms ✅  p2: 20.16ms ✅
+d12:  7.03ms  pr:  0.91ms  p1:  2.84ms ✅  p2:  3.28ms ✅
+d13:  1.86ms  pr:  1.33ms  p1:  0.03ms ✅  p2:  0.49ms ✅
+==== Total Time:  36.54ms ====
