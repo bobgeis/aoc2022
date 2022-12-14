@@ -48,3 +48,33 @@ day 14:
           inc count
           break
     count
+
+  part 2:
+    expectT 93
+    expect 26625
+    let ymax = ymax + 2
+    var
+      map = map
+      count = 0
+      falling = true
+    while true:
+      falling = true
+      var
+        sand = initsand
+      if sand in map: break
+      while falling:
+        falling = false
+        if sand.y == ymax:
+          map[sand] = 'O'
+          break
+        for dir in grav:
+          if dir + sand notin map:
+            sand += dir
+            falling = true
+            break
+        if not falling:
+          map[sand] = 'O'
+          inc count
+          break
+    count
+
