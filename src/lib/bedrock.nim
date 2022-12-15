@@ -191,6 +191,9 @@ template doit*(s: typed, op: untyped): untyped =
   for it {.inject.} in items(s):
     op
 
+proc `min=`*[T](a: var T, b:T) = a = min(a,b)
+proc `max=`*[T](a: var T, b:T) = a = max(a,b)
+
 proc flatten*[T](ss: seq[seq[T]]): seq[T] =
   ## Take a seq of seq of T and return a seq of T.
   for s in ss:
