@@ -42,7 +42,7 @@ proc allDays*() =
     run i
   let dt = start.getDt
   when defined(outputMarkdown) and defined(onelineDay):
-    echo &"|Tot|{dt.formattime}|"
+    echo &"|All|{dt.formattime}|"
   else:
     echo &"Total Time: {dt.formattime}"
   echo()

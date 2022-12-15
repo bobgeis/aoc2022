@@ -144,14 +144,12 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     dt = aocResults.times[ps]
     ans = aocResults.answers[ps]
     outSym = aocResults.outcomes.getOutSym(ps)
-    expected = aocResults.expected.getOrDefault(ps,"")
+    expected = if outSym == failSym: aocResults.expected.getOrDefault(ps,"") else: ""
   when defined(outputMarkdown):
     result = &"|{ps:^7}|{dt.formattime}|{outSym:^3}|{ans:^12}|{expected:^12}|"
   else:
-    if outSym == passSym:
-      result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans}"
-    else:
-      result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans} -> {expected}"
+    result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans}"
+    if outSym == failSym: result &=  &" -> {expected}"
 
 template part*(p:static typed, body:untyped):untyped =
   block:

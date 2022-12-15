@@ -14,8 +14,7 @@ day 14:
             result[v] = '#'
 
     let
-      input = path.lines.toseq.mapit(it.parseline)
-      map = makemap(input)
+      map = path.lines.toseq.mapit(it.parseline).makemap
       initsand = [500,0]
       grav = [[0,1],[-1,1],[1,1]]
       ymax = map.getMinMax[1][1]
@@ -89,7 +88,7 @@ day 14:
     count
 
   note """
-Naive 'simulate each sand grain as it falls' works decently. Part 2 took 90-120ms, so slowest by a long shot, but doable. Lots of room for improvement of course... First implementation had little code re-use and the parsing was messy.
+Naive "simulate each sand grain as it falls" works decently. Part 2 took 90-150ms, so slowest by a long shot, but doable. Lots of room for improvement of course... First implementation had little code re-use and the parsing was messy.
 
-Second implementation of part 2 used depth-first-search and improved run time from ~100 -> ~10 ms. Pretty decent.
+Second implementation of part 2 used depth-first-search and improved run time by about 10X. Pretty decent. The first impl is left as "part 2.1"
 """
