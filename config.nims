@@ -89,7 +89,13 @@ proc initialFile(day:int):string =
 include ../lib/imps
 
 day {day}:
-  let input = path.readFile
+  prep:
+    let input = path.readFile
+
+  part 1:
+    # expectT 0
+    # expect 0
+    "?"
 """
 
 proc createNewDay(day:int) =
