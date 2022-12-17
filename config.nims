@@ -184,7 +184,7 @@ task de, "Execute the last compiled program. Args will be passed to the program.
 
 task ddm,"Run days.nim twice, once for oneline days, once for discussion, and write output to a file.":
   allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts -d:outputMarkdown")
-  var runs = 3
+  var runs = 1
   for i in 1..runs:
     excho &"{compiledFile} &>/dev/null"
   excho &"{compiledFile} > {resultsMd}"

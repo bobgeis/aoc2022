@@ -1,42 +1,43 @@
 
-## All Days at #0557a09
+## All Days at #3ec06e1
 - optimized release
 - skipping extra parts
 
 |Day|Total(ms)| Prep(ms)|  Pt1(ms)| ?  |  Pt2(ms)| ?  |
 |---|--------:|--------:|--------:|:--:|--------:|:--:|
-|d00|     0.09|     0.07|     0.00| ✅ |     0.00| ✅ |
-|d01|     0.32|     0.29|     0.00| ✅ |     0.00| ✅ |
-|d02|     0.17|     0.16|     0.00| ✅ |     0.00| ✅ |
-|d03|     0.37|     0.18|     0.13| ✅ |     0.04| ✅ |
-|d04|     0.17|     0.16|     0.00| ✅ |     0.00| ✅ |
-|d05|     0.26|     0.14|     0.02| ✅ |     0.09| ✅ |
-|d06|     0.32|     0.03|     0.05| ✅ |     0.23| ✅ |
-|d07|     0.30|     0.29|     0.00| ✅ |     0.00| ✅ |
-|d08|     2.16|     1.21|     0.45| ✅ |     0.49| ✅ |
-|d09|     2.32|     0.45|     1.24| ✅ |     0.62| ✅ |
-|d10|     0.31|     0.28|     0.01| ✅ |     0.01| ✅ |
-|d11|    22.91|     0.40|     0.04| ✅ |    22.46| ✅ |
-|d12|     5.41|     0.91|     2.32| ✅ |     2.17| ✅ |
-|d13|     1.58|     1.44|     0.03| ✅ |     0.09| ✅ |
-|d14|    15.26|     0.61|     1.82| ✅ |    12.82| ✅ |
-|d15|     0.80|     0.08|     0.00| ✅ |     0.71| ✅ |
-|All|    54.04|
+|d00|     0.21|     0.18|     0.00| ✅ |     0.00| ✅ |
+|d01|     0.63|     0.60|     0.00| ✅ |     0.00| ✅ |
+|d02|     0.47|     0.46|     0.00| ✅ |     0.00| ✅ |
+|d03|     0.58|     0.46|     0.09| ✅ |     0.03| ✅ |
+|d04|     0.41|     0.40|     0.00| ✅ |     0.00| ✅ |
+|d05|     0.51|     0.39|     0.02| ✅ |     0.09| ✅ |
+|d06|     0.72|     0.15|     0.09| ✅ |     0.46| ✅ |
+|d07|     0.75|     0.72|     0.01| ✅ |     0.01| ✅ |
+|d08|     4.07|     2.71|     0.79| ✅ |     0.55| ✅ |
+|d09|     3.16|     1.03|     1.37| ✅ |     0.72| ✅ |
+|d10|     0.28|     0.26|     0.00| ✅ |     0.01| ✅ |
+|d11|    21.16|     0.37|     0.03| ✅ |    20.74| ✅ |
+|d12|     5.40|     1.10|     2.17| ✅ |     2.12| ✅ |
+|d13|     1.96|     1.83|     0.03| ✅ |     0.10| ✅ |
+|d14|    15.74|     0.92|     1.80| ✅ |    13.00| ✅ |
+|d15|     1.02|     0.27|     0.01| ✅ |     0.73| ✅ |
+|d16| 45931.82|     0.67|   936.98| ✅ | 44994.13| ✅ |
+|All| 58161.73|
 
 
-## All Days at #0557a09
+## All Days at #3ec06e1
 - optimized release
 - including notes
 
 ### Day 0 for in/i00.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.07|
+| Prep  |     0.17|
 |   1   |     0.00| ✅ |     1      |            |
 |   2   |     0.00| ✅ |     2      |            |
 |   3   |     0.00| ❓ |     3      |            |
 |  4a   |     0.01| ❌ |   wrong    |   right    |
-| Time  |     0.15|
+| Time  |     0.29|
 
  d00 is a trivial example. It's time represents a noisy lower bound for a day.
 
@@ -45,64 +46,64 @@
 ### Day 1 for in/i01.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.28|
+| Prep  |     0.37|
 |   1   |     0.00| ✅ |   68923    |            |
 |   2   |     0.00| ✅ |   200044   |            |
-| Time  |     0.34|
+| Time  |     0.45|
 ---
 
 ### Day 2 for in/i02.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.15|
-|   1   |     0.00| ✅ |   12276    |            |
+| Prep  |     0.30|
+|   1   |     0.01| ✅ |   12276    |            |
 |   2   |     0.00| ✅ |    9975    |            |
-| Time  |     0.19|
+| Time  |     0.37|
 ---
 
 ### Day 3 for in/i03.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.16|
-|   1   |     0.08| ✅ |    7691    |            |
+| Prep  |     0.42|
+|   1   |     0.09| ✅ |    7691    |            |
 |   2   |     0.03| ✅ |    2508    |            |
-| Time  |     0.31|
+| Time  |     0.60|
 ---
 
 ### Day 4 for in/i04.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.15|
+| Prep  |     0.27|
 |   1   |     0.00| ✅ |    462     |            |
 |   2   |     0.00| ✅ |    835     |            |
-| Time  |     0.19|
+| Time  |     0.34|
 ---
 
 ### Day 5 for in/i05.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.14|
+| Prep  |     0.36|
 |   1   |     0.02| ✅ | SHMSDGZVC  |            |
-|   2   |     0.09| ✅ | VRZGHDFBQ  |            |
-| Time  |     0.29|
+|   2   |     0.10| ✅ | VRZGHDFBQ  |            |
+| Time  |     0.54|
 ---
 
 ### Day 6 for in/i06.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.03|
+| Prep  |     0.12|
 |   1   |     0.06| ✅ |    1210    |            |
 |   2   |     0.23| ✅ |    3476    |            |
-| Time  |     0.34|
+| Time  |     0.46|
 ---
 
 ### Day 7 for in/i07.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.28|
+| Prep  |     0.43|
 |   1   |     0.01| ✅ |  1908462   |            |
 |   2   |     0.00| ✅ |  3979145   |            |
-| Time  |     0.33|
+| Time  |     0.50|
 
  The input recursively walks the dirs, calling `ls` exactly once in each. It could have been much worse!
 
@@ -112,9 +113,9 @@
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
 | Prep  |     1.39|
-|   1   |     0.36| ✅ |    1854    |            |
-|   2   |     0.49| ✅ |   527340   |            |
-| Time  |     2.31|
+|   1   |     0.34| ✅ |    1854    |            |
+|   2   |     0.51| ✅ |   527340   |            |
+| Time  |     2.30|
 
  In retrospect, part 1 and part 2 could probably have each used the same kind of `ray` function. But instead I did part 1 by walking across the whole forest from each direction and then part 2 by walking out from each spot. There's probably improvements that can be done here.
 
@@ -123,10 +124,10 @@
 ### Day 9 for in/i09.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.35|
-|   1   |     0.95| ✅ |    6243    |            |
-|   2   |     0.50| ✅ |    2630    |            |
-| Time  |     1.84|
+| Prep  |     0.54|
+|   1   |     0.87| ✅ |    6243    |            |
+|   2   |     0.47| ✅ |    2630    |            |
+| Time  |     1.94|
 
  My first implementation had a bug where it didn't correctly account for intermediate knots being pulled diagonally.
 
@@ -135,10 +136,10 @@
 ### Day 10 for in/i10.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.06|
+| Prep  |     0.21|
 |   1   |     0.00| ✅ |   12980    |            |
 |   2   |     0.00| ✅ |  BRJLFULP  |            |
-| Time  |     0.10|
+| Time  |     0.26|
 
  Aha! A day where the output is an image that you have to look at.
 
@@ -147,10 +148,10 @@
 ### Day 11 for in/i11.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.23|
-|   1   |     0.03| ✅ |   110264   |            |
-|   2   |    19.89| ✅ |23612457316 |            |
-| Time  |    20.21|
+| Prep  |     0.30|
+|   1   |     0.04| ✅ |   110264   |            |
+|   2   |    20.53| ✅ |23612457316 |            |
+| Time  |    20.96|
 
  My first implementation used scanTuple for parsing and it quickly became cumbersome. Scanf is actually much cleaner when you have multiple potential strings to match and it works well with doAssert.
 
@@ -163,10 +164,10 @@ Also remember that args known at compile time can be defined as `static` to save
 ### Day 12 for in/i12.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.93|
-|   1   |     2.13| ✅ |    534     |            |
-|   2   |     2.42| ✅ |    525     |            |
-| Time  |     5.55|
+| Prep  |     1.06|
+|   1   |     2.58| ✅ |    534     |            |
+|   2   |     2.66| ✅ |    525     |            |
+| Time  |     6.42|
 
  A chance to use graphwalk.bfs!
 
@@ -181,11 +182,11 @@ There's still lots of room for improvement, but it works decently for now.
 ### Day 13 for in/i13.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     1.55|
-|   1   |     0.06| ✅ |    5557    |            |
-|   2   |     0.13| ✅ |   22425    |            |
-|  2a   |     0.59| ✅ |   22425    |            |
-| Time  |     2.45|
+| Prep  |     1.64|
+|   1   |     0.05| ✅ |    5557    |            |
+|   2   |     0.11| ✅ |   22425    |            |
+|  2a   |     0.53| ✅ |   22425    |            |
+| Time  |     2.42|
 
  First thought: Can we walk the pairs of strings comparing themchar by char?
 
@@ -207,11 +208,11 @@ It may be possible to improve parsing performance by using a faster json library
 ### Day 14 for in/i14.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.68|
-|   1   |     2.57| ✅ |    808     |            |
-|   2   |    14.42| ✅ |   26625    |            |
-|  2.1  |    99.05| ✅ |   26625    |            |
-| Time  |   116.95|
+| Prep  |     1.15|
+|   1   |     1.93| ✅ |    808     |            |
+|   2   |    15.86| ✅ |   26625    |            |
+|  2.1  |   102.76| ✅ |   26625    |            |
+| Time  |   121.90|
 
  Naive "simulate each sand grain as it falls" works decently. Part 2 took 90-150ms, so slowest by a long shot, but doable. Lots of room for improvement of course... First implementation had little code re-use and the parsing was messy.
 
@@ -222,11 +223,11 @@ Second implementation of part 2 used depth-first-search and improved run time by
 ### Day 15 for in/i15.txt
 | Part  |Time(ms) | ?  |   Answer   |  Expected  |
 |:-----:|--------:|:--:|------------|------------|
-| Prep  |     0.07|
+| Prep  |     0.30|
 |   1   |     0.01| ✅ |  5878678   |            |
-|   2   |     0.70| ✅ |11796491041245|            |
-|  2.1  |   782.85| ✅ |11796491041245|            |
-| Time  |   783.72|
+|   2   |     0.82| ✅ |11796491041245|            |
+|  2.1  |   845.98| ✅ |11796491041245|            |
+| Time  |   847.28|
 
  Part 1 took an unusually large amount of time because I misread the initial y value as being 20_000 and not 2_000_000! Once I realized, it was fast.
 
@@ -236,5 +237,22 @@ My second solution to part 2 followed the advice of redditor i_have_no_biscuits.
 
 ---
 
-Total Time:    936.44
+### Day 16 for in/i16.txt
+| Part  |Time(ms) | ?  |   Answer   |  Expected  |
+|:-----:|--------:|:--:|------------|------------|
+| Prep  |     0.64|
+|   1   |   915.44| ✅ |    1850    |            |
+|   2   | 47948.34| ✅ |    2306    |            |
+| Time  | 48864.80|
+
+ Part 1:
+There are a lot of valves with 0 rates. This reminded me of 2019 day 18 a bit, but I wasn't immediately sure how to make use of them. Next I tried using algorithms.nextPermutation to try every combination of valves with non-zero rates. This worked fine for the test input but didn't finish on the actual input. Next I tried a recursive walk proc, and that worked, but it was slow (3.7 seconds on actual input!). I used bfs to create distance tables for the important valves, and that took it down to ~0.5 seconds.
+
+Part 2: I was stuck for a while here, so I looked at others' answers online (cheating I know, so it goes). My answer is still very very slow. On the upside, I finally got to use the memo dep! It actually slows down part 1, but lets part 2 eventually finish.
+
+TODO: speed up part 2.
+
+---
+
+Total Time:  62812.67
 
