@@ -1,7 +1,7 @@
 ## This file contains procs and templates useful for this advent of code repo.
 ## I had a macro that turned parts into a function that could be called, (see https://github.com/bobgeis/aoc2021/blob/master/lib/aocutils.nim), but I liked MichaelMarsalek's approach more (see https://github.com/MichalMarsalek/Advent-of-code/blob/master/2021/Nim/aoc_logic.nim ). It has evolved a bit since then.
 
-import std/[algorithm, monotimes, os, sequtils, strformat, strutils, sugar, tables, times]
+import std/[algorithm, monotimes, os, rdstdin, sequtils, strformat, strutils, sugar, tables, times]
 
 import bedrock, shenanigans
 
@@ -171,6 +171,9 @@ template part*(p:static typed, body:untyped):untyped =
         echo ps.partResultStr(aocResults)
     else: discard
 
+template skip*(p:static typed, body:untyped):untyped =
+  block: discard
+
 template expect*(suffix:static string, res:typed):untyped =
   ## Provide an input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
   when not defined(skipTests):
@@ -191,6 +194,9 @@ template note*(body:string) =
   ## Notes about the day to echo to output.
   when defined(includeNotes):
     note("",body)
+
+proc pause*() =
+  discard readLineFromStdin("Continue? ")
 
 #
 
