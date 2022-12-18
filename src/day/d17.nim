@@ -13,6 +13,8 @@ day 17:
       @[[0,0],[1,0],[0,1],[1,1]], # square
     ]
 
+    var cache = initTab2i[int]()
+
   part 1:
     expectT 3068
     expect 3227
@@ -63,6 +65,17 @@ day 17:
           break
     h
 
+  part 2:
+    expectT 1_514_285_714_288
+    # expect 0
+
+    const iterations = 1_000_000_000_000 # one trillion!
+    "?"
+
   note """
-Hmmm.
+Part 1: I took an unsually long amount of time to do part 1 because I had a bug in my height code. Basically I was always taking the max y-coordinate of the last block, even if the last block was _lower_ than the highest block. Because the height was used to spawn the next block, this messed up the tower. I had thought the bug was somewhere in the block movement code so I made procs to draw the block set at every step and it _looked_ right. Only when I went much further did I notice some blocks spawning in the wrong place and figure out what happened.
+
+Part 2: After part 1 I didn't have enough time to do part 2. After running the part 1 code with visualization for long enough patterns emerge. I think I'll making a cache of [block-offset,char-offset] -> delta-height and see if something like that can make be made both accurate and fast.
+
+TODO: Solve part 2.
 """
