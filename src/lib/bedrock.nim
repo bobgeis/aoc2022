@@ -5,7 +5,7 @@
 ## - algorithm.reverse & reversed : reverse a seq-like
 ## - math.floorMod : python-like modulus
 
-import std/[intsets, macros, memfiles, monotimes, packedsets, re, sequtils, sets,
+import std/[intsets, macros, math, memfiles, monotimes, packedsets, re, sequtils, sets,
   strformat, strutils, sugar, tables, times]
 
 proc alwaysTrue*[T](t:T):bool = true
@@ -155,6 +155,10 @@ proc peek*[T](s:set[T] or HashSet[T] or IntSet):T =
 proc peek*(s:IntSet):int =
   ## get an arbitrary value in a set
   for i in s.items: return i
+
+proc divmod*(a,b:SomeInteger):(SomeInteger,SomeInteger) =
+  ## like python divmod
+  (a div b,floormod(a,b))
 
 proc clamp*[A: SomeNumber](v, min, max: A): A {.inline.} =
   ## Clamp a value to within [min,max].
