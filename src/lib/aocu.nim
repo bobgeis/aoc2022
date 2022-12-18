@@ -171,7 +171,12 @@ template part*(p:static typed, body:untyped):untyped =
         echo ps.partResultStr(aocResults)
     else: discard
 
+template skip*(body:untyped):untyped =
+  ## skip a block of code.
+  block: discard
+
 template skip*(p:static typed, body:untyped):untyped =
+  # skip part of day.
   block: discard
 
 template expect*(suffix:static string, res:typed):untyped =
