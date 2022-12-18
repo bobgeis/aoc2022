@@ -182,6 +182,9 @@ task de, "Execute the last compiled program. Args will be passed to the program.
   else:
     echo &"No compiled file: {compiledFile}"
 
+task ddr,"Run days.nim.":
+  excho &"nim r -d:fast -d:includeNotes {allDaysFile}"
+
 task ddm,"Run days.nim twice, once for oneline days, once for discussion, and write output to a file.":
   allDaysFile.compile("-d:fast -d:skipExtraParts -d:onelineDay -d:silentParts -d:outputMarkdown")
   var runs = 1
