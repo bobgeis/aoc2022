@@ -5,55 +5,48 @@ import std/lists
 
 day 20:
   prep:
-    let input = path.lines.toseq.mapit(parseint(it))
 
-    var intTab = initTable[int,int]()
-    var ids:seq[int] = @[]
-    for id,n in input:
-      ids.add id
-      intTab[id] = n
+    proc todata(path:string):(seq[int],Table[int,int])=
+      var id = 0
+      for dist in path.lines:
+        result[0].add id
+        result[1][id] = dist.parseint
+        inc id
+    var (ids,dists) = path.todata
 
     proc move(ids: var seq[int],id:int) =
       let
         start = ids.find(id)
-        dist = inttab[id]
-        dest = (start + dist).floormod(ids.high)
+        dest = (start + dists[id]).floormod(ids.high)
       if start == dest: return
       ids.delete(start)
       if dest == 0: ids.add id
       else: ids.insert(id,dest)
+
+    proc final(ids:seq[int]):int =
+      let
+        ints = ids.mapit(dists[it])
+        z = ints.find(0)
+      [1000,2000,3000].mapit(ints[(it + z) mod ids.len]).sum
 
   part 1:
     expectT 3
     expect 2827
     var ids = ids
     for id in 0..ids.high: ids.move(id)
-    let ints = ids.mapit(inttab[it])
-    let
-      z = ints.find(0)
-      a = ints[(z + 1000) mod (ids.len)]
-      b = ints[(z + 2000) mod (ids.len)]
-      c = ints[(z + 3000) mod (ids.len)]
-    a + b + c
+    final ids
 
   part 2:
     expectT 1_623_178_306
-    expect 7834270093909
+    expect 7_834_270_093_909
     const dkey = 811_589_153
-    for key,value in inttab:
-      inttab[key] = value * dkey
+    for key,value in dists: dists[key] = value * dkey
     for _ in 1..10:
       for id in 0..ids.high: ids.move(id)
-    let
-      ints = ids.mapit(inttab[it])
-      z = ints.find(0)
-      a = ints[(z + 1000) mod (ids.len)]
-      b = ints[(z + 2000) mod (ids.len)]
-      c = ints[(z + 3000) mod (ids.len)]
-    a + b + c
+    final ids
 
   note """
-Part 1: This _should_ have been straightforward, but I insisted on looking for number in the distance map, instead of in the final array, but decided the bug must have been an issue with the move proc due to the fact that I'd sometimes get the right answer anyway (lots of small ints all in the same range can coincientally add to the same sum).
+Part 1: This _should_ have been straightforward, but I messed up calculating the final answer and was sure the problem was in my move logic. I was looking in an array of ids (the initial offsets) instead of the true values, and they happened to coincidentally sum to the correct answer for the test data some of the time.
 
 Part 2: Once part 1 was working, part 2 was very quick. Bumping up the sizes of numbers can cause issues in nim (eg int -> int64 or int128) but it didn't happen this time. My implementation is pretty slow, but after d16 my standards for "too slow" have relaxed a lot.
 """
