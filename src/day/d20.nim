@@ -51,3 +51,9 @@ day 20:
       b = ints[(z + 2000) mod (ids.len)]
       c = ints[(z + 3000) mod (ids.len)]
     a + b + c
+
+  note """
+Part 1: This _should_ have been straightforward, but I insisted on looking for number in the distance map, instead of in the final array, but decided the bug must have been an issue with the move proc due to the fact that I'd sometimes get the right answer anyway (lots of small ints all in the same range can coincientally add to the same sum).
+
+Part 2: Once part 1 was working, part 2 was very quick. Bumping up the sizes of numbers can cause issues in nim (eg int -> int64 or int128) but it didn't happen this time. My implementation is pretty slow, but after d16 my standards for "too slow" have relaxed a lot.
+"""

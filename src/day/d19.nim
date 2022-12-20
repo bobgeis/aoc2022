@@ -3,8 +3,6 @@ include ../lib/imps
 
 day 19:
   prep:
-# Blueprint 1: Each ore robot costs 4 ore. Each clay robot costs 4 ore. Each obsidian robot costs 4 ore and 18 clay. Each geode robot costs 4 ore and 9 obsidian.
-
     type State = (Vec4i,Vec4i)
     const initState:State = ([1,0,0,0],[0,0,0,0]) # (bots,res)
     type Blue = object
@@ -72,7 +70,12 @@ day 19:
     blues.mapit(it.id * it.doblue(24)).sum
 
   part 2:
-    expectT 62
+    # expectT 62
     expect 13440
-
     blues[0..2].mapit(it.doblue(32)).foldl(a*b)
+
+  note """
+Part 1: Apparently others used various solvers, but I did a brute force bfs over the possible siimulation states. Just define each node of a graph as a possible state, and each adjacent node are the states reachable from it (eg get more resources, get more resources and build each kind of bot, etc). Slight optimizations are to cap the amount of excess resources so degenerate states map to the same node, and if you can build a geode bot always and only do that.
+
+Part 2: This was really easy after part 1! Just run it for longer on fewer blueprints!
+"""
