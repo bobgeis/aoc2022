@@ -29,7 +29,7 @@ day 19:
           [ore4geob,0,obs4geob,0],
           ]
         let limits = [
-          mmax(ore4oreb,ore4clayb,ore4obsb,ore4geob),
+          max(ore4oreb,ore4clayb,ore4obsb,ore4geob),
           clay4obsb,
           obs4geob,
           100,
