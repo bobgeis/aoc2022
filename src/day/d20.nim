@@ -36,3 +36,18 @@ day 20:
       c = ints[(z + 3000) mod (ids.len)]
     a + b + c
 
+  part 2:
+    expectT 1_623_178_306
+    expect 7834270093909
+    const dkey = 811_589_153
+    for key,value in inttab:
+      inttab[key] = value * dkey
+    for _ in 1..10:
+      for id in 0..ids.high: ids.move(id)
+    let
+      ints = ids.mapit(inttab[it])
+      z = ints.find(0)
+      a = ints[(z + 1000) mod (ids.len)]
+      b = ints[(z + 2000) mod (ids.len)]
+      c = ints[(z + 3000) mod (ids.len)]
+    a + b + c
