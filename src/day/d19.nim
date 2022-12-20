@@ -71,3 +71,8 @@ day 19:
     expect 1487
     blues.mapit(it.id * it.doblue(24)).sum
 
+  part 2:
+    expectT 62
+    expect 13440
+
+    blues[0..2].mapit(it.doblue(32)).foldl(a*b)
