@@ -198,6 +198,13 @@ template doit*(s: typed, op: untyped): untyped =
 proc `min=`*[T](a: var T, b:T) = a = min(a,b)
 proc `max=`*[T](a: var T, b:T) = a = max(a,b)
 
+proc mmin*[T](aa: varargs[T]):T =
+  result = T.high
+  for a in aa: result.min=(a)
+proc mmax*[T](aa: varargs[T]):T =
+  result = T.low
+  for a in aa: result.max=(a)
+
 proc flatten*[T](ss: seq[seq[T]]): seq[T] =
   ## Take a seq of seq of T and return a seq of T.
   for s in ss:

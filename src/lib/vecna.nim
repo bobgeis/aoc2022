@@ -114,6 +114,19 @@ DistributeSymbol(Op, [`+`, `-`, `*`, `/`, `mod`, `div`]):
     for i in 0..a.high:
       result[i] = Op(a[i], b)
 
+DistributeSymbol(Op, [`<`,`>`,`<=`,`>=`]):
+  proc Op*[N, A](a, b: Vec[N, A]): bool =
+    ## Compare each item of the vector, eg: Op(a[i],b[i]) and Op(a[j],b[j]) and ...
+    for i in 0..a.high:
+      if not Op(a[i], b[i]): return false
+    return true
+
+  proc Op*[N, A](a: Vec[N, A]; b: A): bool =
+    ## Compare each item of the vector, eg: Op(a[i],b) and Op(a[j],b) and ...
+    for i in 0..a.high:
+      if not Op(a[i], b): return false
+    return true
+
 proc `max=`*[N, A](a: var Vec[N, A]; b: Vec[N, A]) =
   for i in 0..a.high:
     a[i] = a[i].max(b[i])
@@ -308,6 +321,11 @@ const
     [0,-1,-1],[-1,-1,-1],[-1,0,-1],[-1,1,-1],
     [0,0,-1],
   ] ## all cubes reachable from a cube, incl corners and origin
+
+  basis2i* = [[1,0],[0,1]]
+  basis3i* = [[1,0,0],[0,1,0],[0,0,1]]
+  basis4i* = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
+  basis5i* = [[1,0,0,0,0],[0,1,0,0,0],[0,0,1,0,0],[0,0,0,1,0],[0,0,0,0,1]]
 
 proc getAdj*[N,A](v:Vec[N,A],dirs: openArray[Vec[N,A]]):seq[Vec[N,A]] =
   for dir in dirs: result.add(v + dir)
