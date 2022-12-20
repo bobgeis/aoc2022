@@ -195,6 +195,17 @@ template doit*(s: typed, op: untyped): untyped =
   for it {.inject.} in items(s):
     op
 
+template mdoit*(s: typed, op: untyped): untyped =
+  ## Call side-effecting code with each item of a sequence.
+  ## Like mapIt or apply, but the code must have no return value.
+  runnableExamples:
+    let t = @[3, 5]
+    var v: seq[int] = @[]
+    t.doit(v.add it)
+    assert t == v
+  for it {.inject.} in mitems(s):
+    op
+
 proc `min=`*[T](a: var T, b:T) = a = min(a,b)
 proc `max=`*[T](a: var T, b:T) = a = max(a,b)
 
