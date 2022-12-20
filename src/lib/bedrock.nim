@@ -148,6 +148,19 @@ proc toBitSet*[T](s:openArray[T]):set[T] =
   for t in s:
     result.incl t
 
+proc `-`*[T](s:HashSet[T],t:T):HashSet[T] =
+  s - [t].toHashSet()
+proc `-`*[T](s:PackedSet[T],t:T):PackedSet[T] =
+  s - [t].toPackedSet()
+proc `-`*(s:IntSet,t:int):IntSet =
+  s - [t].toIntSet()
+proc `+`*[T](s:HashSet[T],t:T):HashSet[T] =
+  s + [t].toHashSet()
+proc `+`*[T](s:PackedSet[T],t:T):PackedSet[T] =
+  s + [t].toPackedSet()
+proc `+`*(s:IntSet,t:int):IntSet =
+  s + [t].toIntSet()
+
 proc peek*[T](s:set[T] or HashSet[T] or IntSet):T =
   ## get an arbitrary value in a set
   for i in s.items: return i
