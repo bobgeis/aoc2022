@@ -94,8 +94,8 @@ proc echoDayMdTableHeader*() =
   echo "|---|--------:|--------:|--------:|:--:|--------:|:--:|"
 
 proc echoPartMdTableHeader*() =
-  echo "| Part  |Time(ms) | ?  |   Answer   |  Expected  |"
-  echo "|:-----:|--------:|:--:|------------|------------|"
+  echo "| Part  |Time(ms) | ?  |    Answer    |   Expected   |"
+  echo "|:-----:|--------:|:--:|--------------|--------------|"
 
 template day*(day: static int, body: untyped):untyped =
   block:
@@ -146,7 +146,7 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     outSym = aocResults.outcomes.getOutSym(ps)
     expected = if outSym == failSym: aocResults.expected.getOrDefault(ps,"") else: ""
   when defined(outputMarkdown):
-    result = &"|{ps:^7}|{dt.formattime}|{outSym:^3}|{ans:^12}|{expected:^12}|"
+    result = &"|{ps:^7}|{dt.formattime}|{outSym:^3}|{ans:^14}|{expected:^14}|"
   else:
     result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans}"
     if outSym == failSym: result &=  &" -> {expected}"

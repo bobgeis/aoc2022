@@ -11,13 +11,11 @@ const
   nimDocDir = "doc"
   nimInDir = "in"
   nimOutDir = "out"
-  resultsDir = "results"
   compiledFile = &"{nimOutDir}/run"
   d00File = &"{nimDayDir}/d00.nim"
   libImpsFile = &"{nimLibDir}/imps.nim"
   allDaysFile = &"{nimTestDir}/days.nim"
   libTestFile = &"{nimTestDir}/libs.nim"
-  resultsMd = &"results.md"
 
 switch("out", &"{compiledFile}")
 --hints: off
@@ -190,6 +188,7 @@ task ddm,"Run days.nim twice, once for oneline days, once for discussion, and wr
   var runs = 1
   for i in 1..runs:
     excho &"{compiledFile} &>/dev/null"
-  excho &"{compiledFile} > {resultsMd}"
+  excho &"cat src/readmetemplate.md > readme.md"
+  excho &"{compiledFile} >> readme.md"
   excho &"nim clean"
-  excho &"nim r -d:fast -d:includeNotes -d:outputMarkdown {allDaysFile} >> {resultsMd}"
+  excho &"nim r -d:fast -d:includeNotes -d:outputMarkdown {allDaysFile} >> readme.md"
