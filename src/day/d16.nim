@@ -19,31 +19,29 @@ day 16:
       (rates,graph) = path.todata
       valves = rates.pairs.toseq.filterit(it[1]>0).mapit(it[0])
       valveset = valves.tohashset
-      dists = block:
-        var dists = initTable[string,Table[string,int]]()
-        proc adjs(v:string):seq[string] = graph[v]
-        let paths = "AA".bfs(adjs)
-        dists["AA"] = collect(initTable()):
-          for m in valves: {m:paths[m][0] + 1}
-        for n in valves:
-          let paths = n.bfs(adjs)
-          dists[n] = collect(initTable()):
-            for m in valves: {m:paths[m][0] + 1}
-        dists
+    var dists = initTable[string,Table[string,int]]()
+    proc adjs(v:string):seq[string] = graph[v]
+
+    block:
+      let paths = "AA".bfs(adjs)
+      dists["AA"] = collect(initTable()):
+        for v in valves: {v:paths[v][0] + 1}
+    for v in valves:
+      let paths = v.bfs(adjs)
+      dists[v] = collect(initTable()):
+        for w in valves: {w:paths[w][0] + 1}
+
+    proc walk(curr:string,time:int,valves:HashSet[string],elephant:bool=false):int {.memoized.}=
+      let valves = valves.difference([curr].toHashSet)
+      for v in valves:
+        let t = time - dists[curr][v]
+        if t > 0: result.max=(rates[v] * t + walk(v,t,valves,elephant))
+      if elephant: result.max=(walk("AA", 26, valves, false))
 
   part 1:
     expectT 1651
     expect 1850
-
-    proc walk(curr:string,time:int,vs:HashSet[string],elephant:bool=false):int {.memoized.}=
-      let vs = vs - curr
-      for v in vs:
-        let t = time - dists[curr][v]
-        if t > 0: result.max=(rates[v] * t + walk(v,t,vs,elephant))
-      # this was used for part 2 originally but it was very slow!
-      if elephant: result.max=(walk("AA", 26, vs, false))
-
-    walk("AA",30,valveset)
+    walk("AA",30,valves.toHashSet)
 
   part 2:
     expectT 1707
