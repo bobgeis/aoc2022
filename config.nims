@@ -192,3 +192,4 @@ task ddm,"Run days.nim twice, once for oneline days, once for discussion, and wr
   excho &"{compiledFile} >> readme.md"
   excho &"nim clean"
   excho &"nim r -d:fast -d:includeNotes -d:outputMarkdown {allDaysFile} >> readme.md"
+  excho "code readme.md"
