@@ -4,12 +4,11 @@ include ../lib/imps
 day 16:
   prep:
 
-    var voff = 1'i8
-    var valveset = initHashSet[string]()
-    var vtoint = initTable[string,int8]()
-    var vset:set[int8] = {}
-    var vrates = initTable[int8,int]()
-    var graph = initTable[string,seq[string]]()
+    var
+      (graph,rates) = (initTable[string,seq[string]](),initTable[int8,int]())
+      (valveset,vtoint) = (initHashSet[string](),initTable[string,int8]())
+      voff = 1'i8
+      vset:set[int8] = {}
     proc todata(path:string)=
       for line in path.lines:
         let (_,valve,rate,valves) = line.scantuple("Valve $w has flow rate=$i; tunnels lead to valves $*")
@@ -19,51 +18,34 @@ day 16:
           valveset.incl valve
           vtoint[valve] = v
           vset.incl v
-          vrates[v] = rate
+          rates[v] = rate
         if valves.len > 0: graph[valve] = valves.split(", ")
         else: # "valves" != "valve": we need the last 2 chars
           graph[valve] = @[line[^2..^1]]
 
     path.todata
 
+    var dists = initTable[int8,Table[int8,int]]()
     proc adjs(valve:string):seq[string] = graph[valve]
-    var vdists = initTable[int8,Table[int8,int]]()
-
-    block:
-      let paths = "AA".bfs(adjs)
-      var tab = initTable[int8,int]()
+    proc getdists(start:string):Table[int8,int]=
+      let paths = start.bfs(adjs)
       for valve in valveset:
-        let
-          v = vtoint[valve]
-          d = paths[valve][0] + 1
-        tab[v] = d
-      vdists[0] = tab
-    for valve1 in valveset:
-      let
-        paths = valve1.bfs(adjs)
-        v1 = vtoint[valve1]
-      var tab = initTable[int8,int]()
-      for valve2 in valveset:
-        let
-          v2 = vtoint[valve2]
-          d = paths[valve2][0] + 1
-        tab[v2] = d
-      vdists[v1] = tab
-
-
+        let (v,d) = (vtoint[valve],paths[valve][0] + 1)
+        result[v] = d
+    dists[0] = getDists("AA")
+    for v in valveset: dists[vtoint[v]] = getDists(v)
 
   part 1:
     expectT 1651
     expect 1850
 
-    # use the memoized version to make this work for part 2
-    # but the memoization doesn't get used for part 1 and slows it down
-    # proc walk(curr:int8,time:int,valves:set[int8],elephant:bool=false):int {.memoized.}=
+    # Memoize this and it can work (slowly) for part 2.
+    # Memoization doesn't get used for part 1 and slows it down, so removed.
     proc walk(curr:int8,time:int,valves:set[int8],elephant:bool=false):int=
       let valves = valves - {curr}
       for v in valves:
-        let t = time - vdists[curr][v]
-        if t > 0: result.max=(vrates[v] * t + walk(v,t,valves,elephant))
+        let t = time - dists[curr][v]
+        if t > 0: result.max=(rates[v] * t + walk(v,t,valves,elephant))
       if elephant: result.max=(walk(0, 26, valves, false))
     walk(0,30,vset)
 
@@ -75,9 +57,9 @@ day 16:
     proc calcpress(curr:int8,time,press:int,vs,done:set[int8]) =
       presses[done] = max(press,presses.getordefault(done,0))
       for v in vs:
-        let t = time - vdists[curr][v]
+        let t = time - dists[curr][v]
         if t <= 0: continue
-        calcpress(v,t,press + t * vrates[v],vs - {v},done + {v})
+        calcpress(v,t,press + t * rates[v],vs - {v},done + {v})
     calcpress(0'i8,26,0,vset,{})
     presses.sort
     let ps = presses.pairs.toseq
@@ -104,7 +86,7 @@ Part 2.2: The walk proc was actually pretty fast for part 1, but very very slow 
 
 Part 1.3 & 2.3: Refactored the sets to be set[int8] instead of HashSet[string]. This improved the run-time! Before (last timing): 912.69ms for part 1, and 753.24ms for part 2, now: ~85ms for part 1 and ~78ms for part 2! So current perf progression:
 
-- version 1: part 1: 500-1500ms, part 2: ~50 seconds
-- version 2: part 1: ~900ms, part 2: ~~750ms
-- version 3: part 1: ~85ms, part 2: ~78ms
+- version 1: part 1: 500-1500ms, part 2: ~50 seconds (memoized walk)
+- version 2: part 1: ~900ms, part 2: ~~750ms (walk and calcpress)
+- version 3: part 1: ~85ms, part 2: ~78ms (`HashSet[string]` -> `set[int8]`)
 """
