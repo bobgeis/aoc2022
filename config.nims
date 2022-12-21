@@ -104,8 +104,10 @@ proc createNewDay(day:int) =
     excho &"code {newNimFile}"
     excho &"code './{nimInDir}/i{day:02}.txt'"
     excho &"code './{nimInDir}/i{day:02}t1.txt'"
-    excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}"
-    excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}/input"
+    # excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}"
+    # excho &"firefox --new-tab=https://adventofcode.com/2022/day/{day}/input"
+    excho &"open -a \"Google Chrome\" https://old.reddit.com https://adventofcode.com/2022/day/{day}"
+    excho &"open -a \"Google Chrome\" https://adventofcode.com/2022/day/{day}/input"
 
 task clean, "Empty the out and doc dirs.":
   excho &"rm -rf {nimOutDir}"
