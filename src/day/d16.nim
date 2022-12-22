@@ -36,8 +36,7 @@ day 16:
     for v in valveset: dists[vtoint[v]] = getDists(v)
 
   part 1:
-    expectT 1651
-    expect 1850
+    answers {inp:1850, t1:1651}
 
     # Memoize this and it can work (slowly) for part 2.
     # Memoization doesn't get used for part 1 and slows it down, so removed.
@@ -50,17 +49,16 @@ day 16:
     walk(0,30,vset)
 
   part 2:
-    expectT 1707
-    expect 2306
+    answers {inp:2306, t1:1707}
 
     var presses = initCountTable[set[int8]]()
-    proc calcpress(curr:int8,time,press:int,vs,done:set[int8]) =
+    proc calcpress(curr:int8,time,press:int,done:set[int8]) =
       presses[done] = max(press,presses.getordefault(done,0))
-      for v in vs:
+      for v in vset-done:
         let t = time - dists[curr][v]
         if t <= 0: continue
-        calcpress(v,t,press + t * rates[v],vs - {v},done + {v})
-    calcpress(0'i8,26,0,vset,{})
+        calcpress(v,t,press + t * rates[v],done + {v})
+    calcpress(0'i8,26,0,{})
     presses.sort
     let ps = presses.pairs.toseq
     var best = 0

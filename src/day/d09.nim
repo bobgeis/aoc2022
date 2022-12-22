@@ -25,14 +25,12 @@ day 9:
       visited.card
 
   part 1:
-    expectT 13
-    expect 6243
+    answers {inp:6243, t1:13}
     domoves(2)
 
 
   part 2:
-    expectT 36
-    expect 2630
+    answers {inp:2630, t1:36}
     domoves(10)
 
   note """

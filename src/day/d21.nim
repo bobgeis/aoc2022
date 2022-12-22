@@ -35,13 +35,11 @@ day 21:
           else: return n1 / n2
 
   part 1:
-    expectT 152
-    expect 160_274_622_817_992
+    answers {inp:160_274_622_817_992, t1:152}
     nums.recur("root")
 
   part 2:
-    expectT 301
-    expect 3_087_390_115_721
+    answers {inp:3_087_390_115_721, t1:301}
 
     func tocomp[A](n:A):Complex64 = complex(n.float64,0.0)
 

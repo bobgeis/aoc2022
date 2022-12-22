@@ -27,15 +27,13 @@ day 12:
         if u in map and map[u] >= h - 1: result.add u
 
   part 1:
-    expectT 31
-    expect 534
+    answers {inp:534, t1:31}
     proc fin(paths:Paths[Vec2i], v:Vec2i):bool =
       v == start
     bfs(finish,adjs,fin)[start][0]
 
   part 2:
-    expectT 29
-    expect 525
+    answers {inp:525, t1:29}
     var dist:int
     proc fin(paths:Paths[Vec2i],v:Vec2i):bool =
       if map[v] == 0:

@@ -12,8 +12,7 @@ day 18:
     let cubes = path.getCubes
 
   part 1:
-    expectT 64
-    expect 4314
+    answers {inp:4314, t1:64}
 
     var surface = 0
     for v in cubes:
@@ -23,8 +22,7 @@ day 18:
     surface
 
   part 2:
-    expectT 58
-    expect 2444
+    answers {inp:2444, t1:58}
     let (c1,c2) = cubes.getminmax
     let bound1 = c1 - [1,1,1]
     let bound2 = c2 + [1,1,1]

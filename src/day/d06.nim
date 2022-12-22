@@ -12,12 +12,10 @@ day 6:
           return i + n
 
   part 1:
-    expectT 7
-    expect 1210
+    answers {inp:1210, t1:7}
     walk(4)
 
 
   part 2:
-    expectT 19
-    expect 3476
+    answers {inp:3476, t1:19}
     walk(14)

@@ -24,15 +24,13 @@ day 7:
     while curr != "": popdir()
 
   part 1:
-    expectT 95_437
-    expect 1_908_462
+    answers {inp:1_908_462, t1:95_437}
     sizes.values.toseq.foldl(if b < 100_000: a + b else: a,0)
 
   let bound = sizes[""] - 40_000_000
 
   part 2:
-    expect 3_979_145
-    expectT 24_933_642
+    answers {inp:3_979_145, t1:24_933_642}
     sizes.values.toseq.foldl(if b <= a and b >= bound: b else: a, int.high)
 
   note """

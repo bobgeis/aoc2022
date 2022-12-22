@@ -43,13 +43,11 @@ day 11:
       ms.mapit(it.count).sorted[^2..^1].foldl(a * b)
 
   part 1:
-    expectT 10605
-    expect 110264
+    answers {inp:110264, t1:10605}
     monkeys.business(20,wrap=false)
 
   part 2:
-    expectT 2_713_310_158
-    expect 23_612_457_316
+    answers {inp:23_612_457_316, t1:2_713_310_158}
     monkeys.business(10_000,wrap=true)
 
   note """

@@ -19,6 +19,8 @@ const
   passSym* = "✅"
   failSym* = "❌"
   quesSym* = "❓"
+  inp* = ""
+  t1* = "t1"
 
 proc getOutSym(outcomes: Table[string,bool],ps:string):string =
   if ps notin outcomes: quesSym
@@ -94,8 +96,8 @@ proc echoDayMdTableHeader*() =
   echo "|---|--------:|--------:|--------:|:--:|--------:|:--:|"
 
 proc echoPartMdTableHeader*() =
-  echo "| Part  |Time(ms) | ?  |    Answer    |   Expected   |"
-  echo "|:-----:|--------:|:--:|--------------|--------------|"
+  echo "|  Part  | Time(ms)| ?  |     Answer     |    Expected    |"
+  echo "|:------:|--------:|:--:|----------------|----------------|"
 
 template day*(day: static int, body: untyped):untyped =
   block:
@@ -113,9 +115,9 @@ template day*(day: static int, body: untyped):untyped =
       aocResults.times["day"] = dt
       when not defined(silentParts):
         when defined(outputMarkdown):
-          echo "| Time  |",dt.formatTime,"|"
+          echo "|  Time  |",dt.formatTime,"|"
         else:
-          echo "  Total:",dt.formatTime,"ms"
+          echo "  Total: ",dt.formatTime,"ms"
         aocResults.echoNotes
         echo "---"
         echo()
@@ -129,8 +131,8 @@ template prep*(body:untyped):untyped =
   aocResults.times["prep"] = dt
   when not defined(silentParts):
     when defined(outputMarkdown):
-      echo "| Prep  |",dt.formatTime,"|"
-    else: echo "  Prep: ",dt.formatTime,"ms"
+      echo "|  Prep  |",dt.formatTime,"|"
+    else: echo "  Prep:  ",dt.formatTime,"ms"
 
 proc partActive(p:static typed):bool =
   (p.toString == "1" or
@@ -146,9 +148,9 @@ proc partResultStr*(ps: static string,aocResults:AocResults): string =
     outSym = aocResults.outcomes.getOutSym(ps)
     expected = if outSym == failSym: aocResults.expected.getOrDefault(ps,"") else: ""
   when defined(outputMarkdown):
-    result = &"|{ps:^7}|{dt.formattime}|{outSym:^3}|{ans:^14}|{expected:^14}|"
+    result = &"|{ps:^8}|{dt.formattime}|{outSym:^3}|{ans:^16}|{expected:^16}|"
   else:
-    result = &"  Pt{ps:>3}:{dt.formattime}ms {outSym} {ans}"
+    result = &"  Pt{ps:>4}:{dt.formattime}ms {outSym} {ans}"
     if outSym == failSym: result &=  &" -> {expected}"
 
 template part*(p:static typed, body:untyped):untyped =
@@ -179,16 +181,13 @@ template skip*(p:static typed, body:untyped):untyped =
   # skip part of day.
   block: discard
 
-template expect*(suffix:static string, res:typed):untyped =
-  ## Provide an input suffix, and an expected result. The expected result will be compared with the actual result at run-time.
+template answers*(anss:static openArray[(string,typed)]):untyped =
+  ## Inside of a part block, provide a list of tuples, eg: `{pathSuffixA:expectedAnswerA,pathSuffixB:expectedAnswerB}` and the part's answer will be compared the expected answer if the path suffixes match.
   when not defined(skipTests):
-    if suffix == aocPathSuffix:
-      aocResults.expected[aocCurrentPartString] = res.tostring
-
-template expect*(res:typed):untyped = expect "", res ## Like 2 arg expect but default input
-template expectT*(res:typed):untyped = expect "t1",res ## Like 2 arg expect but test input
-template expectT2*(res:typed):untyped = expect "t2",res ## Like 2 arg expect but second test input
-template expectO*(res:typed):untyped = expect "o1",res ## Like 2 arg expect but others' input
+    for ans in anss:
+      let (k,v) = ans
+      if k == aocPathSuffix:
+        aocResults.expected[aocCurrentPartString] = v.tostring
 
 template note*(id: static typed, body:string) =
   ## Notes about the day to echo to output.

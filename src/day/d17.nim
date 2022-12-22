@@ -101,13 +101,11 @@ day 17:
       h.int64
 
   part 1:
-    expectT 3068
-    expect 3227
+    answers {inp:3227, t1:3068}
     sim(2022)
 
   part 2:
-    expectT 1_514_285_714_288
-    expect 1_597_714_285_698
+    answers {inp:1_597_714_285_698, t1:1_514_285_714_288}
 
     const iterations = 1_000_000_000_000 # one trillion!
 

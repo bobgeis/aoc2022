@@ -23,8 +23,7 @@ day 13:
       return cmp(left.len,right.len)
 
   part 1:
-    expectT 13
-    expect 5557
+    answers {inp:5557, t1:13}
     var total = 0
     for i,pair in jsonPairs:
       let c = compare(pair[0],pair[1])
@@ -33,8 +32,7 @@ day 13:
     total
 
   part 2:
-    expectT 140
-    expect 22425
+    answers {inp:22425, t1:140}
     let
       pack1 = %*[[2]]
       pack2 = %*[[6]]
@@ -44,9 +42,8 @@ day 13:
       if compare(pack,pack2) < 1: inc off2
     off1 * (off2 + 1)
 
-  part "2a":
-    expectT 140
-    expect 22425
+  part "2.1":
+    answers {inp:22425, t1:140}
     let
       pack1 = %*[[2]]
       pack2 = %*[[6]]
@@ -68,7 +65,7 @@ I hadn't used the std/json library before, so that took some experimentation. On
 For part 2 I first used the built-in sort and was well pleased with it, but it can be much faster. You don't actually have to sort the seq of JsonNodes, you just need to know how many nodes would be to the left of the two dividers _if_ they were sorted.
 You can do this just by looping through the array once.
 
-I've preserved my sorting solution as part "2a".
+I've preserved my sorting solution as part 2.1.
 
 It may be possible to improve parsing performance by using a faster json library. Several exist (eg search the nim forum).
 """

@@ -17,8 +17,7 @@ day 3:
       ints = input.mapit(it.toSeqChar.map(priority))
 
   part 1:
-    expect 7691
-    expectT 157
+    answers {inp:7691, t1:157}
     var sum = 0
     for line in ints:
       let
@@ -29,8 +28,7 @@ day 3:
     sum
 
   part 2:
-    expectT 70
-    expect 2508
+    answers {inp:2508, t1:70}
     var sum2 = 0
     for i in countup(0,ints.high,3):
       let

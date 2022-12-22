@@ -11,22 +11,22 @@ day 0:
 
 
   part 1: # can declare a part and its expected answers
-    expectT 0 # record correct answers to catch regressions
-    expect 1
+    answers {inp:1, t1:0} # record correct answers to catch regressions
     one
 
-
   part 2:
-    expect 2 # the default input is assumed
-    expectT 1 # but test files can have answers too
+    answers {inp:2, t1:1}
     two
 
-  part "4a":
-    expectT "right" # violated tests will show expected answer
-    expect "right"
+  part 4.1:
+    answers {inp:"right", t1:"right"} # violated tests will show expected answer
     part 3: # can be nested, but will mess up timings
       3 # untested answers will get a question mark
     "wrong"
+
+  skip 2.1:
+    for i in int.low..int.high:
+      echo "This code is skipped."
 
   # # asserts are off with -d:danger
   # assert 2 == 3

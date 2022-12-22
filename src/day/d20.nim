@@ -30,15 +30,13 @@ day 20:
       [1000,2000,3000].mapit(ints[(it + z) mod ids.len]).sum
 
   part 1:
-    expectT 3
-    expect 2827
+    answers {inp:2827, t1:3}
     var ids = ids
     for id in 0..ids.high: ids.move(id)
     final ids
 
   part 2:
-    expectT 1_623_178_306
-    expect 7_834_270_093_909
+    answers {inp:7_834_270_093_909, t1:1_623_178_306}
     const dkey = 811_589_153
     for key,value in dists: dists[key] = value * dkey
     for _ in 1..10:

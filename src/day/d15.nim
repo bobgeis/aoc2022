@@ -39,15 +39,13 @@ day 15:
       return result.mergeranges
 
   part 1:
-    expectT 26
-    expect 5_878_678
+    answers {inp:5_878_678, t1:26}
     let y = if path.inputPathSuffix == "t1": 10
       else: 2_000_000
     getranges(y).mapit(it[1] - it[0]).sum
 
   part 2:
-    expectT 56_000_011
-    expect 11_796_491_041_245
+    answers {inp:11_796_491_041_245, t1:56_000_011}
     let limit = if path.inputPathSuffix == "t1": 20
         else: 4_000_000
     proc walk():Vec2i =
@@ -61,8 +59,7 @@ day 15:
     walk().foldl(a * 4_000_000 + b)
 
   part 2.1:
-    expectT 56_000_011
-    expect 11_796_491_041_245
+    answers {inp:11_796_491_041_245, t1:56_000_011}
     let limit = if path.inputPathSuffix == "t1": 20
       else: 4_000_000
     proc walk():Vec2i =

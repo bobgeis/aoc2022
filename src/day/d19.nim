@@ -65,13 +65,11 @@ day 19:
 
 
   part 1:
-    expectT 33
-    expect 1487
+    answers {inp:1487, t1:33}
     blues.mapit(it.id * it.doblue(24)).sum
 
   part 2:
-    # expectT 62
-    expect 13440
+    answers {inp:13440}
     blues[0..2].mapit(it.doblue(32)).foldl(a*b)
 
   note """

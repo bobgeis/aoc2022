@@ -41,164 +41,164 @@ There are scripts in the `config.nims` file that exist to streamline common task
 ___
 
 
-## All Days at #389094d
+## All Days at #8896b6e
 - optimized release
 - skipping extra parts
 
 |Day|Total(ms)| Prep(ms)|  Pt1(ms)| ?  |  Pt2(ms)| ?  |
 |---|--------:|--------:|--------:|:--:|--------:|:--:|
 |d00|     0.09|     0.07|     0.00| ✅ |     0.00| ✅ |
-|d01|     0.28|     0.25|     0.00| ✅ |     0.00| ✅ |
-|d02|     0.15|     0.14|     0.00| ✅ |     0.00| ✅ |
+|d01|     0.26|     0.24|     0.00| ✅ |     0.00| ✅ |
+|d02|     0.15|     0.15|     0.00| ✅ |     0.00| ✅ |
 |d03|     0.28|     0.16|     0.09| ✅ |     0.03| ✅ |
-|d04|     0.16|     0.15|     0.00| ✅ |     0.00| ✅ |
-|d05|     0.25|     0.14|     0.02| ✅ |     0.09| ✅ |
-|d06|     0.31|     0.02|     0.06| ✅ |     0.23| ✅ |
-|d07|     0.29|     0.28|     0.01| ✅ |     0.00| ✅ |
-|d08|     2.04|     1.18|     0.37| ✅ |     0.49| ✅ |
-|d09|     1.89|     0.44|     0.96| ✅ |     0.48| ✅ |
-|d10|     0.07|     0.06|     0.00| ✅ |     0.00| ✅ |
-|d11|    20.96|     0.25|     0.03| ✅ |    20.67| ✅ |
-|d12|     6.05|     0.98|     2.22| ✅ |     2.85| ✅ |
-|d13|     1.87|     1.65|     0.07| ✅ |     0.14| ✅ |
-|d14|    25.12|     0.76|     2.27| ✅ |    22.07| ✅ |
-|d15|     0.92|     0.10|     0.01| ✅ |     0.79| ✅ |
-|d16|   160.20|     0.76|    82.44| ✅ |    76.98| ✅ |
-|d17|    13.45|     0.07|     4.03| ✅ |     9.35| ✅ |
-|d18|     9.02|     0.71|     0.33| ✅ |     7.96| ✅ |
-|d19|  1754.67|     0.09|   971.81| ✅ |   782.74| ✅ |
-|d20|   239.56|     1.44|    23.20| ✅ |   214.91| ✅ |
-|d21|     1.96|     1.40|     0.19| ✅ |     0.33| ✅ |
-|All|  2241.13|
+|d04|     0.17|     0.16|     0.00| ✅ |     0.00| ✅ |
+|d05|     0.26|     0.14|     0.02| ✅ |     0.10| ✅ |
+|d06|     0.39|     0.07|     0.08| ✅ |     0.24| ✅ |
+|d07|     0.32|     0.30|     0.01| ✅ |     0.00| ✅ |
+|d08|     2.37|     1.45|     0.39| ✅ |     0.51| ✅ |
+|d09|     1.88|     0.44|     0.95| ✅ |     0.48| ✅ |
+|d10|     0.09|     0.07|     0.00| ✅ |     0.00| ✅ |
+|d11|    20.91|     0.26|     0.03| ✅ |    20.60| ✅ |
+|d12|     5.16|     0.85|     2.16| ✅ |     2.14| ✅ |
+|d13|     1.53|     1.40|     0.03| ✅ |     0.09| ✅ |
+|d14|    15.52|     0.60|     2.86| ✅ |    12.05| ✅ |
+|d15|     0.82|     0.06|     0.00| ✅ |     0.74| ✅ |
+|d16|   150.21|     0.51|    78.48| ✅ |    71.21| ✅ |
+|d17|    11.69|     0.05|     3.73| ✅ |     7.90| ✅ |
+|d18|    12.07|     0.74|     0.40| ✅ |    10.91| ✅ |
+|d19|  1712.71|     0.09|   973.02| ✅ |   739.58| ✅ |
+|d20|   233.89|     1.31|    23.07| ✅ |   209.50| ✅ |
+|d21|     1.95|     1.40|     0.19| ✅ |     0.33| ✅ |
+|All|  2174.13|
 
 
-## All Days at #389094d
+## All Days at #8896b6e
 - optimized release
 - including notes
 
 ### Day 0 for in/i00.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.13|
-|   1   |     0.01| ✅ |      1       |              |
-|   2   |     0.00| ✅ |      2       |              |
-|   3   |     0.00| ❓ |      3       |              |
-|  4a   |     0.01| ❌ |    wrong     |    right     |
-| Time  |     0.24|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.06|
+|   1    |     0.01| ✅ |       1        |                |
+|   2    |     0.00| ✅ |       2        |                |
+|   3    |     0.00| ❓ |       3        |                |
+|  4.1   |     0.01| ❌ |     wrong      |     right      |
+|  Time  |     0.17|
 
  d00 is a trivial example. It's time represents a noisy lower bound for a day.
 
 ---
 
 ### Day 1 for in/i01.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.38|
-|   1   |     0.00| ✅ |    68923     |              |
-|   2   |     0.00| ✅ |    200044    |              |
-| Time  |     0.45|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.24|
+|   1    |     0.00| ✅ |     68923      |                |
+|   2    |     0.00| ✅ |     200044     |                |
+|  Time  |     0.29|
 ---
 
 ### Day 2 for in/i02.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.26|
-|   1   |     0.00| ✅ |    12276     |              |
-|   2   |     0.00| ✅ |     9975     |              |
-| Time  |     0.34|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.14|
+|   1    |     0.00| ✅ |     12276      |                |
+|   2    |     0.00| ✅ |      9975      |                |
+|  Time  |     0.17|
 ---
 
 ### Day 3 for in/i03.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.36|
-|   1   |     0.14| ✅ |     7691     |              |
-|   2   |     0.05| ✅ |     2508     |              |
-| Time  |     0.62|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.16|
+|   1    |     0.08| ✅ |      7691      |                |
+|   2    |     0.03| ✅ |      2508      |                |
+|  Time  |     0.30|
 ---
 
 ### Day 4 for in/i04.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.48|
-|   1   |     0.00| ✅ |     462      |              |
-|   2   |     0.00| ✅ |     835      |              |
-| Time  |     0.55|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.15|
+|   1    |     0.00| ✅ |      462       |                |
+|   2    |     0.00| ✅ |      835       |                |
+|  Time  |     0.18|
 ---
 
 ### Day 5 for in/i05.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.36|
-|   1   |     0.02| ✅ |  SHMSDGZVC   |              |
-|   2   |     0.10| ✅ |  VRZGHDFBQ   |              |
-| Time  |     0.53|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.14|
+|   1    |     0.02| ✅ |   SHMSDGZVC    |                |
+|   2    |     0.09| ✅ |   VRZGHDFBQ    |                |
+|  Time  |     0.28|
 ---
 
 ### Day 6 for in/i06.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.09|
-|   1   |     0.06| ✅ |     1210     |              |
-|   2   |     0.23| ✅ |     3476     |              |
-| Time  |     0.42|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.02|
+|   1    |     0.06| ✅ |      1210      |                |
+|   2    |     0.23| ✅ |      3476      |                |
+|  Time  |     0.34|
 ---
 
 ### Day 7 for in/i07.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.37|
-|   1   |     0.01| ✅ |   1908462    |              |
-|   2   |     0.00| ✅ |   3979145    |              |
-| Time  |     0.44|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.29|
+|   1    |     0.00| ✅ |    1908462     |                |
+|   2    |     0.00| ✅ |    3979145     |                |
+|  Time  |     0.33|
 
  The input recursively walks the dirs, calling `ls` exactly once in each. It could have been much worse!
 
 ---
 
 ### Day 8 for in/i08.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     1.51|
-|   1   |     0.37| ✅ |     1854     |              |
-|   2   |     0.53| ✅ |    527340    |              |
-| Time  |     2.49|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     1.15|
+|   1    |     0.38| ✅ |      1854      |                |
+|   2    |     0.51| ✅ |     527340     |                |
+|  Time  |     2.07|
 
  In retrospect, part 1 and part 2 could probably have each used the same kind of `ray` function. But instead I did part 1 by walking across the whole forest from each direction and then part 2 by walking out from each spot. There's probably improvements that can be done here.
 
 ---
 
 ### Day 9 for in/i09.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.52|
-|   1   |     0.99| ✅ |     6243     |              |
-|   2   |     0.55| ✅ |     2630     |              |
-| Time  |     2.13|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.33|
+|   1    |     0.95| ✅ |      6243      |                |
+|   2    |     0.48| ✅ |      2630      |                |
+|  Time  |     1.81|
 
  My first implementation had a bug where it didn't correctly account for intermediate knots being pulled diagonally.
 
 ---
 
 ### Day 10 for in/i10.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.15|
-|   1   |     0.01| ✅ |    12980     |              |
-|   2   |     0.01| ✅ |   BRJLFULP   |              |
-| Time  |     0.21|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.06|
+|   1    |     0.00| ✅ |     12980      |                |
+|   2    |     0.00| ✅ |    BRJLFULP    |                |
+|  Time  |     0.10|
 
  Aha! A day where the output is an image that you have to look at.
 
 ---
 
 ### Day 11 for in/i11.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.92|
-|   1   |     0.03| ✅ |    110264    |              |
-|   2   |    20.07| ✅ | 23612457316  |              |
-| Time  |    21.11|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.23|
+|   1    |     0.03| ✅ |     110264     |                |
+|   2    |    19.85| ✅ |  23612457316   |                |
+|  Time  |    20.18|
 
  My first implementation used scanTuple for parsing and it quickly became cumbersome. Scanf is actually much cleaner when you have multiple potential strings to match and it works well with doAssert.
 
@@ -209,12 +209,12 @@ Also remember that args known at compile time can be defined as `static` to save
 ---
 
 ### Day 12 for in/i12.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     1.13|
-|   1   |     2.17| ✅ |     534      |              |
-|   2   |     2.35| ✅ |     525      |              |
-| Time  |     5.75|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.85|
+|   1    |     2.19| ✅ |      534       |                |
+|   2    |     2.16| ✅ |      525       |                |
+|  Time  |     5.25|
 
  A chance to use graphwalk.bfs!
 
@@ -227,13 +227,13 @@ There's still lots of room for improvement, but it works decently for now.
 ---
 
 ### Day 13 for in/i13.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     1.69|
-|   1   |     0.04| ✅ |     5557     |              |
-|   2   |     0.14| ✅ |    22425     |              |
-|  2a   |     0.61| ✅ |    22425     |              |
-| Time  |     2.60|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     1.39|
+|   1    |     0.03| ✅ |      5557      |                |
+|   2    |     0.09| ✅ |     22425      |                |
+|  2.1   |     0.50| ✅ |     22425      |                |
+|  Time  |     2.06|
 
  First thought: Can we walk the pairs of strings comparing themchar by char?
 
@@ -246,20 +246,20 @@ I hadn't used the std/json library before, so that took some experimentation. On
 For part 2 I first used the built-in sort and was well pleased with it, but it can be much faster. You don't actually have to sort the seq of JsonNodes, you just need to know how many nodes would be to the left of the two dividers _if_ they were sorted.
 You can do this just by looping through the array once.
 
-I've preserved my sorting solution as part "2a".
+I've preserved my sorting solution as part 2.1.
 
 It may be possible to improve parsing performance by using a faster json library. Several exist (eg search the nim forum).
 
 ---
 
 ### Day 14 for in/i14.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.84|
-|   1   |     2.09| ✅ |     808      |              |
-|   2   |    14.22| ✅ |    26625     |              |
-|  2.1  |    99.97| ✅ |    26625     |              |
-| Time  |   117.28|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.63|
+|   1    |     1.82| ✅ |      808       |                |
+|   2    |    13.70| ✅ |     26625      |                |
+|  2.1   |   108.15| ✅ |     26625      |                |
+|  Time  |   124.42|
 
  Naive "simulate each sand grain as it falls" works decently. Part 2 took 90-150ms, so slowest by a long shot, but doable. Lots of room for improvement of course... First implementation had little code re-use and the parsing was messy.
 
@@ -268,13 +268,13 @@ Second implementation of part 2 used depth-first-search and improved run time by
 ---
 
 ### Day 15 for in/i15.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.17|
-|   1   |     0.01| ✅ |   5878678    |              |
-|   2   |     0.90| ✅ |11796491041245|              |
-|  2.1  |   906.74| ✅ |11796491041245|              |
-| Time  |   907.97|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.07|
+|   1    |     0.01| ✅ |    5878678     |                |
+|   2    |     0.75| ✅ | 11796491041245 |                |
+|  2.1   |   836.17| ✅ | 11796491041245 |                |
+|  Time  |   837.06|
 
  Part 1 took an unusually large amount of time because I misread the initial y value as being 20_000 and not 2_000_000! Once I realized, it was fast.
 
@@ -285,12 +285,12 @@ My second solution to part 2 followed the advice of redditor i_have_no_biscuits.
 ---
 
 ### Day 16 for in/i16.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.84|
-|   1   |    94.65| ✅ |     1850     |              |
-|   2   |    75.96| ✅ |     2306     |              |
-| Time  |   171.61|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.56|
+|   1    |    78.70| ✅ |      1850      |                |
+|   2    |    73.67| ✅ |      2306      |                |
+|  Time  |   153.01|
 
  Part 1.1:
 There are a lot of valves with 0 rates. This reminded me of 2019 day 18 a bit, but I wasn't immediately sure how to make use of them. Next I tried using algorithms.nextPermutation to try every combination of valves with non-zero rates. This worked fine for the test input but didn't finish on the actual input. Next I tried a recursive walk proc, and that worked, but it was slow (3.7 seconds on actual input!). I used bfs to create distance tables for the important valves, and that took it down to ~0.5 seconds.
@@ -308,12 +308,12 @@ Part 1.3 & 2.3: Refactored the sets to be set[int8] instead of HashSet[string]. 
 ---
 
 ### Day 17 for in/i17.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.23|
-|   1   |     4.29| ✅ |     3227     |              |
-|   2   |     8.18| ✅ |1597714285698 |              |
-| Time  |    12.78|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.06|
+|   1    |     3.75| ✅ |      3227      |                |
+|   2    |     8.06| ✅ | 1597714285698  |                |
+|  Time  |    11.93|
 
  Part 1: I took an unsually long amount of time to do part 1 because I had a bug in my height code. Basically I was always taking the max y-coordinate of the last block, even if the last block was _lower_ than the highest block. Because the height was used to spawn the next block, this messed up the tower. I had thought the bug was somewhere in the block movement code so I made procs to draw the block set at every step and it _looked_ right. Only when I went much further did I notice some blocks spawning in the wrong place and figure out what happened.
 
@@ -322,12 +322,12 @@ Part 2: After part 1 I didn't have enough time to do part 2 the same day. From r
 ---
 
 ### Day 18 for in/i18.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.91|
-|   1   |     0.36| ✅ |     4314     |              |
-|   2   |     6.10| ✅ |     2444     |              |
-| Time  |     7.45|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.76|
+|   1    |     0.33| ✅ |      4314      |                |
+|   2    |     5.61| ✅ |      2444      |                |
+|  Time  |     6.74|
 
  Part 1: After the last couple days, part 1 was trivial. I was afraid I'd missed a trick... Just parse the x,y,z coordinates, and then for each coordinate count it's neighbors. There's certainly a faster running implementation, but it's already much better than day 16!
 
@@ -338,12 +338,12 @@ Part 2.2: There is a minor improvement where the exposed surfaces are counted du
 ---
 
 ### Day 19 for in/i19.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     0.14|
-|   1   |  1061.38| ✅ |     1487     |              |
-|   2   |   872.73| ✅ |    13440     |              |
-| Time  |  1934.38|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     0.07|
+|   1    |   982.36| ✅ |      1487      |                |
+|   2    |   820.76| ✅ |     13440      |                |
+|  Time  |  1803.30|
 
  Part 1: Apparently others used various solvers, but I did a brute force bfs over the possible siimulation states. Just define each node of a graph as a possible state, and each adjacent node are the states reachable from it (eg get more resources, get more resources and build each kind of bot, etc). Slight optimizations are to cap the amount of excess resources so degenerate states map to the same node, and if you can build a geode bot always and only do that.
 
@@ -352,12 +352,12 @@ Part 2: This was really easy after part 1! Just run it for longer on fewer bluep
 ---
 
 ### Day 20 for in/i20.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     1.56|
-|   1   |    23.23| ✅ |     2827     |              |
-|   2   |   242.97| ✅ |7834270093909 |              |
-| Time  |   267.89|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     1.33|
+|   1    |    23.34| ✅ |      2827      |                |
+|   2    |   220.59| ✅ | 7834270093909  |                |
+|  Time  |   245.35|
 
  Part 1: This _should_ have been straightforward, but I messed up calculating the final answer and was sure the problem was in my move logic. I was looking in an array of ids (the initial offsets) instead of the true values, and they happened to coincidentally sum to the correct answer for the test data some of the time.
 
@@ -366,12 +366,12 @@ Part 2: Once part 1 was working, part 2 was very quick. Bumping up the sizes of 
 ---
 
 ### Day 21 for in/i21.txt
-| Part  |Time(ms) | ?  |    Answer    |   Expected   |
-|:-----:|--------:|:--:|--------------|--------------|
-| Prep  |     1.76|
-|   1   |     0.22| ✅ |160274622817992|              |
-|   2   |     0.38| ✅ |3087390115721 |              |
-| Time  |     2.47|
+|  Part  | Time(ms)| ?  |     Answer     |    Expected    |
+|:------:|--------:|:--:|----------------|----------------|
+|  Prep  |     1.41|
+|   1    |     0.19| ✅ |160274622817992 |                |
+|   2    |     0.34| ✅ | 3087390115721  |                |
+|  Time  |     2.00|
 
  Part 1: First thought: make a graph and walk it! Wait it's just a tree. Can we do that recursively or will we go too deep? I wrote a naively simple recursive proc, but it worked first try.
 
@@ -379,5 +379,5 @@ Part 2: Poking the AoC subbreddit I found suggestions for using complex numbers 
 
 ---
 
-Total Time:   3461.41
+Total Time:   3218.68ms
 

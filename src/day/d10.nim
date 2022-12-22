@@ -19,8 +19,7 @@ day 10:
         yield (tick,x)
 
   part 1:
-    expectT 13140
-    expect 12980
+    answers {inp:12980, t1:13140}
     var
       strengths = newSeq[int]()
       total = 0
@@ -34,7 +33,7 @@ day 10:
     total
 
   part 2:
-    expect "BRJLFULP"
+    answers {inp:"BRJLFULP"}
     var img = "\n#"
 
     for (tick,x) in moves.domoves:

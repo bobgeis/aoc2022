@@ -51,7 +51,7 @@ proc allDays*() =
   when defined(outputMarkdown) and defined(onelineDay):
     echo &"|All|{dt.formattime}|"
   else:
-    echo &"Total Time: {dt.formattime}"
+    echo &"Total Time: {dt.formattime}ms"
   echo()
 
 when isMainModule:

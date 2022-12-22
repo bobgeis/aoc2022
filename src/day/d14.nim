@@ -22,8 +22,7 @@ day 14:
     decho map.draw
 
   part 1:
-    expectT 24
-    expect 808
+    answers {inp:808, t1:24}
     var
       map = map
       count = 0
@@ -49,8 +48,7 @@ day 14:
     count
 
   part 2:
-    expectT 93
-    expect 26625
+    answers {inp:26625, t1:93}
     let ymax = ymax + 2
     proc adjs(v:Vec2i):seq[Vec2i] =
       for u in [[1,1],[-1,1],[0,1]]:
@@ -59,8 +57,7 @@ day 14:
     initsand.dfs(adjs).len
 
   part 2.1:
-    expectT 93
-    expect 26625
+    answers {inp:26625, t1:93}
     let ymax = ymax + 2
     var
       map = map
